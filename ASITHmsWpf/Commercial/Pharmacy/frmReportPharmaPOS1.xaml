@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="ASITHmsWpf.Commercial.Pharmacy.frmReportPharmaPOS1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"                  
+             mc:Ignorable="d" Tag="Shop Sales Reports View/Print Screen" Style="{StaticResource IOUserControl}"  Initialized="UserControl_Initialized" Loaded="UserControl_Loaded"  >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="500*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="323*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="tvRptTitle" Grid.Column="0" Background="Transparent" Grid.Row="1">
+
+        </TreeView>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Height="280" Margin = "0,10,0,0" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Dated From :" Width="90" HorizontalContentAlignment="Right" />
+                <xctk:DateTimePicker x:Name="xctk_dtpFrom" Style="{StaticResource StdDateTimePickerStyle01}" FontWeight="Bold" Height="22" Width="130" />
+                <Label Content="Main Location :" Width="100" HorizontalContentAlignment="Right" />
+                <ComboBox x:Name="cmbSectCod" SelectedIndex="0" Width="230" />
+                <Label x:Name="lblStaffIdTitle" Content="Staff :" HorizontalContentAlignment="Right" Width="60" />
+                <UC:AutoCompleteTextBox x:Name="AtxtStaffId" SearchType="C" HorizontalContentAlignment="Left" Height="22" Width="330" />
+                <Label Content="Output Options :" Width="100" HorizontalContentAlignment="Right" />
+                <ComboBox x:Name="cmbOutputOption" Width="150" FontWeight="Bold" SelectedIndex="3">
+                    <ComboBoxItem Content="Print preview" Tag="PP"/>
+                    <ComboBoxItem Content="Save as PDF file"  Tag="PDF"/>
+                    <ComboBoxItem Content="Print directly to printer" Tag="DP"/>
+                    <ComboBoxItem Content="Show in screen" Tag="SS" />
+                    <ComboBoxItem Content="Export to Excel with format" Tag="EXCELF" />
+                    <ComboBoxItem Content="Export to Excel - Data only" Tag="EXCEL"  />
+                    <ComboBoxItem Content="Export to Word with format" Tag="WORD" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <CheckBox Content="As On /" VerticalAlignment="Center" />
+                <Label Content="To :" Width="30" HorizontalContentAlignment="Right" />
+                <xctk:DateTimePicker x:Name="xctk_dtpTo" Style="{StaticResource StdDateTimePickerStyle01}" FontWeight="Bold" Height="22" Width="130" />
+                <Label Content="Other Location :" Width="100" HorizontalContentAlignment="Right" />
+                <ComboBox x:Name="cmbSectCod2" SelectedIndex="0"  Width="230" />
+                <Label x:Name="lblSupIdTitle" Content="Client :" HorizontalContentAlignment="Right" Width="60" />
+                <UC:AutoCompleteTextBox x:Name="AtxtSupId" SearchType="C" HorizontalContentAlignment="Left" Height="22" Width="330" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <Label Content="Select Shop :" Width="90" HorizontalContentAlignment="Right" />
+                <ComboBox x:Name="cmbShop" SelectedIndex="0"  Width="130" SelectionChanged="cmbItemGroup_SelectionChanged" IsEnabled="False" >
+                    <ComboBoxItem Content="Medicine Shop" Tag="MSI"></ComboBoxItem>
+                    <ComboBoxItem Content="Food Shop" Tag="FSI"></ComboBoxItem>
+                    <ComboBoxItem Content="Hardware Shop" Tag="FSI"></ComboBoxItem>
+                </ComboBox>
+                
+                <Label Content="Item Group :" Width="100" HorizontalContentAlignment="Right" />
+                <ComboBox x:Name="cmbItemGroup" SelectedIndex="0"  Width="230" SelectionChanged="cmbItemGroup_SelectionChanged" />
+                <Label x:Name="lblItemIdTitle" Content="Item :" HorizontalContentAlignment="Right" Width="60" />
+                <UC:AutoCompleteTextBox x:Name="AtxtItemId" SearchType="C" HorizontalContentAlignment="Left" Height="22" Width="330" />
+                <Separator  Width="10" Visibility="Hidden" />
+                <Button x:Name="btnGenerate" Style="{StaticResource StdBtnStyle01}" Content="_Generate"  Width="75" Click="btnGenerate_Click" />
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"  >
+            <Separator Margin="0" Background="Gold"/>
+            <StackPanel Height="45" HorizontalAlignment="Center" Width="950">
+                <Label x:Name="lbltle1" Foreground="#FF862222" HorizontalAlignment="Center"  FontWeight="Bold" FontFamily="Verdana"/>
+                <Label x:Name="lbltle2" Foreground="#FF862222" HorizontalAlignment="Center"  FontWeight="Bold" FontFamily="Verdana"/>
+            </StackPanel>
+           
+                        <StackPanel>
+                <DataGrid x:Name="dgOverall01" AlternatingRowBackground="#FFE4F2E1" MouseDoubleClick="dgOverall01_MouseDoubleClick" CanUserSortColumns="False" IsReadOnly="True" Width="950" LoadingRow="dgOverall01_LoadingRow" HorizontalAlignment="Center" Height="450" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="10,0,9,0" >
+                    <DataGrid.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type GroupItem}">
+
+                                                <Expander IsExpanded="False" Background="AliceBlue"  BorderThickness="1">
+                                                    <Expander.Header>
+                                                        <StackPanel>
+                                                            <TextBlock FontWeight="Bold" Foreground="Blue" FontSize="12"
+                                											TextAlignment="Center" Text="{Binding Name}"/>
+                                                        </StackPanel>
+                                                    </Expander.Header>
+                                                    <ItemsPresenter/>
+                                                </Expander>
+
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </DataGrid.GroupStyle>
+                </DataGrid>
+            </StackPanel>
+                    
+               
+        </StackPanel>
+    </Grid>
+</UserControl>

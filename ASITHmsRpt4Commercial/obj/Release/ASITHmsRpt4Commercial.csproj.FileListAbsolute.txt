@@ -1,0 +1,10 @@
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\bin\Release\ASITHmsRpt4Commercial.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\bin\Release\ASITHmsRpt4Commercial.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\bin\Release\ASITFunLib.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\bin\Release\ASITHmsEntity.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\bin\Release\ASITHmsEntity.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\obj\Release\ASITHmsRpt4Commercial.csprojResolveAssemblyReference.cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\obj\Release\RdlCompile.cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\obj\Release\RdlCompile.compiled
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\obj\Release\ASITHmsRpt4Commercial.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt4Commercial\obj\Release\ASITHmsRpt4Commercial.pdb

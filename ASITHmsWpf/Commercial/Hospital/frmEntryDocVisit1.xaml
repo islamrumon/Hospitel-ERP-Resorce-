@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="ASITHmsWpf.Commercial.Hospital.frmEntryDocVisit1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" Tag="Patient Visit Token Information Input Screen" Style="{StaticResource IOUserControl}" Loaded="UserControl_Loaded"  >
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" >
+                <TextBlock Text=" Patient Token :" FontSize="14" FontStyle="Italic" FontWeight="Bold" Background="Aqua" Width="120" />
+                <Label x:Name="lblSectCodTitle" Content="Loca_tion :" HorizontalContentAlignment="Right" Width="60" Target="{Binding ElementName=cmbSectCod}" />
+                <ComboBox x:Name="cmbSectCod" Width="200" IsReadOnly="True" SelectedIndex="0" Focusable="False"></ComboBox>
+                <Label x:Name="lblPrevTokenListTitle" Content="Prev.Token List :" HorizontalContentAlignment="Right" Width="110" Target="{Binding ElementName=cmbPrevTokenList}" />
+                <ComboBox x:Name="cmbPrevTokenList" Width="450" IsReadOnly="True" SelectedIndex="0" Focusable="False"></ComboBox>
+                <Separator Width="15" Visibility="Hidden" />
+                <Button x:Name="btnPrint1" Content="_View/Print" Width="75" Height="22" Style="{StaticResource StdBtnStyle01}" Click="btnPrint1_Click" />
+                <Separator Width="20" Visibility="Hidden" />
+                <CheckBox x:Name="ChkPrintDirect" Content="Direct Print" IsChecked="True" VerticalAlignment="Center" />
+                <Separator Width="45" Visibility="Hidden" ></Separator>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stkIntro" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="120,3,3.6,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblDocTitle" Content="Doctor :" HorizontalContentAlignment="Right" Width="60" Target="{Binding ElementName=cmbSectCod}" />
+                        <ComboBox x:Name="cmbDoc" Width="200" IsReadOnly="True" SelectedIndex="0" Focusable="False"></ComboBox>
+                        <Separator Width="30" Visibility="Hidden"></Separator>
+                        <CheckBox x:Name="chkDateBlocked" Content="Visit _Date : " Focusable="False" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="80" Click="chkDateBlocked_Click"  />
+                        <xctk:DateTimePicker x:Name="xctk_dtVisitDat" Style="{StaticResource StdDateTimePickerStyle01}" FontWeight="Bold" Height="22" Width="130" IsEnabled="False" />
+                        <Label x:Name="lblTokenNoTitle" Content="Token No:" HorizontalContentAlignment="Right" Width="80" />
+                        <Label x:Name="lblTokenNo" Content="DTI-DDXXX" Tag="DTIYYYYMMCCCCDDXXX" Width="140" FontWeight="Bold" HorizontalContentAlignment="Left" />
+                        <Separator Width="20" Visibility="Hidden"></Separator>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="24">
+                    <Button x:Name="btnPrint2" Content="_Print" Width="75" Style="{StaticResource StdBtnStyle01}" Click="btnPrint2_Click" Height="24" VerticalAlignment="Top" />
+                    <Separator Width="16" Visibility="Hidden" />
+                    <Button x:Name="btnOk" Style="{StaticResource StdBtnStyle01}" Content="_Ok" Width="75" Click="btnOk_Click"  />
+                    <Separator Width="20" Visibility="Hidden" />
+                    <CheckBox x:Name="ChkPrintTokenList" Content="Print Token List" IsChecked="False" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Separator VerticalAlignment="Top" Background="Gold" Height="2" Margin="0,60,0,0" />
+        <StackPanel x:Name="stkpDetails" Orientation="Horizontal" Margin="0,70,0,0">
+            <StackPanel Width="380">
+                <StackPanel Width="300" VerticalAlignment="Top" Height="120" Background="#FFF3F1F1" HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <Label Content="TOKEN" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" />
+                    <Label x:Name="lblLastTokenNo" Content="00" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="10,150,0,0" >
+                    <DataGrid x:Name="dgvDocFee" CanUserResizeRows="False" Background="Transparent" IsReadOnly="False" BorderThickness="0" CanUserResizeColumns="False"
+                              VerticalAlignment="Top" Height="200" Width="300" ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ScrollViewer.HorizontalScrollBarVisibility="Hidden" RowHeight="25" RowHeaderWidth="10" SelectionUnit="Cell" SelectionMode="Single" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="200" Binding="{Binding Path=visitdes}" CanUserSort="False" IsReadOnly="True" CanUserResize="False" >
+                                <DataGridTextColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" >
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="Description"  Focusable="False" Width="100" />
+                                        </Grid>
+                                    </ItemContainerTemplate>
+                                </DataGridTextColumn.HeaderTemplate>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Width="90" Header="Doctor's Fee" IsReadOnly="False" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0"  Width="80" HorizontalContentAlignment="Right"
+                                               AutoSelectBehavior="OnFocus" Padding="5,0,0,0" Style="{StaticResource wtxtBx}" Watermark="Amount" Text="{Binding Path = docfee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>                    
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel x:Name="stkpDetails1">
+                <StackPanel Orientation="Horizontal" >
+                    <CheckBox x:Name="chkPatTrnID" Content="C_ust ID : " Focusable="False" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="80" Click="chkPatTrnID_Click" Margin="30,0,0,0" />
+                    <xctk:WatermarkTextBox x:Name="txtPatID" Style="{StaticResource wtxtBx}" Tag="" AutoMoveFocus="True" IsEnabled="False" Width="130" AutoSelectBehavior="OnFocus" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0" >
+                    <Label x:Name="lblPatName" Content="P_atient Name :" Width="110" HorizontalContentAlignment="Right" Target="{Binding ElementName=txtPatName}" />
+                    <xctk:WatermarkTextBox x:Name="txtPatName" Style="{StaticResource wtxtBx}" Tag="" AutoMoveFocus="True"
+                                           Width="370" AutoSelectBehavior="OnFocus" />
+                    <Label x:Name="lblPatAgeTitle" Content="A_ge :" HorizontalContentAlignment="Right" Width="50" Target="{Binding ElementName=txtPatAge}" />
+                    <xctk:WatermarkTextBox x:Name="txtPatAge" TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" 
+                                               AutoSelectBehavior="OnFocus" Padding="5,0,5,0" Style="{StaticResource wtxtBx}" Text="" Width="70" />
+                    <TextBlock TextAlignment="Left" Padding="5,0,0,0" Background="White" Text="Years" Width="50" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Width="330">
+                                <Label x:Name="lblVisitNumTitle1" Content="Visit No. :" HorizontalContentAlignment="Right" Width="110" Target="{Binding ElementName=cmbVisitNo}" />
+                                <ComboBox x:Name="cmbVisitNo" Width="180" VerticalAlignment="Top" FontWeight="Bold" SelectedIndex="0" SelectionChanged="cmbVisitNo_SelectionChanged" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" >
+                                <Label x:Name="lblDocFeeTitle1" Content="_Doctor's Visiting Charge :" HorizontalContentAlignment="Right" Width="200" Target="{Binding ElementName=txtDocFee}" />
+                                <xctk:WatermarkTextBox x:Name="txtDocFee" TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" LostFocus="txtBox_LostFocus"
+                                               AutoSelectBehavior="OnFocus" Padding="5,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Doctor's Fee" Text="" Width="120" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                <Label x:Name="lblOthrFeeTitle1" Content="Others Charge (if any) :" HorizontalContentAlignment="Right" Width="200" Target="{Binding ElementName=txtOthrChrg}" />
+                                <xctk:WatermarkTextBox x:Name="txtOthrChrg" TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" LostFocus="txtBox_LostFocus"
+                                               AutoSelectBehavior="OnFocus" Padding="5,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Other Charge" Text="" Width="120" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                <Label x:Name="lblDiscAmtTitle1" Content="Discount Amount :" HorizontalContentAlignment="Right" Width="200" Target="{Binding ElementName=txtDiscAmt}" />
+                                <xctk:WatermarkTextBox x:Name="txtDiscAmt" TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" LostFocus="txtBox_LostFocus"
+                                               AutoSelectBehavior="OnFocus" Padding="5,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Discount" Text="" Width="120" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                <Label x:Name="lblTotalTitle1" Content="Total Payable Amount :" HorizontalContentAlignment="Right" Width="200" FontWeight="Bold"  />
+                                <TextBlock x:Name="txtNetTotal" TextAlignment="Right" FontWeight="Bold" Width="120" Padding="5,0,5,0" Background="White" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Label x:Name="lblOthrDesc" Content="N_otes (if any):" Width="110" HorizontalContentAlignment="Right" Target="{Binding ElementName=txtOthrDesc}" />
+                    <xctk:WatermarkTextBox x:Name="txtOthrDesc"  Style="{StaticResource wtxtBx}" TextWrapping="Wrap" Tag="" Height="40" GotFocus="txtBox_LostFocus"
+                                            Width="540" AutoSelectBehavior="OnFocus"  />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0" >
+                    <CheckBox x:Name="ChkConfirmSave" Focusable="False" Content="Need Confirmaation" IsChecked="False" VerticalAlignment="Center" Margin="0,0,100,0" />
+                    <Button x:Name="btnUpdate" Style="{StaticResource StdBtnStyle01}" Content="_Save" Width="75" Click="btnUpdate_Click" VerticalAlignment="Top" Height="24" GotFocus="txtBox_LostFocus"  />
+                </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="0,20,0,0">
+                    <DataGrid x:Name="dgvVisitList" CanUserResizeRows="False" Background="Transparent" IsReadOnly="False" BorderThickness="0" Margin="0,0,0,0" Grid.Column="0" 
+                              VerticalAlignment="Top" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionUnit="FullRow" SelectionMode="Single" FrozenColumnCount="2" RowHeight="25" MouseDoubleClick="dgvVisitList_MouseDoubleClick"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="40" Header="Token" Binding="{Binding Path=slnum, StringFormat={}{0: 00}}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                            <DataGridTextColumn Width="290" Binding="{Binding Path=ptname}" CanUserSort="False" IsReadOnly="True"  CanUserResize="False" >
+                                <DataGridTextColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" >
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="Description" Focusable="False" Width="180" />
+                                        </Grid>
+                                    </ItemContainerTemplate>
+                                </DataGridTextColumn.HeaderTemplate>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Width="180" Header="Visit Desc" Binding="{Binding Path=visitnum}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                            <DataGridTemplateColumn Width="110" Header="Amount" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Width="100">
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding Netam, StringFormat={}{0: #,##0.00}}" Padding="5,0,5,0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <Label x:Name="lblTota1Title" Content="Total Amount :" HorizontalContentAlignment="Right" Width="200" FontWeight="Bold" FontSize="14" />
+                    <Label x:Name="lblTota1" Content="" HorizontalContentAlignment="Right" Width="120" FontWeight="Bold" Margin="0,0,25,0"  FontSize="14" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

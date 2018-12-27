@@ -1,0 +1,8 @@
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\bin\Release\ASITHmsRpt5Diagnostic.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\bin\Release\ASITHmsRpt5Diagnostic.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\bin\Release\ASITHmsEntity.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\bin\Release\ASITHmsEntity.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\obj\Release\RdlCompile.cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\obj\Release\RdlCompile.compiled
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\obj\Release\ASITHmsRpt5Diagnostic.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt5Diagnostic\obj\Release\ASITHmsRpt5Diagnostic.pdb

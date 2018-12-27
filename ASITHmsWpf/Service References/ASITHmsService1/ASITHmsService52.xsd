@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3709/ASITHmsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ASITFunLib" />
+  <xs:import schemaLocation="http://localhost:3709/ASITHmsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataSetResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ASITFunLib" minOccurs="0" name="pap1" nillable="true" type="q1:ASITFunParams.ProcessAccessParams" />
+        <xs:element minOccurs="0" name="comcod1" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataSetResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataSetResultResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataSetResultWeb">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="_comCod" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_ProcName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_ProcID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmXml01" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="_parmXml02" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="_parmBin01" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="_parm01" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm02" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm03" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm04" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm05" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm06" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm07" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm08" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm09" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm10" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm11" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm12" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm13" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm14" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm15" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm16" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm17" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm18" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm19" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parm20" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comcod1" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataSetResultWebResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataSetResultWebResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetXmlStrResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="XmlPap1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comcod1" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetXmlStrResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetXmlStrResultResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetJsonStrResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JsonPap1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="parmXml01DsName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="parmXml02DsName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comcod1" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetJsonStrResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetJsonStrResultResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataSetNonQuerySQL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ASITFunLib" minOccurs="0" name="pap1" nillable="true" type="q2:ASITFunParams.ProcessAccessParams" />
+        <xs:element minOccurs="0" name="comcod1" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataSetNonQuerySQLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataSetNonQuerySQLResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="composite" nillable="true" type="q3:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q4:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

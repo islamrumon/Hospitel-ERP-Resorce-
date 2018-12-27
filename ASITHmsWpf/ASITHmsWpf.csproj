@@ -1,0 +1,1285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C963A5D7-C263-461F-931F-39CE9BB54AC3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ASITHmsWpf</RootNamespace>
+    <AssemblyName>ASITHmsWpf</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\temps\hmsPub\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>ASIT Healthcare Apps</ProductName>
+    <PublisherName>Advanced Software &amp; IT Services Ltd.</PublisherName>
+    <SuiteName>Centerpoint Healthcare ERP Suite</SuiteName>
+    <MinimumRequiredVersion>1.1.0.19</MinimumRequiredVersion>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Health2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C0BB4DBB8FA658E9A17A4549EB7293E9D0141474</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ASITHmsWpf_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ASITDataLib">
+      <HintPath>..\..\..\..\..\ASITDataLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ASITFunLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ASITFunLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DirectShowLib, Version=2.1.0.1599, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DirectShowLib.1.0.0\lib\DirectShowLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetProjects.DataVisualization.Toolkit, Version=5.0.43.0, Culture=neutral, PublicKeyToken=79778c5f2eed289b, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetProjects.Wpf.Toolkit.5.0.43\lib\net40\DotNetProjects.DataVisualization.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetProjects.Input.Toolkit, Version=5.0.43.0, Culture=neutral, PublicKeyToken=79778c5f2eed289b, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetProjects.Wpf.Toolkit.5.0.43\lib\net40\DotNetProjects.Input.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetProjects.Layout.Toolkit, Version=5.0.43.0, Culture=neutral, PublicKeyToken=79778c5f2eed289b, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetProjects.Wpf.Toolkit.5.0.43\lib\net40\DotNetProjects.Layout.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.12.0.2.2403\lib\net40\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Accounting\frmEntryAccMgt102.xaml.cs">
+      <DependentUpon>frmEntryAccMgt102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\frmEntryAccMgt103.xaml.cs">
+      <DependentUpon>frmEntryAccMgt103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\frmEntryAccMgt101.xaml.cs">
+      <DependentUpon>frmEntryAccMgt101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\frmEntryVoucher1.xaml.cs">
+      <DependentUpon>frmEntryVoucher1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\frmReportAcc1.xaml.cs">
+      <DependentUpon>frmReportAcc1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\GridReportAcc1.cs" />
+    <Compile Include="Budget\BgdAccounts\frmAccBgd101.xaml.cs">
+      <DependentUpon>frmAccBgd101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Budget\BgdAccounts\frmAccBgd102.xaml.cs">
+      <DependentUpon>frmAccBgd102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Budget\BgdInventory\frmInvBgd101.xaml.cs">
+      <DependentUpon>frmInvBgd101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Budget\BgdRealEstate\frmRealBgd101.xaml.cs">
+      <DependentUpon>frmRealBgd101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Hospital\frmEntryFrontDesk102.xaml.cs">
+      <DependentUpon>frmEntryFrontDesk102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Hospital\frmEntryFrontDesk104.xaml.cs">
+      <DependentUpon>frmEntryFrontDesk104.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\ParkTicket\frmEntryParkPOS102.xaml.cs">
+      <DependentUpon>frmEntryParkPOS102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\ParkTicket\frmEntryParkPOS103.xaml.cs">
+      <DependentUpon>frmEntryParkPOS103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\RealEstate\frmRealSaleMgt1.xaml.cs">
+      <DependentUpon>frmRealSaleMgt1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\RealEstate\frmRealSaleMgt107.xaml.cs">
+      <DependentUpon>frmRealSaleMgt107.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\RealEstate\frmRealSaleMgt103.xaml.cs">
+      <DependentUpon>frmRealSaleMgt103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\RealEstate\frmRealSaleMgt102.xaml.cs">
+      <DependentUpon>frmRealSaleMgt102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\RealEstate\frmRealSaleMgt101.xaml.cs">
+      <DependentUpon>frmRealSaleMgt101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Hospital\frmEntryDocVisit1.xaml.cs">
+      <DependentUpon>frmEntryDocVisit1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Hospital\frmEntryFrontDesk101.xaml.cs">
+      <DependentUpon>frmEntryFrontDesk101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Hospital\frmEntryFrontDesk103.xaml.cs">
+      <DependentUpon>frmEntryFrontDesk103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Trading\frmEntryGenTrPOS101.xaml.cs">
+      <DependentUpon>frmEntryGenTrPOS101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Trading\frmEntryGenTrPOS103.xaml.cs">
+      <DependentUpon>frmEntryGenTrPOS103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\ParkTicket\frmEntryParkPOS101.xaml.cs">
+      <DependentUpon>frmEntryParkPOS101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\ParkTicket\frmEntryParkPOS105.xaml.cs">
+      <DependentUpon>frmEntryParkPOS105.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Pharmacy\frmEntryPharmaPOS1.xaml.cs">
+      <DependentUpon>frmEntryPharmaPOS1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\FoodShop\frmEntryRestauPOS101.xaml.cs">
+      <DependentUpon>frmEntryRestauPOS101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\FoodShop\frmEntryRestauPOS102.xaml.cs">
+      <DependentUpon>frmEntryRestauPOS102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\FoodShop\frmEntryRestauPOS103.xaml.cs">
+      <DependentUpon>frmEntryRestauPOS103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\SuperShop\frmEntryShopPOS102.xaml.cs">
+      <DependentUpon>frmEntryShopPOS102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\SuperShop\frmEntryShopPOS101.xaml.cs">
+      <DependentUpon>frmEntryShopPOS101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\SuperShop\frmEntryShopPOS103.xaml.cs">
+      <DependentUpon>frmEntryShopPOS103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\Pharmacy\frmReportPharmaPOS1.xaml.cs">
+      <DependentUpon>frmReportPharmaPOS1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commercial\GridReportFrontDesk01.cs" />
+    <Compile Include="Commercial\GridReportGenTr01.cs" />
+    <Compile Include="CommWin01.xaml.cs">
+      <DependentUpon>CommWin01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostic\frmEntryLabMagt107.xaml.cs">
+      <DependentUpon>frmEntryLabMagt107.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostic\frmEntryLabMagt101.xaml.cs">
+      <DependentUpon>frmEntryLabMagt101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostic\frmEntryLabReport1.xaml.cs">
+      <DependentUpon>frmEntryLabReport1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmAccCodeBook1.xaml.cs">
+      <DependentUpon>frmAccCodeBook1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmConfigSetup1.xaml.cs">
+      <DependentUpon>frmConfigSetup1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmConfigSetup101.xaml.cs">
+      <DependentUpon>frmConfigSetup101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmConfigSetup102.xaml.cs">
+      <DependentUpon>frmConfigSetup102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmConfigSetup103.xaml.cs">
+      <DependentUpon>frmConfigSetup103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmConfigSetup104.xaml.cs">
+      <DependentUpon>frmConfigSetup104.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmConfigSetup105.xaml.cs">
+      <DependentUpon>frmConfigSetup105.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmOtherCodeBook1.xaml.cs">
+      <DependentUpon>frmOtherCodeBook1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmReportAdmin1.xaml.cs">
+      <DependentUpon>frmReportAdmin1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmSectCodeBook1.xaml.cs">
+      <DependentUpon>frmSectCodeBook1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\frmSirCodeBook1.xaml.cs">
+      <DependentUpon>frmSirCodeBook1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\mnuFlowChart1.xaml.cs">
+      <DependentUpon>mnuFlowChart1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="General\mnuMainDashboard1.xaml.cs">
+      <DependentUpon>mnuMainDashboard1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsChildWindow.xaml.cs">
+      <DependentUpon>HmsChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsControlCalsses1.cs" />
+    <Compile Include="HmsDialogWindow1.xaml.cs">
+      <DependentUpon>HmsDialogWindow1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsMainWindow.xaml.cs">
+      <DependentUpon>HmsMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsReportViewer2.xaml.cs">
+      <DependentUpon>HmsReportViewer2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsSignIn1.xaml.cs">
+      <DependentUpon>HmsSignIn1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsReportViewer1.xaml.cs">
+      <DependentUpon>HmsReportViewer1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsSplashWindow1.xaml.cs">
+      <DependentUpon>HmsSplashWindow1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\ExcelStoreReportSetup.cs" />
+    <Compile Include="Inventory\frmEntryInvMgt101.xaml.cs">
+      <DependentUpon>frmEntryInvMgt101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryInvMgt102.xaml.cs">
+      <DependentUpon>frmEntryInvMgt102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryInvMgt103.xaml.cs">
+      <DependentUpon>frmEntryInvMgt103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryItemRcv1.xaml.cs">
+      <DependentUpon>frmEntryItemRcv1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryItemStock1.xaml.cs">
+      <DependentUpon>frmEntryItemStock1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryPurBillRcv1.xaml.cs">
+      <DependentUpon>frmEntryPurBillRcv1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryPurLCInfo1.xaml.cs">
+      <DependentUpon>frmEntryPurLCInfo1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryPurOrder1.xaml.cs">
+      <DependentUpon>frmEntryPurOrder1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryPurQuotation1.xaml.cs">
+      <DependentUpon>frmEntryPurQuotation1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryPurReq1.xaml.cs">
+      <DependentUpon>frmEntryPurReq1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryPurReqAppr1.xaml.cs">
+      <DependentUpon>frmEntryPurReqAppr1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryPurRateFix1.xaml.cs">
+      <DependentUpon>frmEntryPurRateFix1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryStoreIssue1.xaml.cs">
+      <DependentUpon>frmEntryStoreIssue1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmEntryStoreReq1.xaml.cs">
+      <DependentUpon>frmEntryStoreReq1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmReportStore1.xaml.cs">
+      <DependentUpon>frmReportStore1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\GridReportInv1.cs" />
+    <Compile Include="Manpower\frmEntryAttn1.xaml.cs">
+      <DependentUpon>frmEntryAttn1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmEntryAttn102.xaml.cs">
+      <DependentUpon>frmEntryAttn102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmEntryAttn103.xaml.cs">
+      <DependentUpon>frmEntryAttn103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmEntryAttn104.xaml.cs">
+      <DependentUpon>frmEntryAttn104.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmEntryAttn101.xaml.cs">
+      <DependentUpon>frmEntryAttn101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmEntryHRGenral1.xaml.cs">
+      <DependentUpon>frmEntryHRGenral1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmEntryPayroll101.xaml.cs">
+      <DependentUpon>frmEntryPayroll101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmMessagegMgt103.xaml.cs">
+      <DependentUpon>frmMessagegMgt103.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmMessagegMgt102.xaml.cs">
+      <DependentUpon>frmMessagegMgt102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmMessagegMgt101.xaml.cs">
+      <DependentUpon>frmMessagegMgt101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmReportHCM1.xaml.cs">
+      <DependentUpon>frmReportHCM1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\frmEntryRecruit1.xaml.cs">
+      <DependentUpon>frmEntryRecruit1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manpower\GridReportHCM1.cs" />
+    <Compile Include="Manpower\HcmGeneralClass1.cs" />
+    <Compile Include="Marketing\frmAccording01.xaml.cs">
+      <DependentUpon>frmAccording01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmChartControl.xaml.cs">
+      <DependentUpon>frmChartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmDashboardG1.xaml.cs">
+      <DependentUpon>frmDashboardG1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmDashboardG2.xaml.cs">
+      <DependentUpon>frmDashboardG2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmDashboardG3.xaml.cs">
+      <DependentUpon>frmDashboardG3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmDashboardG4.xaml.cs">
+      <DependentUpon>frmDashboardG4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmDashboardG5.xaml.cs">
+      <DependentUpon>frmDashboardG5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmDashboardG6.xaml.cs">
+      <DependentUpon>frmDashboardG6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmEntryMarketing1.xaml.cs">
+      <DependentUpon>frmEntryMarketing1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmMailSending1.xaml.cs">
+      <DependentUpon>frmMailSending1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmReportMarketing1.xaml.cs">
+      <DependentUpon>frmReportMarketing1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmReportMarketing1_Old.xaml.cs">
+      <DependentUpon>frmReportMarketing1_Old.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\frmSMSSedning1.xaml.cs">
+      <DependentUpon>frmSMSSedning1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MISReports\frmMISGeneral1.xaml.cs">
+      <DependentUpon>frmMISGeneral1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MISReports\frmMISGeneral101.xaml.cs">
+      <DependentUpon>frmMISGeneral101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MISReports\frmMISGeneral102.xaml.cs">
+      <DependentUpon>frmMISGeneral102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MISReports\frmMISHospital1.xaml.cs">
+      <DependentUpon>frmMISHospital1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MISReports\frmMISHospital101.xaml.cs">
+      <DependentUpon>frmMISHospital101.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MISReports\frmMISHospital102.xaml.cs">
+      <DependentUpon>frmMISHospital102.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ASITHmsService1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AutoComplete.xaml.cs">
+      <DependentUpon>AutoComplete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AutoCompleteTextBox.cs" />
+    <Compile Include="UserControls\ComboOutputOption.xaml.cs">
+      <DependentUpon>ComboOutputOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabItemGridReport.xaml.cs">
+      <DependentUpon>TabItemGridReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TabItemWithButton.xaml.cs">
+      <DependentUpon>TabItemWithButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcCalculator.xaml.cs">
+      <DependentUpon>UcCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfProcessAccess.cs" />
+    <Page Include="Accounting\frmEntryAccMgt102.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\frmEntryAccMgt103.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\frmEntryAccMgt101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\frmEntryVoucher1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\frmReportAcc1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Budget\BgdAccounts\frmAccBgd101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Budget\BgdAccounts\frmAccBgd102.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Budget\BgdInventory\frmInvBgd101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Budget\BgdRealEstate\frmRealBgd101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Hospital\frmEntryFrontDesk102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\Hospital\frmEntryFrontDesk104.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\ParkTicket\frmEntryParkPOS102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\ParkTicket\frmEntryParkPOS103.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\RealEstate\frmRealSaleMgt1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\RealEstate\frmRealSaleMgt107.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\RealEstate\frmRealSaleMgt103.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\RealEstate\frmRealSaleMgt102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\RealEstate\frmRealSaleMgt101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Hospital\frmEntryDocVisit1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Hospital\frmEntryFrontDesk101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Hospital\frmEntryFrontDesk103.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Hospital\frmEntryFrontDesk3_Old.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Trading\frmEntryGenTrPOS101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Trading\frmEntryGenTrPOS103.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\ParkTicket\frmEntryParkPOS101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\ParkTicket\frmEntryParkPOS105.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Pharmacy\frmEntryPharmaPOS1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\FoodShop\frmEntryRestauPOS101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\FoodShop\frmEntryRestauPOS102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\FoodShop\frmEntryRestauPOS103.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\SuperShop\frmEntryShopPOS102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commercial\SuperShop\frmEntryShopPOS101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\SuperShop\frmEntryShopPOS103.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commercial\Pharmacy\frmReportPharmaPOS1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommWin01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\HmsResDict01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\HmsResDict02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Diagnostic\frmEntryLabMagt107.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Diagnostic\frmEntryLabMagt101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Diagnostic\frmEntryLabReport1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="General\frmAccCodeBook1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\frmConfigSetup1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="General\frmConfigSetup101.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\frmConfigSetup102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\frmConfigSetup103.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\frmConfigSetup104.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\frmConfigSetup105.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\frmOtherCodeBook1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="General\frmReportAdmin1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="General\frmSectCodeBook1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\frmSirCodeBook1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="General\mnuFlowChart1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="General\mnuMainDashboard1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HmsChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HmsDialogWindow1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HmsMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HmsReportViewer2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HmsSignIn1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HmsReportViewer1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HmsSplashWindow1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryInvMgt101.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\frmEntryInvMgt102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\frmEntryInvMgt103.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryItemRcv1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HmsMainWindow2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commercial\Hospital\frmEntryFrontDesk3_Old.xaml.cs">
+      <DependentUpon>frmEntryFrontDesk3_Old.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HmsMainWindow2.xaml.cs">
+      <DependentUpon>HmsMainWindow2.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Inventory\frmEntryItemStock1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryPurBillRcv1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryPurLCInfo1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\frmEntryPurOrder1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryPurQuotation1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryPurReq1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\frmEntryPurReqAppr1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryPurRateFix1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmEntryStoreIssue1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\frmEntryStoreReq1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\frmReportStore1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manpower\frmEntryAttn1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmEntryAttn102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmEntryAttn103.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmEntryAttn104.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmEntryAttn101.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmEntryHRGenral1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manpower\frmEntryPayroll101.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmMessagegMgt103.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmMessagegMgt102.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmMessagegMgt101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manpower\frmReportHCM1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Manpower\frmEntryRecruit1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Marketing\frmAccording01.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmChartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmDashboardG1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmDashboardG2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmDashboardG3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmDashboardG4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmDashboardG5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmDashboardG6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmEntryMarketing1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmMailSending1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmReportMarketing1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmReportMarketing1_Old.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\AutoComplete.Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Marketing\frmSMSSedning1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MISReports\frmMISGeneral1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MISReports\frmMISGeneral101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MISReports\frmMISGeneral102.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MISReports\frmMISHospital1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MISReports\frmMISHospital101.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MISReports\frmMISHospital102.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AutoComplete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\AutoCompleteComboBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Content\ComboBox.Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ComboOutputOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TabItemGridReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TabItemWithButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UcCalculator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntitySetup.datasource" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\ASITHmsService1\ASITHmsService1.wsdl" />
+    <None Include="Service References\ASITHmsService1\ASITHmsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ASITHmsService1\ASITHmsService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ASITHmsService1\ASITHmsService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ASITHmsService1\ASITHmsService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ASITHmsService1\ASITHmsService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ASITHmsService1\ASITHmsWpf.ASITHmsService1.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\misc05.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ASITLogo1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASITHmsEntity\ASITHmsEntity.csproj">
+      <Project>{5bc488f6-7dc4-4128-9fe8-bdd27339a851}</Project>
+      <Name>ASITHmsEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsRpt0Main\ASITHmsRpt0Main.csproj">
+      <Project>{570f857f-d21d-48ae-8c94-70bccbebec85}</Project>
+      <Name>ASITHmsRpt0Main</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsRpt1GenAcc\ASITHmsRpt1GenAcc.csproj">
+      <Project>{5800c170-1bb3-4e3d-9899-486b6917e30b}</Project>
+      <Name>ASITHmsRpt1GenAcc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsRpt2Inventory\ASITHmsRpt2Inventory.csproj">
+      <Project>{5f9f2e44-4f7e-453d-b09d-d2ac00cba3f3}</Project>
+      <Name>ASITHmsRpt2Inventory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsRpt3Manpower\ASITHmsRpt3Manpower.csproj">
+      <Project>{0da17560-82b2-43c7-b3ee-a00fde1c9303}</Project>
+      <Name>ASITHmsRpt3Manpower</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsRpt4Commercial\ASITHmsRpt4Commercial.csproj">
+      <Project>{fd8a3126-fbfd-4e9e-8d71-b45512f5a433}</Project>
+      <Name>ASITHmsRpt4Commercial</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsRpt5Diagnostic\ASITHmsRpt5Diagnostic.csproj">
+      <Project>{f2043b3b-cc71-46b6-8399-11609ddb3251}</Project>
+      <Name>ASITHmsRpt5Diagnostic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsRpt6MISReports\ASITHmsRpt6MISReports.csproj">
+      <Project>{1040e470-c75c-469c-985a-0f69173ec162}</Project>
+      <Name>ASITHmsRpt6MISReports</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASITHmsViewMan\ASITHmsViewMan.csproj">
+      <Project>{0bc53c72-f1e4-47c1-8141-e3a76ae871bb}</Project>
+      <Name>ASITHmsViewMan</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\btr.gif" />
+    <Resource Include="Images\clients.png" />
+    <Resource Include="Images\cut.png" />
+    <Resource Include="Images\edit.png" />
+    <Resource Include="Images\file.png" />
+    <Resource Include="Images\file2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ASITLogo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CentERPoint3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NoUser.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\crosIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Print.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bin1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Amount.png" />
+    <Resource Include="Images\attendance1.png" />
+    <Resource Include="Images\Attendence.png" />
+    <Resource Include="Images\card-in-use-xxl.png" />
+    <Resource Include="Images\Card1.png" />
+    <Resource Include="Images\Card2.png" />
+    <Resource Include="Images\Doctorsl.png" />
+    <Resource Include="Images\fontDesk.png" />
+    <Resource Include="Images\Help2.png" />
+    <Resource Include="Images\item.png" />
+    <Resource Include="Images\item1.png" />
+    <Resource Include="Images\item2.png" />
+    <Resource Include="Images\item3.png" />
+    <Resource Include="Images\mis-report-icon.png" />
+    <Resource Include="Images\Reception.png" />
+    <Resource Include="Images\report.png" />
+    <Resource Include="Images\report2.png" />
+    <Resource Include="Images\report4.png" />
+    <Resource Include="Images\report5.png" />
+    <Resource Include="Images\reportdel.png" />
+    <Resource Include="Images\Reportsample.png" />
+    <Resource Include="Images\store.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\blue-bckgrd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Medical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Health2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Health2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="misc05.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Arrows-icon.png" />
+    <Resource Include="Images\bw.png" />
+    <Resource Include="Images\contracts_icon.png" />
+    <Resource Include="Images\dashbordpic_h.jpg" />
+    <Resource Include="Images\FL4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\inventory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Account11.png" />
+    <Resource Include="Images\Bank.png" />
+    <Resource Include="Images\DocVisit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MedShop1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bgOffWhite.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ASITHmsService1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ASITHmsService1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ASITHmsService1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ASITHmsService1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LookupGlass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="foodicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodShop5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlueBg1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tradeicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodImage1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodShop1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1h.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1t.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1p.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ParkImage1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Parkicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1r.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SplashScreen1g.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ASITLogo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ASITTitle2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CentERPoint3g.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\dashbordpic_g.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NccJulfia1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NccLogo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ASITHmsService1\ASITHmsService1.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

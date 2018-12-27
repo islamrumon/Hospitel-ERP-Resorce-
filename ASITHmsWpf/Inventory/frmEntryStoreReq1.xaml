@@ -1,0 +1,565 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:General="clr-namespace:ASITHmsWpf;assembly=ASITHmsWpf"
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="ASITHmsWpf.Inventory.frmEntryStoreReq1" 
+             mc:Ignorable="d" Tag="Item Requisition By Department To Store - Entry/Edit Screen" Style="{StaticResource IOUserControl}" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded" >
+    <Grid>
+        <Grid x:Name="GridDataEntry">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="gridMaster" Grid.Row="0" VerticalAlignment="Top"  Margin="0,0,10,0"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="243*"/>
+                    <ColumnDefinition Width="180*"/>
+                    <ColumnDefinition Width="172*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Width="380" >
+                    <TextBlock Text="New/Selected Transaction:" FontSize="14" FontStyle="Italic" FontWeight="Bold" Background="Aqua" Width="180" />
+                    <TextBlock x:Name="txtblEditMode" Visibility="Hidden" Text="[ Requisition In Edit Mode ]" FontSize="14" TextAlignment="Center" Foreground="Yellow" FontWeight="Bold" Background="Red" Width="180" Margin="20,0,0,0" />
+                </StackPanel>
+                <StackPanel x:Name="stkIntro" Orientation="Vertical" Grid.Column="0" Grid.ColumnSpan="2"  Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="80" Margin="0,3,0,0" Width="845">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblSectCodTitle" Content="Requisition _From :" HorizontalContentAlignment="Right" Width="110" Target="{Binding ElementName=cmbSectCod}" />
+                        <ComboBox x:Name="cmbSectCod" Background="White" Width="270" Height="24" SelectedIndex="0" SelectionChanged="cmbSectCod_SelectionChanged" />
+                        <Label x:Name="lblSrfByIdTitle" Content="Requisition _By :" HorizontalContentAlignment="Right" Width="90" Target="{Binding ElementName=autoSrfByStaffSearch}" />
+                        <UC:AutoComplete x:Name="autoSrfByStaffSearch" Width="370" SelectedValuePath="sircode" DisplayMemberPath="sirdesc"  
+                                     ToolTip="{Binding Path=Text, ElementName=autoSrfByStaffSearch}"
+                                     PatternChanged="autoSrfByStaffSearch_PatternChanged"  Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblSectCod2Title" Content="(Req._To) Store :" HorizontalContentAlignment="Right" Width="110" Target="{Binding ElementName=cmbSectCod2}" />
+                        <ComboBox x:Name="cmbSectCod2" Width="270" Background="White" Height="24" SelectedIndex="0" SelectionChanged="cmbSectCod2_SelectionChanged" />
+                        <Label x:Name="lblSrfRefTitle" Content="_Ref. (if any) :" HorizontalContentAlignment="Right" Width="90" Target="{Binding ElementName=txtSrfRef}" />
+                        <xctk:WatermarkTextBox x:Name="txtSrfRef" Style="{StaticResource wtxtBx}" Watermark="Referance (if any)" Padding="5,0,0,0" 
+                                           Height="24" TextWrapping="Wrap" Width="370"  AutoMoveFocus="True" AutoSelectBehavior="OnFocus" TextChanged="txtCodeDesc_TextChanged" Margin="0,2"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblSrfNarTitle" Content="Narration :" VerticalAlignment="Top" HorizontalContentAlignment="Right" Height="25" Width="110" Target="{Binding ElementName=txtSrfNar}" />
+                        <TextBox x:Name="txtSrfNar" Text="" HorizontalContentAlignment="Left"  Width="730" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="2"  Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Height="80" Width="340">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="chkDateBlocked" Content="Requisition _Date : " Focusable="False" HorizontalContentAlignment="Right" VerticalAlignment="Center"  Width="115" Click="chkDateBlocked_Click"  />
+                        <Label x:Name="lblDateBlocked" Content="Requision Date :" Width="115" VerticalAlignment="Center" HorizontalContentAlignment="Right" Visibility="Collapsed" />
+                        <xctk:DateTimePicker x:Name="xctk_dtpSrfDat" Style="{StaticResource StdDateTimePickerStyle01}" FontWeight="Bold" Height="22" Width="130" IsEnabled="False" />
+                        <Button x:Name="btnOk" Style="{StaticResource StdBtnStyle01}" Content="_Ok"  Width="75" Click="btnOk_Click" Margin="20,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,-5,0,0">
+                        <Label x:Name="lblSrfNoTitle" Content="S.R.F. No:" HorizontalContentAlignment="Right" Width="115" />
+                        <Label x:Name="lblSrfNo" Content="SRQMM-CCCC-XXXXX" Tag="SRQYYYYMMCCCCXXXXX" Width="140" FontWeight="Bold" HorizontalContentAlignment="Left" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, -5, 0, 0">
+                        <CheckBox x:Name="chkAuthorize" Content="Show Authorization Panel" Focusable="False" Visibility="{Binding Path=Visibility, ElementName=btnPrint2}"
+                                  VerticalAlignment="Center" Click="chkAuthorize_Click"  />
+                        <Button x:Name="btnPrint2" Content="_Print" Width="75" VerticalAlignment="Bottom" FontSize="12" 
+                        FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Click="btnPrint2_Click" Margin="13,0,0,0" />
+                        <Button x:Name="btnUpdate" Style="{StaticResource StdBtnStyle01}" Content="_Update"  Width="75" Click="btnUpdate_Click" Margin="20,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                        <CheckBox x:Name="chkAutoTransList" Content="_Show transactions list" Focusable="False" VerticalAlignment="Bottom" Click="chkAutoTransList_Click" />
+                        <CheckBox x:Name="chkPrintWithStock" Content="Print with stock balance" Focusable="False" VerticalAlignment="Bottom" Margin="50,3,0,0"  />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="gridDetails" Grid.Row="2" VerticalAlignment="Top" Visibility="Collapsed">
+                <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Height="Auto" VerticalAlignment="Top" Margin="110,0,105,0" >
+                    <StackPanel Orientation="Horizontal" Visibility="Collapsed" >
+                        <Label x:Name="lblUID" Content="Item UI_D Mark:" Width="100" HorizontalContentAlignment="Right" Target="{Binding ElementName=txtUID}" />
+                        <xctk:WatermarkTextBox x:Name="txtUID" Style="{StaticResource wtxtBx}" Watermark="Manufacturer's Product ID" Padding="5,0,0,0" 
+        				Height="22" Width="130"  AutoMoveFocus="True" AutoSelectBehavior="OnFocus"  />
+                    </StackPanel>
+                    <StackPanel x:Name="stkpAddItem" Orientation="Horizontal">
+                        <Label x:Name="lblRSirCodeTitle" Content="_Item Description:" HorizontalContentAlignment="Right" Width="100" Height="24" Target="{Binding ElementName=txtRSirDesc}" />
+                        <xctk:WatermarkTextBox x:Name="txtRSirCode" Style="{StaticResource wtxtBx}" Watermark="Item Code" Focusable="False" Height="24"
+        				Width="100" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" IsReadOnly="True"  />
+                        <xctk:WatermarkTextBox x:Name="txtRSirDesc" Style="{StaticResource wtxtBx}" Watermark="Item Description"
+        					Height="24" Width="500"  AutoMoveFocus="True" AutoSelectBehavior="OnFocus" GotFocus="txtCodeDesc_GotFocus" TextChanged="txtCodeDesc_TextChanged" Grid.ColumnSpan="2"/>
+                        <Label x:Name="lblSrfQtyTitle" Content="_Quantity:" HorizontalContentAlignment="Right" Width="70" Target="{Binding ElementName=txtSrfQty}" />
+                        <xctk:WatermarkTextBox x:Name="txtSrfQty" TextAlignment="Right" Style="{StaticResource wtxtBx}" PreviewTextInput="NumberValidationTextBox" Watermark="Req. Qty" Padding="5,0,0,0" GotFocus="txtSrfQty_GotFocus"
+        				Height="22" TextWrapping="Wrap" Width="80" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" />
+                        <Label x:Name="lblUnit1" Content="Unit" Width="50" />
+                        <Button x:Name="btnAddRecord" Style="{StaticResource StdBtnStyle01}" Content="_Add" VerticalAlignment="Top" Height="22" Width="75" 
+                            Click="btnAddRecord_Click" Margin="10,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Margin="100,2,0,0" HorizontalAlignment="Left">
+                        <DataGrid x:Name="dgReqList" CanUserResizeRows="False" Background="Transparent" IsReadOnly="False" BorderThickness="0" HeadersVisibility="Column" 
+        				VerticalAlignment="Top" Height="400" Width="885" ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+        				ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionUnit="FullRow" SelectionMode="Single" AlternationCount="2" AlternatingRowBackground="#FFEDFFEE" >
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="#FFE2D2CE" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="Height" Value="25" />
+                                </Style>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background"  Value="Bisque" />
+                                            <Setter Property="Foreground"  Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Setter Property="Height" Value="25" />
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="30" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock VerticalAlignment="Top" Text="Sl#" FontWeight="Bold"  Focusable="False" Width="30"  Margin="0,0,0,0" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <Label x:Name="dgvlblSlNum" HorizontalContentAlignment="Right" VerticalAlignment="Top" Content="{Binding trsl}"  Padding="0,0,2,0"
+        										Tag="{Binding rsircode}" MouseDoubleClick="dgvlblSlNum_MouseDoubleClick" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="90" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="Item Code" TextAlignment="Center" Background="Transparent" Width="80" Padding="5,2,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding rsircode}" Tag="{Binding rsircode}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="550">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock VerticalAlignment="Top" Text="Description of item" FontWeight="Bold"  Margin="20,0,0,0" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding trdesc}" Tag="{Binding rsircode}" ToolTip="{Binding trdesc}" VerticalAlignment="Top" Margin="5,0,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="120" Header="Qty" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="Quantity" TextAlignment="Center" Background="Transparent" Width="100" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="120"
+        									AutoSelectBehavior="OnFocus" Style="{StaticResource wtxtBx}" Watermark="Qty" Background="Transparent" Padding="0,0,8,0" VerticalAlignment="Top"
+        									Text="{Binding srfqty, Mode=TwoWay, StringFormat=\{0: #\,##0.00\}, UpdateSourceTrigger=PropertyChanged}"  />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="50" Header="Unit"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding trunit}" Tag="{Binding rsircode}" TextWrapping="NoWrap" Padding="5,0,5,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Separator Grid.Row="1" VerticalAlignment="Top" Background="Gold" Height="5" />
+            <Grid x:Name="gridTransList" Grid.Row="2" VerticalAlignment="Top" Visibility="Visible" Background="Beige" Margin="10,0,10,0" >
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Grid.Height)" From="0" To="450" Duration="0:0:1" />
+                                            <!--<DoubleAnimation Storyboard.TargetProperty="(StackPanel.Width)" From="1200" To="0" Duration="0:0:0.5" AutoReverse="True" />-->
+                                            <DoubleAnimation From="0" To="1" Duration="00:00:2" Storyboard.TargetProperty="Opacity" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Height="450">
+                    <StackPanel Orientation="Horizontal" >
+                        <Border BorderThickness="1" BorderBrush="Red" Padding="0,0,5,0" >
+                            <StackPanel >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                    <Label Content="Dated From :" FontSize="12" FontStyle="Italic" Width="100" HorizontalContentAlignment="Right" />
+                                    <xctk:DateTimePicker x:Name="xctk_dtpFromDate" Style="{StaticResource StdDateTimePickerStyle01}" Height="22" Width="100" />
+                                    <Label Content="To :" FontStyle="Italic" Width="28" HorizontalContentAlignment="Center"  />
+                                    <xctk:DateTimePicker x:Name="xctk_dtpToDate" Style="{StaticResource StdDateTimePickerStyle01}" Height="22" Width="100" />
+                                    <Label Content="Status :" FontStyle="Italic" Width="60" HorizontalContentAlignment="Right"  />
+                                    <ComboBox x:Name="cmbFindStatus" Background="White" Width="120" Height="22" SelectedIndex="0">
+                                        <ComboBoxItem Content="All types Status" Tag="00000" />
+                                        <ComboBoxItem Content="0 - For Checking" Tag="01000" />
+                                        <ComboBoxItem Content="1 - For Approval" Tag="01001" />
+                                        <ComboBoxItem Content="A - Approved" Tag="01010" />
+                                    </ComboBox>
+                                    <Button x:Name="btnFilter" Content="Find List" FontWeight="Bold" Height="24" Width="100"  Style="{StaticResource StdBtnStyle01}" Click="btnFilter_Click" Margin="60,0,0,0" />
+
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                    <Label Content="Division/Office :" HorizontalContentAlignment="Right" FontStyle="Italic" Width="100" Target="{Binding ElementName=cmbSectDivCod}" />
+                                    <ComboBox x:Name="cmbSectDivCod" Background="White" Width="228" Height="24" SelectedIndex="0" />
+                                    <Label Content="Stores :" HorizontalContentAlignment="Right" FontStyle="Italic" Width="60" Target="{Binding ElementName=cmbSectDivCod}" />
+                                    <ComboBox x:Name="cmbSectCod2f" Background="White" Width="120" Height="24" SelectedIndex="0" />
+                                    <Label x:Name="lblSrfByIdTitle2" Content="Req. By :" HorizontalContentAlignment="Right" Width="60" Target="{Binding ElementName=autoSrfByStaffSearch}" />
+                                    <ComboBox x:Name="cmbSrfByStaffFind" Background="White" Width="100" Height="24" SelectedIndex="0" />
+                                    <!--<CheckBox x:Name="chkSelectedSender" Width="140" Content="Selected Deptartment" VerticalAlignment="Center" IsChecked="False" Margin="20,0,0,0" Visibility="Collapsed" />-->
+                                    <!--<CheckBox x:Name="chkSelectedReceiver" Width="100" Content="Selected Store" VerticalAlignment="Center" IsChecked="True" Margin="10,0,0,0" Visibility="Collapsed" />-->
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="Blue" Padding="0,2,5,0" Margin="10,0,0,0">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="45,0,0,0" >
+                                    <Button x:Name="btnEditSrf" Content="Edit" Style="{StaticResource StdBtnStyle01}" Width="80" Height="22" Click="btnEditSrf_Click" Margin="0,0,0,0" />
+                                    <Button x:Name="btnEditAuthorize" Content="Authorization" Style="{StaticResource StdBtnStyle01}" Width="80" Height="22" Click="btnEditAuthorize_Click"  Margin="30,0,0,0" />
+                                    <Button x:Name="btnRecurring" Content="Recurring" Style="{StaticResource StdBtnStyle01}" Width="80" Height="22" IsEnabled="False" Margin="20,0,0,0" />
+                                    <Button x:Name="btnCancelSrf" Content="Cancel" ToolTip="Remove from list" Style="{StaticResource StdBtnStyle01}" Width="80" Height="22" Margin="40,0,0,0" Click="btnCancelSrf_Click" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                    <CheckBox x:Name="chkPrint2" IsChecked="False" Content="Print Memo/List" Width="120"  VerticalAlignment="Center" Margin="45,0,0,0" />
+                                    <Popup IsOpen="{Binding IsChecked, ElementName=chkPrint2}" PlacementTarget="{Binding ElementName=chkPrint2}" AllowsTransparency="True" PopupAnimation="Slide" >
+                                        <Border Margin="0,0,5,5" BorderThickness="0" CornerRadius="8" >
+                                            <Border.BorderBrush>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,1">
+                                                    <GradientStop Color="#FFECFBFB" Offset="0.0" />
+                                                    <GradientStop Color="#FFCED9E4" Offset="0.5" />
+                                                    <GradientStop Color="#FF5F6E6E" Offset="1.0" />
+                                                </LinearGradientBrush>
+                                            </Border.BorderBrush>
+                                            <Border.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFF7F7F7" Offset="0.0" />
+                                                    <GradientStop Color="#FFCED9E4" Offset="0.5" />
+                                                    <GradientStop Color="#FF22F5F5" Offset="1.0" />
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Border.Effect>
+                                                <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="20" Opacity="0.8" RenderingBias="Quality"/>
+                                            </Border.Effect>
+                                            <Canvas Width="134" Height="146" >
+                                                <Canvas.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFE4F2E1" Offset="0.491"/>
+                                                        <GradientStop Color="#FF69B28B" Offset="0.957"/>
+                                                    </LinearGradientBrush>
+                                                </Canvas.Background>
+                                                <Canvas.RenderTransform>
+                                                    <RotateTransform x:Name="theTransform2" />
+                                                </Canvas.RenderTransform>
+                                                <StackPanel Orientation="Vertical" Width="134">
+                                                    <Label Content="Print Options" FontSize="12" FontStyle="Italic"  FontWeight="Bold" Foreground="Brown" HorizontalContentAlignment="Left" />
+                                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                                        <RadioButton x:Name="rb3SelectedMemo" Content="Selected Memo" IsChecked="True" />
+                                                        <Separator Visibility="Hidden" />
+                                                        <RadioButton x:Name="rb3TableRecoreds" Content="Table Records" />
+                                                    </StackPanel>
+                                                    <Separator />
+                                                    <StackPanel Orientation="Vertical" Margin="10,2,0,0">
+                                                        <RadioButton x:Name="rb3QuickPrint" Content="Quick Print" />
+                                                        <Separator Visibility="Hidden" />
+                                                        <RadioButton x:Name="rb3PrintPreview" Content="Print Preview" IsChecked="True" />
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Button x:Name="btnPrint3" Content="Go Print" Height="20" Width="60" FontSize="12" FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Click="btnPrint3_Click"  Canvas.Left="34" Canvas.Top="116" />
+                                            </Canvas>
+                                        </Border>
+                                    </Popup>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <Separator Height="5" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="Existing Transactions List:" FontSize="14" FontStyle="Italic" FontWeight="Bold" Background="Aqua" Width="180"  />
+                        <TextBlock x:Name="txtTransTitle" Text="Transaction Date Range From: 01-Dec-2015 To: 15-Dec-2015" FontWeight="Bold" TextAlignment="Center" Width="800" />
+                    </StackPanel>
+                    <DataGrid x:Name="dgvTransList" CanUserResizeRows="False" Background="Transparent" BorderThickness="0" FontSize="11" Margin="5,3,5,0" SelectionMode="Single"
+                                  VerticalAlignment="Top" Height="350" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                  SelectionUnit="FullRow" MouseDoubleClick="dgvTransList_MouseDoubleClick" AlternationCount="2" AlternatingRowBackground="#FFEDFFEE" 
+                                  KeyUp="dgvTransList_KeyUp" PreviewKeyDown="dgvTransList_PreviewKeyDown" >
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#FFE2D2CE" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Height" Value="25" />
+                                <Setter Property="FontSize" Value="12" />
+                            </Style>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background"  Value="Bisque" />
+                                        <Setter Property="Foreground"  Value="Black" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="Height" Value="25" />
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="40" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="Sl#" Width="40" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding slnum, StringFormat={}{0: ###0) }}" Padding="0,0,2,0" Tag="{Binding memonum}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="75">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="S.R.F. Date" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=memoDate1}" TextAlignment="Center" VerticalAlignment="Center" Tag="{Binding memoDate1}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn  Width="110" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="S.R.F. No." Width="80" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center" Text="{Binding memonum1}" ToolTip="{Binding Referance}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn  Width="300" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="Requision By" Width="120" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding PreparByName}" ToolTip="{Binding PreparByName}" Tag="{Binding PreparById}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn  Width="200" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="Req. Department Name" Width="150" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding sectname}" ToolTip="{Binding PreparByName}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn  Width="180" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="Store Name" Width="120" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding sectname2}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn  Width="100" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="Reference" Width="100" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding Referance}" ToolTip="{Binding Naration}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn  Width="40" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="Status" Width="40" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Center" VerticalAlignment="Center" Text="{Binding MemoStatus}" ToolTip="{Binding Naration}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn  Width="100" >
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <ItemContainerTemplate>
+                                        <TextBlock TextAlignment="Center" Text="Status Desc." Width="80" />
+                                    </ItemContainerTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding Naration}" ToolTip="{Binding Naration}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="GridItemList" Grid.Row="2" Margin="170,26,0,0" Width="640" Height="400" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AliceBlue">
+                <StackPanel Orientation="Horizontal" >
+                    <Label Content="_List :" Target="{Binding ElementName=lstItem}" Width="40" HorizontalContentAlignment="Right" />
+                    <ListBox x:Name="lstItem" Height="400" Width="600" Background="Transparent" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto" FontSize="12"
+    				ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionMode="Single"  MouseDoubleClick="lstItem_MouseDoubleClick" KeyUp="lstItem_KeyUp" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="Column2" />
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="Column3" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding sircode}" Width="90" Background="Azure" Margin="0,1,0,0" />
+                                    <TextBlock Grid.Column="1" Text="{Binding sirdesc}" Width="440" ToolTip="{Binding sirdesc}" Background="Azure" Margin="0,1,0,0" />
+                                    <TextBlock Grid.Column="2" Text="{Binding sirunit}" Width="50" Background="Azure" Margin="0,1,0,0" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid x:Name="gridAuthorize" Visibility="Visible" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,60">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Grid.Height)" From="0" To="600" Duration="0:0:1" />
+                                        <DoubleAnimation Storyboard.TargetProperty="(StackPanel.Width)" From="0" To="360" Duration="0:0:0.5" AutoReverse="False" />
+                                        <DoubleAnimation From="0" To="1" Duration="00:00:2" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <StackPanel VerticalAlignment="Bottom" Background="White" >
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="lblAuthorizeMemoDesc" Content="Date: 01-Sep-2018,  S.R.F. No: SRQ09-1011-00005" Foreground="Maroon" Width="350" FontWeight="Bold" FontSize="14" Tag="NONE" />
+                </StackPanel>
+                <StackPanel>
+                    <DataGrid x:Name="dgvAuthorize" CanUserResizeRows="False" BorderThickness="0" SelectionMode="Single" VerticalAlignment="Top" AutoGenerateColumns="False" 
+                              CanUserAddRows="False" CanUserDeleteRows="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HeadersVisibility="None" GridLinesVisibility="None" 
+                              MaxHeight="350" Width="360" PreviewKeyDown="dgvAuthorize_PreviewKeyDown" >
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="340">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <GroupBox BorderBrush="Black" BorderThickness="1" MaxHeight="85" Width="335">
+                                            <GroupBox.Header>
+                                                <TextBlock FontWeight="Bold" Foreground="Maroon" FontSize="14" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text = "{ Binding Path=slnum }" />
+                                                        <TextBlock Text = "{ Binding Path=autitle }" />
+                                                        <TextBlock Text = ":" />
+                                                    </StackPanel>
+                                                  </TextBlock>
+                                            </GroupBox.Header>
+                                            <StackPanel>
+                                                <TextBlock Text="{ Binding Path=auhcnam }" ToolTip="{ Binding Path=auhcnam }" Tag="{ Binding Path=auhcid }" FontWeight="Bold" Width="330" />
+                                                <StackPanel Orientation="Horizontal" Margin="0,5,0,5" >
+                                                    <TextBlock Text="Status : " Width="40" />
+                                                    <TextBlock Text="{ Binding Path=statdes }" Width="60" FontWeight="Bold" />
+                                                    <TextBlock Text="Date &amp; Time : " Width="80" />
+                                                    <TextBlock Text="{ Binding Path=autime, StringFormat={}{0: dd-MMM-yyyy hh:mm tt} }" Width="150" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Visibility="{ Binding Path=notevisible }" >
+                                                    <TextBlock Text="Note : " Width="40" />
+                                                    <TextBlock Text="{ Binding Path=aunote }" ToolTip="{ Binding aunote }" Width="280" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </GroupBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel x:Name="StkpCurAut" Visibility="Visible">
+                    <GroupBox HorizontalAlignment="Left" BorderBrush="Red" BorderThickness="1" Height="110" Width="355">
+                        <GroupBox.Header>
+                            <TextBlock x:Name="TxtbCurAuHeader" Text="Curr. Auth. By : " FontWeight="Bold" Foreground="Red" Tag="" FontSize="14" />
+                        </GroupBox.Header>
+                        <StackPanel Height="90" >
+                            <StackPanel HorizontalAlignment="Left" Margin="0,2,0,0" >
+                                <UC:AutoComplete x:Name="autoAutByStaffSearch" Width="340" SelectedValuePath="sircode" DisplayMemberPath="sirdesc"  
+                              ToolTip="{Binding Path=Text, ElementName=autoAutByStaffSearch}"
+                              PatternChanged="autoAutByStaffSearch_PatternChanged" Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,3,0,4">
+                                <TextBlock Text="Status :" Height="25" Width="40" />
+                                <ComboBox x:Name="cmbCurAut" Width="80" Height="22" SelectedIndex="1" BorderThickness="0" >
+                                    <ComboBoxItem Content="Pending" Tag="U" />
+                                    <ComboBoxItem Content="Accepted" Tag="Y" />
+                                    <ComboBoxItem Content="Rejected" Tag="N" />
+                                </ComboBox>
+                                <TextBlock Text="Date &amp; Time : " Width="80" Margin="10,0,0,0" />
+                                <TextBlock x:Name="txtbCurAuTime" Text="09-Sep-2018 11:20 AM" Width="130" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Note :" Width="40" />
+                                <TextBox x:Name="txtCurAutNote" Text="" ToolTip="{Binding Path=Text, ElementName=txtChkNar}" Height="24" Width="300"  />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="2,2,5,5">
+                    <Button x:Name="btnCancelAuthorize" Content="Close without change" Style="{StaticResource StdBtnStyle01}" HorizontalAlignment="Right" Width="140" Height="22" Click="btnCancelAuthorize_Click" Margin="0,5,20,0" />
+                    <Button x:Name="btnOkAuthorize" Content="Ok" Style="{StaticResource StdBtnStyle01}" Visibility="{Binding Path=Visibility, ElementName=StkpCurAut}"
+                            HorizontalAlignment="Right" Width="75" Height="22" Click="btnOkAuthorize_Click" Margin="70,5,10,0" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

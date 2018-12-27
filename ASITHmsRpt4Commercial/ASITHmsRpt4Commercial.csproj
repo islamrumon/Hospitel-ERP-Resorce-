@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD8A3126-FBFD-4E9E-8D71-B45512F5A433}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ASITHmsRpt4Commercial</RootNamespace>
+    <AssemblyName>ASITHmsRpt4Commercial</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ASITFunLib">
+      <HintPath>..\..\..\..\..\ASITFunLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.12.0.2.2403\lib\net40\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommReportSetup.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+abc.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+CommInv01+CommInv01GenInf.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+CommInv01+CommInv01TblCol.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+CommInv01+CommInv01TblItem.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+CommInv01+CommInv01TblSum.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+CommInv01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+CommInvSummInf.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+DoctorToken01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+FDeskCollSumm01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+FDeskDiscount01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+FDeskSalesSumm01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+GroupWiseTrans01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+InvoiceTransList.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+InvoiceTransList2.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+ParkSalesSumm01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+ParkSalesTrans01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+ParkTicketCoupon01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+PhSalesInvoice01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+PhSalesInvoice01Sum.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+ReportingBill01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+RetSalesCashRecv1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+RetSalesInvoice01.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityCommercial+RetSalesTransList2.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityDatabase+EntityDbo.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Hospital\CommInv01.rdlc" />
+    <EmbeddedResource Include="Hospital\RptCCStatus01.rdlc" />
+    <EmbeddedResource Include="Hospital\RptCollDuesSum01.rdlc" />
+    <EmbeddedResource Include="Hospital\RptSalesSum01.rdlc" />
+    <EmbeddedResource Include="Hospital\RptDiscountList01.rdlc" />
+    <EmbeddedResource Include="Hospital\RptCollectionSum01.rdlc" />
+    <EmbeddedResource Include="Hospital\RptCommInvList1.rdlc" />
+    <EmbeddedResource Include="Hospital\RptGroupWiseTrans1.rdlc" />
+    <EmbeddedResource Include="Doctor\DocToken01List.rdlc" />
+    <EmbeddedResource Include="Doctor\DocToken01.rdlc" />
+    <EmbeddedResource Include="ParkSales\ParkTicket01.rdlc" />
+    <EmbeddedResource Include="ParkSales\RptParkSalesList01.rdlc" />
+    <EmbeddedResource Include="ParkSales\RptParkSalesSum01.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhDueList01.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhDueList01s.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhInvCollList01.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhInvCollList01s.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhSalesDetailsList1.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhSalesDetailsList1s.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhSalesInv01.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhSalesTransList1.rdlc" />
+    <EmbeddedResource Include="Pharmacy\PhSalesTransList1s.rdlc" />
+    <EmbeddedResource Include="RetSales\RetSalesChallan01.rdlc" />
+    <EmbeddedResource Include="RetSales\RetSalesCashRecv1.rdlc" />
+    <EmbeddedResource Include="RetSales\RetSalesDetailsList1.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RetSales\RetSalesInv01.rdlc" />
+    <EmbeddedResource Include="RetSales\RetSalesTransList1.rdlc" />
+    <EmbeddedResource Include="RetSales\RetSalesTransList2.rdlc" />
+    <EmbeddedResource Include="Hospital\RptReportingBill01.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASITHmsEntity\ASITHmsEntity.csproj">
+      <Project>{5bc488f6-7dc4-4128-9fe8-bdd27339a851}</Project>
+      <Name>ASITHmsEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

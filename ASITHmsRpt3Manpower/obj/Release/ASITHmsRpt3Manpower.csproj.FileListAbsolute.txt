@@ -1,0 +1,8 @@
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\bin\Release\ASITHmsRpt3Manpower.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\bin\Release\ASITHmsRpt3Manpower.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\bin\Release\ASITHmsEntity.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\bin\Release\ASITHmsEntity.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\obj\Release\RdlCompile.cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\obj\Release\RdlCompile.compiled
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\obj\Release\ASITHmsRpt3Manpower.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt3Manpower\obj\Release\ASITHmsRpt3Manpower.pdb

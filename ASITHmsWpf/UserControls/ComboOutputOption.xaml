@@ -1,0 +1,12 @@
+﻿<ComboBox x:Class="ASITHmsWpf.UserControls.ComboOutputOption"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" HorizontalContentAlignment="Left" FontWeight="Bold" Initialized="ComboBox_Initialized" SelectedIndex="0" ContextMenuOpening="ComboBox_ContextMenuOpening" >    
+    <ComboBoxItem Content="Print preview" Tag="PP"/>
+    <ComboBoxItem Content="Print directly to printer" Tag="DP"/>
+    <ComboBoxItem Content="Show in screen" Tag="SS" />
+    <ComboBoxItem Content="View as normal mode" Tag="NP"/>
+    <ComboBoxItem Content="Save as PDF file"  Tag="PDF"/>
+    <ComboBoxItem Content="Save as Word file" Tag="WORD" />
+    <ComboBoxItem Content="Save as Excel file" Tag="EXCEL" />
+    <ComboBoxItem Content="Export data to Excel file" Tag="EXCELDATA"  />
+</ComboBox>

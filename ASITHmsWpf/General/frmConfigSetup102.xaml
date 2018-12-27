@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="ASITHmsWpf.General.frmConfigSetup102"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"   
+             xmlns:localGen="clr-namespace:ASITHmsWpf.General"   
+             mc:Ignorable="d" Tag="COMPANY INFORMATION" Loaded="UserControl_Loaded"  Style="{StaticResource IOUserControl}" >
+    <Grid Background="#FFE4F2E1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="393*"/>
+            <ColumnDefinition Width="761*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel  Margin="20,10,0,0" Grid.ColumnSpan="2">
+            <StackPanel.RenderTransform >
+                <!-- giving the transform a name tells the framework not to freeze it -->
+                <RotateTransform x:Name="noFreeze4" />
+            </StackPanel.RenderTransform>
+            <StackPanel.RenderTransformOrigin>
+                <Point X="0.5" Y="0.5" />
+            </StackPanel.RenderTransformOrigin>
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="Window.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(StackPanel.Height)"  From="0" To="650" Duration="0:0:1" />
+                            <DoubleAnimation Storyboard.TargetProperty="(StackPanel.Width)"  From="0" To="1200" Duration="0:0:1"/>
+                            <DoubleAnimation 
+                                            Storyboard.TargetProperty="(StackPanel.RenderTransform).(RotateTransform.Angle)"
+                                              From="360" To="0" Duration="0:0:1" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Company Information" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Separator Width="200" Visibility="Hidden" />
+                <CheckBox x:Name="chkLogo" Content="Logo" VerticalAlignment="Center" Width="80" IsChecked="True" />
+                <Separator Width="20" Visibility="Hidden" />
+                <CheckBox x:Name="chkLabel" Content="Title Label" VerticalAlignment="Center" Width="100" IsChecked="False" />
+                <Separator Width="20" Visibility="Hidden" />
+                <Button  x:Name="btnUpdateCompInfo" Height="25" Content="_Update" Width="100" Style="{StaticResource StdBtnStyle01}" Click="btnUpdateInfo_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Company Logo :" HorizontalAlignment="Left" FontSize="16" FontStyle="Normal" />
+                    <Image x:Name="imgLogo"  Source="..\Images\blue-bckgrd.jpg" HorizontalAlignment="Left" Visibility="Visible" Stretch="Fill" Width="181"   Height="166"/>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <TextBox x:Name="txtLogo" IsEnabled="False"  Height="22" Width="240" TextChanged="txtImage_TextChanged"></TextBox>
+                        <Button x:Name="btnUpdateLogo" Height="20" Click="btnUpdateLogo_Click"  Content="Choose"  Width="60" ></Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="50,50,0,0" >
+                    <Label Content="Company Info :" Foreground="Blue" FontWeight="Bold"></Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Company Name :" Width="150" FontWeight="Bold"></Label>
+                        <Label x:Name="cmpname"  Content=""></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Address :" Width="150" FontWeight="Bold"></Label>
+                        <Label x:Name="cmpAddrsee"  Content=""></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Phone No :" Width="150" FontWeight="Bold"></Label>
+                        <Label x:Name="cmpPhoneno"  Content=""></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Email :" Width="150" FontWeight="Bold"></Label>
+                        <Label x:Name="cmpEmail"  Content=""></Label>
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Application Title Label :" HorizontalAlignment="Left" FontSize="16" FontStyle="Normal" />
+                <Image x:Name="imgLabel"  Source="..\Images\blue-bckgrd.jpg" HorizontalAlignment="Left" Visibility="Visible" Stretch="Fill"   Width="586"   Height="116"/>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <TextBox x:Name="txtLabel" IsEnabled="False"  Height="22" Width="240" TextChanged="txtImage_TextChanged" ></TextBox>
+                    <Button x:Name="btnUpdateLabel" Height="20"   Content="Choose" Click="btnUpdateLogo_Click" Width="60" Margin="0,5"></Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

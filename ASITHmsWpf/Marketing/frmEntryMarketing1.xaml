@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="ASITHmsWpf.Marketing.frmEntryMarketing1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ASITHmsWpf.Marketing"             
+             mc:Ignorable="d" Tag="Marketing Information - Entry/Edit Screen" Style="{StaticResource IOUserControl}" >
+    <Grid>
+        <StackPanel>
+            <local:frmChartControl />
+        </StackPanel>
+    </Grid>
+</UserControl>

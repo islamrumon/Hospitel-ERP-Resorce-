@@ -1,0 +1,12 @@
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\bin\Release\ASITHmsRpt1GenAcc.dll.config
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\bin\Release\ASITHmsRpt1GenAcc.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\bin\Release\ASITHmsRpt1GenAcc.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\bin\Release\ASITFunLib.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\bin\Release\ASITHmsEntity.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\bin\Release\ASITHmsEntity.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\obj\Release\ASITHmsRpt1GenAcc.Properties.Resources.resources
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\obj\Release\ASITHmsRpt1GenAcc.csproj.GenerateResource.Cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\obj\Release\RdlCompile.cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\obj\Release\RdlCompile.compiled
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\obj\Release\ASITHmsRpt1GenAcc.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt1GenAcc\obj\Release\ASITHmsRpt1GenAcc.pdb

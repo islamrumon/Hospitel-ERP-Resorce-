@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ASITHmsWpf.Marketing.frmReportMarketing1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ASITHmsWpf.Marketing"
+             mc:Ignorable="d" Tag="Marketing Operation Reports View/Print Screen" Style="{StaticResource IOUserControl}">
+    <Grid>
+        <StackPanel>
+            <!--<local:frmExtraReporting />-->
+            <TabControl x:Name="TabCtrl1" MinHeight="580" Background="Transparent" TabStripPlacement="Top" SelectedIndex="0" SelectionChanged="TabCtrl1_SelectionChanged" >
+                <TabItem x:Name="tbiTicketSales1" Width="110" Style="{StaticResource StdTabItemStyle01}" Tag="TICKET/COUPON SALES ENTRY" >
+                    <TabItem.Header>
+                        <TextBlock Text="SMS Send" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" ToolTip="(F3) Park Ticket/Coupon Sales Entry" />
+                    </TabItem.Header>
+                    <StackPanel x:Name="stpkTab0" >
+                        <!--<tp:frmEntryFrontDesk101 x:Name="FdEntryScreen1" VerticalAlignment="Stretch" />-->
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="tbiTicketSales1a" Width="5" IsEnabled="False" />
+                <TabItem x:Name="tbiParkInfo1" Width="110" Style="{StaticResource StdTabItemStyle01}" Tag="PARK OPERATION GENERAL INFORMATION" >
+                    <TabItem.Header>
+                        <TextBlock Text="Mail Send" FontSize="14"  FontWeight="Bold" VerticalAlignment="Center" ToolTip="(F4) Ticket Sales Report for Reconciliation" />
+                    </TabItem.Header>
+                    <StackPanel x:Name="stpkTab1" >
+                        <!--<tp:frmEntryFrontDesk102 x:Name="FdEntryRefferrer1" VerticalAlignment="Stretch" />-->
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="tbiParkInfo1a" Width="5" IsEnabled="False" />
+                <TabItem x:Name="tbiTicketReport1" Width="110" Style="{StaticResource StdTabItemStyle01}" Tag="TICKET/COUPON SALES REPORT" >
+                    <TabItem.Header>
+                        <TextBlock Text="File Upload" FontSize="14"  FontWeight="Bold" VerticalAlignment="Center" ToolTip="(F5) Ticket Sales Report for Reconciliation" />
+                    </TabItem.Header>
+                    <StackPanel x:Name="stpkTab2" >
+                        <!--<tp:frmEntryFrontDesk102 x:Name="FdEntryRefferrer1" VerticalAlignment="Stretch" />-->
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="tbiTicketReport1a" Width="5" IsEnabled="False" />
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

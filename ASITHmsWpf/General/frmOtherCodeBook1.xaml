@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="ASITHmsWpf.General.frmOtherCodeBook1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"                         
+             mc:Ignorable="d"  Tag="Others Code (Medicine) Information Input/Edit Screen" Loaded="UserControl_Loaded"  Style="{StaticResource IOUserControl}">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Label Content="_Main Category :" Width="110" Target="{Binding ElementName=cmbMainCat1}" HorizontalContentAlignment="Right" />
+                <ComboBox x:Name="cmbMainCat1" Width="430" SelectionChanged="cmbMainCat1_SelectionChanged"></ComboBox>
+                <Label Content="Su_b Category :" Width="95" HorizontalContentAlignment="Right" Target="{Binding ElementName=cmbSubCat1}"/>
+                <ComboBox x:Name="cmbSubCat1" Width="430"></ComboBox>
+                <Button x:Name="btnShow" Content="Show" Width="75"  Margin="5,0" Click="btnShow_Click" Style="{StaticResource StdBtnStyle01}"/>
+            </StackPanel>
+            <StackPanel x:Name="stkedit" Grid.Row="1"  Margin="0,5,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="lblSirCode" Tag="XXXXXXXXXXXX" Content="Item Code :" Width="110" HorizontalContentAlignment="Right"/>
+                    <StackPanel Orientation="Horizontal">
+                        <xctk:WatermarkTextBox x:Name="txtSirCode1" IsEnabled="False" HorizontalContentAlignment="Center" Height="22" MaxLength="2" Width="25" AutoMoveFocus="True" Watermark="xx" AutoSelectBehavior="OnFocus" PreviewTextInput="CodeValidationTextBox"/>
+                        <Label Content="-" FontSize="10" />
+                        <xctk:WatermarkTextBox x:Name="txtSirCode2" IsEnabled="False" HorizontalContentAlignment="Center" Height="22" MaxLength="2" Width="25" AutoMoveFocus="True" Watermark="xx" AutoSelectBehavior="OnFocus" PreviewTextInput="CodeValidationTextBox"/>
+                        <Label Content="-" FontSize="10" />
+                        <xctk:WatermarkTextBox x:Name="txtSirCode3" IsEnabled="False" HorizontalContentAlignment="Center" Height="22" MaxLength="3" Width="30" AutoMoveFocus="True" Watermark="xxx" AutoSelectBehavior="OnFocus" PreviewTextInput="CodeValidationTextBox"/>
+                        <Label Content="-" FontSize="10" />
+                        <xctk:WatermarkTextBox x:Name="txtSirCode4" IsEnabled="False" HorizontalContentAlignment="Center" Height="22" MaxLength="2" Width="25" AutoMoveFocus="True" Watermark="xx" AutoSelectBehavior="OnFocus" PreviewTextInput="CodeValidationTextBox"/>
+                        <Label Content="-" FontSize="10" />
+                        <xctk:WatermarkTextBox x:Name="txtSirCode5" HorizontalContentAlignment="Center" Height="22" MaxLength="3" Width="30" AutoMoveFocus="True" Watermark="xxx" AutoSelectBehavior="OnFocus" PreviewTextInput="CodeValidationTextBox"/>
+                    </StackPanel>
+                    <Label  Content="_Title Desc :" Width="75" HorizontalContentAlignment="Right" Target="{Binding ElementName=wtTxtsirdesc}" />
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" Padding="5,0,0,0" x:Name="wtTxtsirdesc"  Height="22"
+                                           TextWrapping="Wrap"  Width="400" AutoSelectBehavior="OnFocus"/>
+                    <Label Content="Unit :" Width="50" HorizontalContentAlignment="Right" />
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" Padding="5,0,0,0" x:Name="wtTxtsirunit"
+                                           Height="22" TextWrapping="Wrap" Width="40" AutoSelectBehavior="OnFocus"/>
+                    <Label Content="Unit C_ost :" Width="65"  Target="{Binding ElementName=wtTxtcostP}" />
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtcostP" PreviewTextInput="NumberValidationTextBox"
+                                           Height="22"  HorizontalContentAlignment="Right" Width="75"  AutoMoveFocus="True" AutoSelectBehavior="OnFocus"/>
+                    <Label Content="Sales _Rate:" Width="65" HorizontalContentAlignment="Right" Target="{Binding ElementName=wtTxtsalesP}" />
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}"  HorizontalContentAlignment="Right" x:Name="wtTxtsalesP" PreviewTextInput="NumberValidationTextBox"
+                                           Height="22" Width="75"  AutoMoveFocus="True" AutoSelectBehavior="OnFocus"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Content="Mfg. I_D(Bar Code) :" Width="110" Target="{Binding ElementName=wtTxtMfgCode}"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtMfgCode" Height="22" TextWrapping="Wrap" Width="165" AutoSelectBehavior="OnFocus" />
+                    <Label Content="Mfg Company :" x:Name="lblMfName" Width="100" HorizontalContentAlignment="Right"/>
+                    <UC:AutoCompleteTextBox x:Name="AtxtMfgComp" SearchType="C" HorizontalContentAlignment="Left" Height="22" Width="400" />
+                    <!--<ComboBox x:Name="cmbMfName" Width="401"></ComboBox>-->
+                    <Label Content="Usage :" Width="50" HorizontalContentAlignment="Right"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" Padding="5,0,0,0" x:Name="wtTxtUsage" Height="22" Width="320" AutoSelectBehavior="OnFocus" />
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Label Content="Full Name of Item :" Width="110" HorizontalContentAlignment="Right"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtFullName" Height="22" TextWrapping="Wrap" Width="500" AutoSelectBehavior="OnFocus" />
+                    <Label Content="Gen. Ingrediants :" Width="110" HorizontalContentAlignment="Right"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtGenericItems" Height="22" TextWrapping="Wrap" Width="425" AutoSelectBehavior="OnFocus" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Compos. Details :" Width="110" HorizontalContentAlignment="Right"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtChStruc" Height="40" TextWrapping="Wrap" Width="1035" MaxLength="250" AcceptsReturn="True" AutoSelectBehavior="OnFocus" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="W.Sale Pack Size :" Width="110" HorizontalContentAlignment="Right"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtWPackSize" Height="22" TextWrapping="Wrap" Width="165" AutoSelectBehavior="OnFocus" />
+                    <Label Content="Retail Pack Size :" Width="100" HorizontalContentAlignment="Right"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtRPackSize" Height="22" TextWrapping="Wrap" Width="235" AutoSelectBehavior="OnFocus" />
+                    <Label Content="Remarks (if any) :" Width="110" HorizontalContentAlignment="Right"/>
+                    <xctk:WatermarkTextBox Style="{StaticResource wtxtBx}" x:Name="wtTxtRemakrs" Height="22" TextWrapping="Wrap" Width="425" AutoSelectBehavior="OnFocus" />
+                </StackPanel>
+            </StackPanel>
+            <Grid x:Name="grListView" Grid.Row="2">
+                <StackPanel VerticalAlignment="Top" >
+                    <StackPanel Orientation="Horizontal" Background="Azure" >
+                        <Label x:Name="lblItemSearch" Content="_Search Item :" Width="110" HorizontalContentAlignment="Right" Target="{Binding ElementName=AtxtItemCode}" />
+                        <UC:AutoCompleteTextBox x:Name="AtxtItemCode" SearchType="C" HorizontalContentAlignment="Left" Height="22" Width="430" LostFocus="AtxtItemCode_LostFocus" />
+                        <Label x:Name="lblUnit1" Content="Unit" Width="50" />
+                        <Button x:Name="btnEditItm" Content="Edit Item" Height="24" Margin="130,0,0,0" Width="75" Style="{StaticResource StdBtnStyle01}"  />
+                        <Button x:Name="btnAddNewItm" Content="Add New" Height="24" Margin="50,0,0,0" Width="75" Style="{StaticResource StdBtnStyle01}" Click="btnAddNew_Click" />
+                        <Button x:Name="btnUpdate" Content="_Update" Height="24" Margin="50,0,0,0" Width="75" Style="{StaticResource StdBtnStyle01}" Click="btnUpdate_Click" />
+
+                    </StackPanel>
+                    <DataGrid  x:Name="dgvItem1" Background="Transparent" BorderThickness="0" Margin="0,0,0,0" Grid.Column="0" 
+                              VerticalAlignment="Top" MaxHeight="300"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"  CanUserResizeRows="False"  RowHeight="20"
+                              IsReadOnly="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionMode="Single" FrozenColumnCount="2" SelectionChanged="dgvItem1_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="40" Header="Sl#" Binding="{Binding Path=slnum}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                            <DataGridTextColumn Width="100" Header="Item Code" Binding="{Binding Path=sircode}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                            <DataGridTextColumn Width="320" Header="Title Description" Binding="{Binding Path=sirdesc}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                            <DataGridTextColumn Width="50" Header="Unit" Binding="{Binding Path=sirunit}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                            <DataGridTextColumn Width="250" Header="Manufacturer" Binding="{Binding Path=mfgcomnam}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                            <DataGridTemplateColumn Width="100" Header="Unit Cost" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Width="90">
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding costprice, StringFormat={}{0: #,##0.00;-0: #,##0.00; }}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="Sales Rate" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Width="90">
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding saleprice, StringFormat={}{0: #,##0.00;-0: #,##0.00; }}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--<DataGridTextColumn Width="100" Header="Unit Cost" Binding="{Binding Path=costprice, StringFormat={}{0: #,##0.00}}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />-->
+                            <!--<DataGridTextColumn Width="100" Header="Sales Rate" Binding="{Binding Path=saleprice, StringFormat={}{0: #,##0.00}}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />-->
+                            <DataGridTextColumn Width="150" Header="Gen. Ingrediants" Binding="{Binding Path=genrnam}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--<ListView x:Name="lvSir" FontSize="14" Height="350" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="lvSir_MouseDoubleClick" SelectionChanged="lvSir_SelectionChanged" Margin="0,5,0,29" >
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Background" Value="#FFE4F2E1" />
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="45" Header="Sl#" >
+                                            <GridViewColumn.CellTemplate>
+                                                <ItemContainerTemplate>
+                                                    <Label Width="30" Padding="0,-5,0,0" HorizontalContentAlignment="Right" Content="{Binding Path=slnum}"   />
+                                                </ItemContainerTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Width="120" Header="Code" DisplayMemberBinding="{Binding Path=mcode}" />
+                                        <GridViewColumn Width="290"  DisplayMemberBinding="{Binding Path=mdesc}" >
+                                            <GridViewColumn.Header>
+                                                <GridViewColumnHeader Padding="5,0,0,0" HorizontalContentAlignment="Left" Content="Description"/>
+                                            </GridViewColumn.Header>
+                                        </GridViewColumn>
+                                        <GridViewColumn Width="70" DisplayMemberBinding="{Binding Path=munit}" Header="Unit"/>
+                                        <GridViewColumn Width="350" DisplayMemberBinding="{Binding Path=mmanufacture}" Header="Manufacture"/>
+                                        <GridViewColumn Width="120" DisplayMemberBinding="{Binding Path=mcostp}" Header="Cost Price"/>
+                                        <GridViewColumn Width="110" DisplayMemberBinding="{Binding Path=msellp}" Header="Sell Price"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>-->
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

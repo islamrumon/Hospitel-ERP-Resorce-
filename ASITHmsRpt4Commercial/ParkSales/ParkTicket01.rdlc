@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.5463in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.35185in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.89269in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.14594in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox43">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox43</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Style>Dashed</Style>
+                          <Width>1.25pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.20139in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Parameters!ParmCompNam1.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.21528in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tokendat">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Format(Fields!tokendat.Value, "dd-MMM-yyyy dddd")</Value>
+                              <Style>
+                                <FontFamily>Arial Black</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tokendat</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.19444in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox16">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>="P - " + Format(Fields!elgrpsl.Value, "#") + " / " + Format(Fields!rowid.Value, "#")</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox16</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox17">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>= Parameters!ParamVATReg1.Value</Value>
+                              <Style>
+                                <FontFamily>Arial Narrow</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                      </Visibility>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tokennum">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>="SL# " +Right(Fields!tokennum.Value, 7)</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tokennum</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="sirdesc">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!sirdesc.Value</Value>
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>sirdesc</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.34039in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tnetam2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Format(Fields!tokenpcs.Value, "#,##0") + " Person" + iif(Fields!tokenpcs.Value &gt; 1, "s", "")</Value>
+                              <Style>
+                                <FontFamily>Arial Black</FontFamily>
+                                <FontSize>14pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tnetam</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.23622in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tnetam3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>="Rate : ৳." + Format(Round((Fields!tnetam.Value + Fields!tdisam.Value) / Fields!tokenpcs.Value, 0), "#,##0.00")</Value>
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tnetam</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.23622in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tnetam4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>="Total : ৳." + Format(Fields!tnetam.Value + Fields!tdisam.Value, "#,##0.00")</Value>
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tnetam</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.23622in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tnetam5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>="Discount : ৳." + Format(Fields!tdisam.Value, "#,##0.00")</Value>
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tnetam</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.34722in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tnetam">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>="Net Value : ৳." +Format(Fields!tnetam.Value, "#,##0.00")</Value>
+                              <Style>
+                                <FontFamily>Arial Black</FontFamily>
+                                <FontSize>14pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tnetam</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="eldesc">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!eldesc.Value</Value>
+                              <Style>
+                                <FontFamily>Arial Black</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>eldesc</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.23622in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!trmrks.Value</Value>
+                              <Style>
+                                <FontFamily>Arial Black</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.47916in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tokennum1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>= "*" + Format(Fields!tokendat.Value, "yyMMdd") + Right(Fields!tokennum.Value, 7) + "*"</Value>
+                              <Style>
+                                <FontFamily>C39P24DmTt</FontFamily>
+                                <FontSize>26pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tokennum1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.04167in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox8">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox9">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Details" />
+              <TablixMembers>
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                </TablixMember>
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                </TablixMember>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>=Fields!tdisam.Value=0</Hidden>
+                  </Visibility>
+                </TablixMember>
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>=Fields!tdisam.Value=0</Hidden>
+                  </Visibility>
+                </TablixMember>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>=Len(Fields!trmrks.Value)=0</Hidden>
+                  </Visibility>
+                </TablixMember>
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>RptDataSet1</DataSetName>
+        <Top>0.36667in</Top>
+        <Height>3.41037in</Height>
+        <Width>2.79084in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Rectangle Name="Rectangle2">
+        <ReportItems>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=iif(Parameters!ParamParkName1.Value = "Adventure Land", "NCC", "")</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox13</rd:DefaultName>
+            <Top>0cm</Top>
+            <Left>1.3241cm</Left>
+            <Height>0.35923cm</Height>
+            <Width>0.63733cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox14">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!ParamParkName1.Value</Value>
+                    <Style>
+                      <FontFamily>Arial Black</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox13</rd:DefaultName>
+            <Top>0.10186cm</Top>
+            <Left>1.26986cm</Left>
+            <Height>0.45448cm</Height>
+            <Width>4.46859cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Image Name="Image3">
+            <Source>Embedded</Source>
+            <Value>NccLogo1</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.02805cm</Top>
+            <Left>0.03175cm</Left>
+            <Height>0.53623cm</Height>
+            <Width>1.13625cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Image Name="Image1">
+            <Source>Embedded</Source>
+            <Value>NccJulfia1</Value>
+            <Sizing>Fit</Sizing>
+            <Top>0.07011cm</Top>
+            <Left>5.80549cm</Left>
+            <Height>0.50475cm</Height>
+            <Width>1.24071cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Top>0.24183cm</Top>
+        <Left>0cm</Left>
+        <Height>0.62646cm</Height>
+        <Width>7.08873cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <TopBorder>
+            <Style>Solid</Style>
+          </TopBorder>
+        </Style>
+      </Rectangle>
+    </ReportItems>
+    <Height>9.66423cm</Height>
+    <Style />
+  </Body>
+  <Width>7.13281cm</Width>
+  <Page>
+    <PageHeight>27.94cm</PageHeight>
+    <PageWidth>8cm</PageWidth>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ASITHmsEntity">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>1e49d26d-52e2-412d-b95f-4979b4a73f98</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="RptDataSet1">
+      <Query>
+        <DataSourceName>ASITHmsEntity</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="comcod">
+          <DataField>comcod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="elcode">
+          <DataField>elcode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="eldesc">
+          <DataField>eldesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="elgrpsl">
+          <DataField>elgrpsl</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="elressl">
+          <DataField>elressl</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="elstyle">
+          <DataField>elstyle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="preparebyid">
+          <DataField>preparebyid</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="prepareses">
+          <DataField>prepareses</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="preparetrm">
+          <DataField>preparetrm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="rowid">
+          <DataField>rowid</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="rowtime">
+          <DataField>rowtime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="salstatus">
+          <DataField>salstatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="signinnam">
+          <DataField>signinnam</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="sirdesc">
+          <DataField>sirdesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="taddam">
+          <DataField>taddam</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="tdisam">
+          <DataField>tdisam</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="tnetam">
+          <DataField>tnetam</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="tokendat">
+          <DataField>tokendat</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="tokennum">
+          <DataField>tokennum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tokenpcs">
+          <DataField>tokenpcs</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="trmrks">
+          <DataField>trmrks</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tsircode">
+          <DataField>tsircode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tvatam">
+          <DataField>tvatam</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ASITHmsEntity</rd:DataSetName>
+        <rd:TableName>ParkTicketCoupon01</rd:TableName>
+        <rd:ObjectDataSourceType>ASITHmsEntity.HmsEntityCommercial+ParkTicketCoupon01, ASITHmsEntity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="ParmCompNam1">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ParamTitle1">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ParmFooter1">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ParamVATReg1">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ParamParkName1">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="NccJulfia1">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="NccLogo1">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>16cf6602-eb7c-4d7c-af6c-7026eb94045d</rd:ReportID>
+</Report>

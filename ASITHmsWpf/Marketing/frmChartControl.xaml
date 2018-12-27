@@ -1,0 +1,141 @@
+﻿<UserControl x:Class="ASITHmsWpf.Marketing.frmChartControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:chtc="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
+             xmlns:according="clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Layout.Toolkit"
+             xmlns:local="clr-namespace:ASITHmsWpf.Marketing"
+             mc:Ignorable="d" MinHeight="600" MinWidth="950" Loaded="UserControl_Loaded">
+    <Grid>
+        <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Visible">
+            <!--<Grid Height="700">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+
+            </Grid.RowDefinitions>
+            <chtc:Chart Title="Demo" CrosshairVisibility="Visible"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch">
+                <chtc:ColumnSeries Grid.Row="0" Grid.Column="0" DependentValuePath="Value"
+                                              IndependentValuePath="Key" ItemsSource="{Binding Data}" />
+            </chtc:Chart>
+            <chtc:Chart Title="Demo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch">
+                <chtc:PieSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding Data}" />
+            </chtc:Chart>
+
+            <chtc:Chart Title="Demo"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch">
+                <chtc:BarSeries DependentValuePath="Value"
+                                           IndependentValuePath="Key"
+                                           ItemsSource="{Binding Data}" />
+            </chtc:Chart>         
+
+            <chtc:Chart Title="Demo"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch">
+                <chtc:Chart.Axes>
+                    <chtc:CategoryAxis Orientation="X" ShowGridLines="True" />
+                    <chtc:LinearAxis Title="Frequency (Hz)"
+                                                Maximum="100"
+                                                Minimum="1"
+                                                Orientation="Y"
+                                                ShowGridLines="True" />
+                </chtc:Chart.Axes>
+                <chtc:SplineSeries DependentValuePath="Value"
+                                              IndependentValuePath="Key"
+                                              IsSelectionEnabled="True"
+                                              ItemsSource="{Binding Data}" />
+            </chtc:Chart>
+
+           
+        </Grid>-->
+        </ScrollViewer>
+        <StackPanel>
+            <TabControl x:Name="TabCtrl1" Height="580" Background="Transparent" HorizontalAlignment="Left" TabStripPlacement="Top" SelectedIndex="0" SelectionChanged="TabCtrl1_SelectionChanged">
+                <TabItem x:Name="tbiBarSeries" Width="110" Style="{StaticResource StdTabItemStyle01}" >
+                    <TabItem.Header>
+                        <TextBlock Text="Bar Series" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </TabItem.Header>
+                    <StackPanel x:Name="stpkTab0" Orientation="Horizontal">
+                        <chtc:Chart Title="Column Series" Height="400" Width="500" Margin="20 0 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <chtc:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key"
+                                           ItemsSource="{Binding Data}"/>
+                        </chtc:Chart>
+                        <chtc:Chart Title="Bar Series" Height="400" Width="500" Margin="20 0 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <chtc:BarSeries DependentValuePath="Value" IndependentValuePath="Key"
+                                           ItemsSource="{Binding Data}"/>
+                        </chtc:Chart>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Width="5" IsEnabled="False"/>
+                <TabItem x:Name="tbiPieSeries" Width="110" Style="{StaticResource StdTabItemStyle01}">
+                    <TabItem.Header>
+                        <TextBlock Text="Pie Series" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"/>
+                    </TabItem.Header>
+                    <StackPanel x:Name="stpkTab1" Orientation="Horizontal">
+                        <chtc:Chart Title="Labeled Pie Series" Height="400" Width="600" Margin="20 0 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <chtc:LabeledPieSeries DependentValuePath="Value" IndependentValuePath="Key" LabelDisplayMode="Connected" ItemsSource="{Binding Data}" />
+                        </chtc:Chart>
+                        <chtc:Chart Title="Pie Series" Height="400" Width="500" Margin="10 0 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <chtc:PieSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding Data}"/>
+                        </chtc:Chart>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Width="5" IsEnabled="False"/>
+                <TabItem x:Name="tbiLineSeries" Width="110" Style="{StaticResource StdTabItemStyle01}">
+                    <TabItem.Header>
+                        <TextBlock Text="Line Series" FontSize="14" FontWeight="Bold"/>
+                    </TabItem.Header>
+                    <StackPanel x:Name="stpkTab2" Orientation="Horizontal">
+                        <DataGrid x:Name="dgvChart" Height="400" Width="300" HeadersVisibility="All" IsReadOnly="False" Background="Transparent" AutoGenerateColumns="False" CanUserAddRows="True"
+                                   CanUserResizeColumns="False" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Student Name" Width="50" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Student Age" Width="30" Binding="{Binding Age}"/>
+
+                                <DataGridTextColumn Header="Father Name" Width="50" Binding="{Binding Name1}"/>
+                                <DataGridTextColumn Header="Father Age" Width="30" Binding="{Binding Age1}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <chtc:Chart x:Name="chrtLine" Title="Line Series" Height="400" Width="600" Margin="20 0 0 0" CrosshairVisibility="Visible" HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch">
+                            <chtc:Chart.Axes>
+                                <chtc:CategoryAxis Orientation="X" ShowGridLines="True" />
+                                <chtc:LinearAxis Title="Frequency (Hz)" Maximum="100" Minimum="1"
+                                                     Orientation="Y" ShowGridLines="True" />
+                            </chtc:Chart.Axes>
+                            <!--<chtc:LineSeries DependentValueBinding="{Binding Path=Age}" IndependentValueBinding="{Binding Path=Name}"
+                                            IsSelectionEnabled="True" ItemsSource="{Binding}" />-->
+                            
+                            <chtc:LineSeries DependentValueBinding="{Binding Path=Age}" IndependentValueBinding="{Binding Path=Name}"
+                                            IsSelectionEnabled="True" ItemsSource="{Binding}" />
+                            <chtc:LineSeries DependentValueBinding="{Binding Path=Age1}" IndependentValueBinding="{Binding Path=Name1}"
+                                            IsSelectionEnabled="True" ItemsSource="{Binding}" />
+                        </chtc:Chart>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Width="5" IsEnabled="False"/>
+                <TabItem x:Name="tbiAccordion" Width="140" Style="{StaticResource StdTabItemStyle01}">
+                    <TabItem.Header>
+                        <TextBlock Text="Accordion Testing" FontSize="14" FontWeight="Bold"/>
+                    </TabItem.Header>
+                    <StackPanel>
+                        <local:frmAccording01 HorizontalAlignment="Stretch"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

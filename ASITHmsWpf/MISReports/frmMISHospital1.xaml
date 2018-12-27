@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ASITHmsWpf.MISReports.frmMISHospital1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"            
+             xmlns:local="clr-namespace:ASITHmsWpf"                 
+             mc:Ignorable="d"  Tag="Healthcare Management Reporting Panel" Style="{StaticResource IOUserControl}" Initialized="UserControl_Initialized"  Loaded="UserControl_Loaded">
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <Label x:Name="lblTitle1" Content="HEALTHCARE MANAGEMENT" Width="350" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="840,-5,0,0" />
+            </StackPanel>
+            <StackPanel Margin="0,-30,0,0">
+                <TabControl x:Name="tabPanel1" MinHeight="560" SelectedIndex="0" TabStripPlacement="Top" SelectionChanged="tabPanel1_SelectionChanged" >
+                    <TabItem x:Name="tbiRferralLedger1" Width="90" Style="{StaticResource StdTabItemStyle01}" Tag="Referral Ledger Book" >
+                        <TabItem.Header>
+                            <TextBlock Text="Referral Ledger" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                        </TabItem.Header>
+                        <StackPanel x:Name="stpkTab0" >
+                            <!--<gen1:frmAccCodeBook1 x:Name="accCodeBook1" />-->
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="tbiRferralLedger1a" Width="5" IsEnabled="False"/>
+                    <TabItem x:Name="tbiInvoiceEdit1" Width="90"  Style="{StaticResource StdTabItemStyle01}"  Tag="Quick Invoice Edit" >
+                        <TabItem.Header>
+                            <TextBlock Text="Invoice Edit"  HorizontalAlignment="Center" TextWrapping="Wrap" />
+                        </TabItem.Header>
+                        <StackPanel x:Name="stpkTab1" >
+                            <!--<gen1:frmSirCodeBook1 x:Name="sirCodeBook1" />-->
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

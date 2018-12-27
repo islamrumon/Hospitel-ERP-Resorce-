@@ -1,0 +1,18 @@
+<Application x:Class="ASITHmsWpf.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             Startup="App_Startup" d1p1:Ignorable="d">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Content/HmsResDict01.xaml" />
+                <ResourceDictionary Source="Content/HmsResDict02.xaml" />
+                <ResourceDictionary Source="Content/AutoComplete.Styles.xaml" />
+
+                <!--<vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:ASITHmsWpf.ViewModel" />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

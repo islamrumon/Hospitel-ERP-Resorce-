@@ -1,0 +1,319 @@
+﻿<UserControl x:Class="ASITHmsWpf.Manpower.frmEntryAttn104"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"
+             mc:Ignorable="d" Tag="Staff Leave Information - Entry/Edit Screen" Style="{StaticResource IOUserControl}" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded" >
+    <Grid>
+        <StackPanel Margin="0,5,0,0" >
+            <StackPanel  Orientation="Horizontal" >
+                <StackPanel x:Name="stkpMain" Orientation="Vertical">
+                    <StackPanel x:Name="stkpEmpSearch" Orientation="Horizontal" Margin="0,0,0,0">
+                        <Label Content="Employee :" Width="80" HorizontalContentAlignment="Right" FontWeight="Bold" />
+                        <UC:AutoCompleteTextBox x:Name="AtxtEmpAll" SearchType="C" Width="565" ToolTip="Right Click or Double Click to view existing staff list" MouseDoubleClick="AtxtEmpAll_MouseDoubleClick">
+                            <UC:AutoCompleteTextBox.ContextMenu>
+                                <ContextMenu x:Name="conMenuHCMAtnAll" Height="400" Width="400" />
+                            </UC:AutoCompleteTextBox.ContextMenu>
+                        </UC:AutoCompleteTextBox>
+                        <Label Content="Year :" HorizontalContentAlignment="Right" FontStyle="Normal" Width="60" FontWeight="Bold" />
+                        <ComboBox x:Name="cmbLeaveYear" Width="60" SelectedIndex="0" FontWeight="Bold" />
+                        <!--<Label Content="Date :" HorizontalContentAlignment="Right" FontStyle="Normal" Target="{Binding ElementName=xctk_EventDateAll}" Width="60" FontWeight="Bold" />
+                        <xctk:DateTimePicker x:Name="xctk_InfoDate"  Style="{StaticResource StdDateTimePickerStyle01}" Width="150" FontWeight="Bold" />-->
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                    <Button x:Name="btnShowInfo" Content="Show Info" Width="90" Height="24" FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Click="btnShowInfo_Click" />
+                    <CheckBox x:Name="chkLeaveForm" Content="Leave Application Form" Width="150" VerticalAlignment="Center" Margin="70,0,0,0" />
+                    <Button x:Name="btnPrintLeave" Content="Print Report" Width="90" Height="24" Click="btnPrintLeave_Click" Style="{StaticResource StdBtnStyle01}" Margin="10,0,0,0" />
+                </StackPanel>
+            </StackPanel>
+            <Separator Height="2" />
+            <StackPanel x:Name="stkpLeaveAppFrm" Visibility="Visible">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel x:Name="stkpLeaveEntry1" VerticalAlignment="Top" Grid.Row="0" >
+                        <StackPanel Orientation="Horizontal" Background="LightCyan"  >
+                            <Label Content="Leave Applied For :" Width="140" HorizontalContentAlignment="Left" FontWeight="Bold" FontSize="14" Foreground="Red" />
+                            <Label x:Name="lblLeavID" Content="XX" Width="30" HorizontalContentAlignment="Left" FontWeight="Bold" FontSize="14" Foreground="Blue" />
+                            <Label Content="Application Date : " HorizontalContentAlignment="Right" FontSize="14" Width="130" Margin="20,0,0,0"/>
+                            <xctk:DateTimePicker x:Name="xctk_dtpApplyDate" Style="{StaticResource StdDateTimePickerStyle01}" FontSize="14" Height="24" Width="110" />
+
+                            <Label x:Name="lblEditMode" Content="LEAVE INFORMATION IN EDIT MODE"  FontSize="16" Padding="0,2,0,0" HorizontalContentAlignment="Center" Tag="00" 
+                                           FontWeight="Bold" Foreground="Red" Visibility="Visible" Margin="280,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Width="580" Margin="0,3,0,0" >
+                                <DataGrid x:Name="DgvLeavApp" IsReadOnly="True" FontSize="12" RowHeaderWidth="0" CanUserResizeRows="False" Background="Transparent" BorderThickness="0" 
+                                              HorizontalAlignment="Left" AutoGenerateColumns="False"  VerticalAlignment="Top" Width="580" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                              ScrollViewer.HorizontalScrollBarVisibility="Hidden" AlternationCount="2" AlternatingRowBackground="#FFEDFFEE" MouseDoubleClick="DgvLeavApp_MouseDoubleClick"  >
+                                    <DataGrid.Resources>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="Background" Value="#FFE2D2CE" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="Height" Value="25" />
+                                        </Style>
+                                        <Style TargetType="DataGridCell">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background"  Value="Bisque" />
+                                                    <Setter Property="Foreground"  Value="Black" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                        <Style TargetType="{x:Type DataGridRow}">
+                                            <Setter Property="Height" Value="25" />
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="30" Header="Sl#" Binding="{Binding leavidx}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                                        <DataGridTextColumn Width="190" Header="Type of Leave" Binding="{Binding leavdesc}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                                        <DataGridTemplateColumn Width="100" Header="Start Date"  >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <xctk:DateTimePicker Style="{StaticResource StdDateTimePickerStyle01}" Height="24" Width="100" BorderThickness="0" Background="Transparent"
+                                                                Value="{Binding begndat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Tag="{Binding Path=leavcod}" />                                           
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="S.Shift" Width="60" >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox x:Name="DgvLeavAppCmbBegnStat" Height="28" Width="60" FontWeight="Bold" Text = "{Binding begnstat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                      Background="Transparent" IsReadOnly="True" >
+                                                        <!--<ComboBoxItem Content="All" Tag="A" />-->
+                                                        <ComboBoxItem Content="1st" Tag="1" />
+                                                        <ComboBoxItem Content="2nd" Tag="2" />
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="100" Header="End Date" >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <xctk:DateTimePicker Style="{StaticResource StdDateTimePickerStyle01}" Height="24" Width="100" BorderThickness="0" Background="Transparent" 
+                                                              Value="{Binding enddat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Tag="{Binding Path=leavcod}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="E.Shift" Width="60" >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox x:Name="DgvLeavAppCmbEndStat" Height="28" Width="60" FontWeight="Bold" Text = "{Binding endstat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                      Background="Transparent" IsReadOnly="True" >
+                                                        <!--<ComboBoxItem Content="All" Tag="A" />-->
+                                                        <ComboBoxItem Content="1st" Tag="1" />
+                                                        <ComboBoxItem Content="2nd" Tag="2" />
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="40" Header="Day"  >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Center" Text="{Binding totday, StringFormat={}{0: ###0.0;-###0.0; }}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                            <StackPanel x:Name="stkpApproval1" Orientation="Vertical" Margin="2,0,0,0" GotFocus="stkpApproval_GotFocus" >                               
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Reasons of Leave" Width="110" HorizontalContentAlignment="Left" FontStyle="Normal" Target="{Binding ElementName=txtEditIdNO}"/>
+                                    <Label Content=":" FontStyle="Normal"/>
+                                    <xctk:WatermarkTextBox x:Name="txtLevresn"  Style="{StaticResource wtxtBx}" Watermark="Reasons of leave" Padding="5,0,0,0" 
+                					HorizontalContentAlignment="Left" Height="22" Width="480" MaxLength="100" />
+
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Replacement Staff" Width="110"  HorizontalContentAlignment="Left" FontStyle="Normal" />
+                                    <Label Content=":" FontStyle="Normal"/>
+                                    <UC:AutoComplete x:Name="autoLeavHcCod2" Width="480" SelectedValuePath="hccode" DisplayMemberPath="hcname"  PatternChanged="autoLeavHcCod2_PatternChanged"
+                                             Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24" />
+
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Forwarded By" Width="110" HorizontalContentAlignment="Left" FontStyle="Normal" />
+                                    <Label Content=":" FontStyle="Normal"/>
+                                    <UC:AutoComplete x:Name="autoLeavForwardBy" Width="480" SelectedValuePath="hccode" DisplayMemberPath="hcname" PatternChanged="autoLeavForwardBy_PatternChanged"
+                                             Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24" />
+
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Final Approved By" Width="110" HorizontalContentAlignment="Left" FontStyle="Normal" />
+                                    <Label Content=":" FontStyle="Normal"/>
+                                    <UC:AutoComplete x:Name="autoLeavApprovBy" Width="480" SelectedValuePath="hccode" DisplayMemberPath="hcname" PatternChanged="autoLeavApprovBy_PatternChanged"
+                                             Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"  VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="LightCyan">
+                                <Label Content="Leave Summary :" FontWeight="Bold"  FontSize="14"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btnLeaveRecal" FontWeight="Bold" BorderThickness="0" HorizontalContentAlignment="Right" Content="Total leave applied for 0 day" 
+                                    Width="440" Background="Transparent" Foreground="Maroon" Click="btnLeaveRecal_Click" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel>
+                                <DataGrid x:Name="DgvLeavSum" IsReadOnly="True" FontSize="12" RowHeaderWidth="0" CanUserResizeRows="False" Background="Transparent" BorderThickness="0" 
+                                          HorizontalAlignment="Left"  AutoGenerateColumns="False" VerticalAlignment="Top" Width="700" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto"  
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden" AlternationCount="2" AlternatingRowBackground="#FFEDFFEE"  >
+                                    <DataGrid.Resources>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="Background" Value="#FFE2D2CE" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="Height" Value="25" />
+                                        </Style>
+                                        <Style TargetType="DataGridCell">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background"  Value="Bisque" />
+                                                    <Setter Property="Foreground"  Value="Black" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                        <Style TargetType="{x:Type DataGridRow}">
+                                            <Setter Property="Height" Value="25" />
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="30" Header="Sl#" Binding="{Binding slnum}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                                        <DataGridTextColumn Width="180" Header="Type of Leave" Binding="{Binding leavdesc}" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                                        <DataGridTemplateColumn Width="65" Header="Opening"  >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <xctk:WatermarkTextBox TextAlignment="Right" VerticalAlignment="Center" AutoMoveFocus="True"  BorderThickness="0" Width="55"
+                                                        AutoSelectBehavior="OnFocus" Style="{StaticResource wtxtBx}" Background="Transparent" Tag="{Binding Path=leavcod}" FontWeight="Bold" 
+                                                        Text="{Binding Path = leavopn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0.0;-#,##0.0; }}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="65" Header="Addition" >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Right" Text="{Binding leavadd, StringFormat={}{0: #,##0.0;-#,##0.0; }}" Focusable="False" Width="55" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="65" Header="Total"  >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Right" Text="{Binding leavtot, StringFormat={}{0: #,##0.0;-#,##0.0; }}" Focusable="False" Width="55" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="65" Header="Availed"  >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Right" Text="{Binding leavavil, StringFormat={}{0: #,##0.0;-#,##0.0; }}" Focusable="False" Width="55" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="65" Header="Balance"  >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Right" Text="{Binding leavbal1, StringFormat={}{0: #,##0.0;-#,##0.0; }}" Focusable="False" Width="55" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="65" Header="Applied" >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Right" Text="{Binding leavapp, StringFormat={}{0: #,##0.0;-#,##0.0; }}" Focusable="False" Width="55" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="75" Header="Net Balance"  >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Right" Text="{Binding leavbal2, StringFormat={}{0: #,##0.0;-#,##0.0; }}" Focusable="False" Width="65" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                            <StackPanel x:Name="stkpApproval2" Margin="5,0,0,0" GotFocus="stkpApproval_GotFocus">                               
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Contact Info. : " Width="100" HorizontalContentAlignment="Right" />
+                                    <xctk:WatermarkTextBox x:Name="txttimecon"  Style="{StaticResource wtxtBx}" Watermark="Leave time contact information" Padding="5,0,0,0" 
+                					Text=""  HorizontalContentAlignment="Left" Height="22" Width="380" MaxLength="100" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Label Content="Notes (if any) : " Width="100" HorizontalContentAlignment="Right" FontStyle="Normal" />
+                                    <xctk:WatermarkTextBox x:Name="txtnotes"  Style="{StaticResource wtxtBx}" Watermark="Notes (if any)" TextWrapping="Wrap" AcceptsReturn="False" Padding="5,0,0,0" Text=""  HorizontalContentAlignment="Left" Height="40" Width="380" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                    <Label Content="Approval Date : " HorizontalContentAlignment="Right" Width="100"  Margin="0,0,0,0" />
+                                    <xctk:DateTimePicker x:Name="xctk_dtpApprovDate" Style="{StaticResource StdDateTimePickerStyle01}" Height="24" Width="110" />
+                                    <Button x:Name="btnLeaveUpdate" Content="_Update Leave" Width="90" Height="24"  Style="{StaticResource StdBtnStyle01}"  Click="btnLeaveUpdate_Click" FontWeight="Bold" Margin="55,0,0,0" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="0,5,0,0" >
+                            <StackPanel Orientation="Horizontal" Background="LightCyan">
+                                <Label Content="Leave History :" FontWeight="Bold" Foreground="Blue" FontSize="14" />
+                                <Button x:Name="btnEditLeave" Content="View/Edit Leave Details" Width="150" Background="Transparent"  Height="24" Margin="50,0,0,0"  Click="btnEditLeave_Click" />
+                            </StackPanel>
+                            <StackPanel>
+                                <DataGrid x:Name="DgvLeavDetails" IsReadOnly="True" FontSize="12" RowHeaderWidth="0" CanUserResizeRows="False" Background="Transparent" BorderThickness="0" 
+                                          HorizontalAlignment="Left"  AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False"
+                                      VerticalAlignment="Top" Width="1190" Height="250" ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Hidden" AlternationCount="2" AlternatingRowBackground="#FFEDFFEE"  >
+                                    <DataGrid.Resources>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="Background" Value="#FFE2D2CE" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="Height" Value="25" />
+                                        </Style>
+                                        <Style TargetType="DataGridCell">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background"  Value="Bisque" />
+                                                    <Setter Property="Foreground"  Value="Black" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                        <Style TargetType="{x:Type DataGridRow}">
+                                            <Setter Property="Height" Value="25" />
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="30" Header="Sl#" Binding="{Binding slnum}" />
+                                        <DataGridTextColumn Width="40" Header="ID#" Binding="{Binding leavid}" />
+                                        <DataGridTextColumn Width="75" Header="Aprv.Date" Binding="{Binding aprvdat1}" />
+                                        <DataGridTextColumn Width="30" Header="LS#" Binding="{Binding leavidx}" />
+                                        <DataGridTextColumn Width="180" Header="Type of Leave" Binding="{Binding leavdesc}" />
+                                        <DataGridTemplateColumn Width="40" Header="Days" >
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock TextAlignment="Right" Text="{Binding totday, StringFormat={}{0: #0.0}}" Focusable="False" Width="35" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Width="80" Header="Start Date" Binding="{Binding begndat1}" />
+                                        <DataGridTextColumn Width="40" Header="S.Shift" Binding="{Binding begnstat1}" />
+                                        <DataGridTextColumn Width="80" Header="End Date" Binding="{Binding enddat1}" />
+                                        <DataGridTextColumn Width="40" Header="E.Shift" Binding="{Binding endstat1}" />
+                                        <DataGridTextColumn Width="150" Header="Leave Notes" Binding="{Binding leavnote}" />                                        
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ASITHmsWpf.General.frmConfigSetup1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"   
+             xmlns:localGen="clr-namespace:ASITHmsWpf.General"   
+             mc:Ignorable="d" Tag="Configuration Setup Screen" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded"  Style="{StaticResource IOUserControl}" >
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <Label x:Name="lblTitle1" Content="USER CONFIGURATION" Width="350" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="840,0,0,0" />
+            </StackPanel>
+            <TabControl SelectedItem="4" x:Name="tabPanel1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Top" Margin="5,-25,5,10" SelectionChanged="tabPanel1_SelectionChanged" >
+                <TabItem x:Name="tbiUserConfig1" Header="_User Configuration" Width="150" Height="25" Style="{StaticResource StdTabItemStyle01}" Tag="USER CONFIGURATION" >
+                    <StackPanel x:Name="stpkTab0" Background="#FFE4F2E1" >
+                        <!--<localGen:frmConfigSetup101 x:Name="frmUc1" />-->
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="tbiUserConfig1a" Width="3" IsEnabled="False" />
+                <TabItem x:Name="tbiCompanyInfo1" Header="Com_pany Information" Width="150" Height="25"  Style="{StaticResource StdTabItemStyle01}" Tag="COMPANY INFORMATION" >
+                    <StackPanel x:Name="stpkTab1" Background="#FFE4F2E1">
+                        <!--<localGen:frmConfigSetup102 x:Name="frmComInf1" />-->
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="tbiCompanyInfo1a" Width="3" IsEnabled="False" />
+                <TabItem x:Name="tbiBranchInfo1" Header="Branch Information" Width="150" Height="25"  Style="{StaticResource StdTabItemStyle01}" Tag="BRANCH INFORMATION" >
+                    <StackPanel x:Name="stpkTab2" Background="#FFE4F2E1">
+                        <!--<localGen:frmConfigSetup103 x:Name="frmBrnInf1" />-->
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="tbiBranchInfo1a" Width="3" IsEnabled="False" />
+                <TabItem x:Name="tbiTerminalInfo1" Header="_Terminal Setup" Width="150" Height="25"  Style="{StaticResource StdTabItemStyle01}" Tag="TERMINAL SETUP" >
+                    <StackPanel x:Name="stpkTab3" Background="#FFE4F2E1" >
+                        <!--<TextBlock Text="Terminal Setup" />-->
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="tbiTerminalInfo1a" Width="3" IsEnabled="False" />
+                <TabItem x:Name="tbiDatabaseInfo1" Header="_Database Management" Width="150" Height="25"  Style="{StaticResource StdTabItemStyle01}" Tag="DATABASE &amp; LOG RECORDS" >
+                    <StackPanel x:Name="stpkTab4" Background="#FFE4F2E1" >
+                        <!--<localGen:frmConfigSetup104 x:Name="frmDbMgt1"  />-->
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

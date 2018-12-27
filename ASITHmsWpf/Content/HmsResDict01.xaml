@@ -1,0 +1,564 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:i="clr-namespace:ASITHmsWpf"
+                    xmlns:local="clr-namespace:ASITHmsWpf.UserControls" >
+   
+    <!--Resource Dictionary for Styles-->  
+    
+    <!--#Region Main Window Styles (HmsMainWindow.xaml) -->
+    <!--Following Styles are used for Main Window only-->
+    <Style x:Key="HmsMainWindowStyle" TargetType="Window">
+        <Setter Property="Width" Value="1200" />
+        <Setter Property="Height" Value="800" />
+        <Setter Property="WindowState" Value="Maximized" />
+        <Setter Property="Background" Value="#FFE9F5E9" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+   <Style x:Key="MWacriGridStyle" TargetType="Grid">
+        <Setter Property="Width" Value="245" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFCDB0B0" Offset="0.478"/>
+                    <GradientStop Color="#FFC28F8F" Offset="0.907"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="IdgrdStyle" TargetType="Grid">       
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFDFBBC" Offset="0.874"/>
+                    <GradientStop Color="#FFFBFADE" Offset="0.377"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="IdTxBOxStyle" TargetType="TextBlock">
+        <Setter Property="Width" Value="255"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+
+    <Style x:Key="MWmnu01Style" TargetType="Menu">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Book Antiqua" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Margin" Value="0,1,0,0" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+    <Style x:Key="expMain01Style" TargetType="Expander">
+        <Setter Property="Foreground" Value="Blue" />
+        <Setter Property="FontFamily" Value="Arial Unicode Ms" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="MWmi01Style" TargetType="MenuItem">
+        <Setter Property="Width" Value="245" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Background" Value="#FFFCF8F8" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style x:Key="MWmiLblStyle" TargetType="Label">
+        <Setter Property="Margin" Value="10,0,0,0" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style x:Key="MWmiImgStyle" TargetType="Image">
+        <!--<Setter Property="Margin" Value="-10,-10,-80,-10" />-->
+        <!--<Setter Property="Width" Value="50" />-->
+        <Setter Property="Margin" Value="5,-10,-20,-10" />
+        <Setter Property="Width" Value="25" />
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Stretch" Value="Fill" />
+    </Style>
+    <!-- #EndRegion Main Window Styles (HmsMainWindow.xaml) -->
+
+    <!--#Region All Entry Screen Window Styles -->
+    <!--Following Styles are used for all Entry Screens -->
+    <Style x:Key="IOUserControl" TargetType ="UserControl">
+        <Setter Property="Width" Value="1200" />
+        <Setter Property="Height" Value="650" />
+        <!--<Setter Property="Background" Value="#FFE7FFE4" />-->
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4F2E1" Offset="0.491"/>
+                    <GradientStop Color="#FF8DC7A8" Offset="0.957"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>    
+    </Style>
+
+    <Style x:Key="IOGridControl" TargetType ="UserControl">
+        <Setter Property="Height" Value="500" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4F2E1" Offset="0.491"/>
+                    <GradientStop Color="#FF8DC7A8" Offset="0.957"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="GridControl" TargetType ="DataGrid">
+        <!--<Setter Property="Height" Value="500" />-->
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4F2E1" Offset="0.491"/>
+                    <GradientStop Color="#FF8DC7A8" Offset="0.957"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="StdBtnStyle01" TargetType="Button" xmlns:MS_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <MS_Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" 
+                                                    Background="{TemplateBinding Background}"  
+                                                    SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" 
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </MS_Themes:ButtonChrome>
+                        <Path Grid.ZIndex="-1" Stroke="Green" StrokeThickness="6" Stretch="Fill" Fill="Green" StrokeEndLineCap="Square"
+                                  StrokeStartLineCap="Square" Data="M0,0 L1,0 L1,1 A1,1 180 0 0 0,1 L0,0">
+                            <Path.Effect>
+                                <DropShadowEffect ShadowDepth="5" Direction="270" Color="Black"
+                                                      Opacity="0.5" BlurRadius="4"/>
+                            </Path.Effect>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFFFFCA3" Offset="0.533"/>
+                                        <GradientStop Color="#FFE3E781" Offset="0.719"/>
+                                        <GradientStop Color="#FFE7D181" Offset="0.198"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="Blue"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StdDateTimePickerStyle01" TargetType="xctk:DateTimePicker" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" >
+        <Setter Property="Format" Value="Custom" />
+        <Setter Property="FormatString" Value="dd-MMM-yyyy" />        
+        <Setter Property="AutoCloseCalendar" Value="True" />
+        <Setter Property="AllowTextInput" Value="True" />
+        <Setter Property="ShowButtonSpinner" Value="False" />
+        <Setter Property="TimePickerVisibility" Value="Hidden" />
+    </Style>
+
+    <Style x:Key="StdDateTimePickerStyle02" TargetType="xctk:DateTimePicker" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" >
+        <Setter Property="Format" Value="Custom" />
+        <Setter Property="FormatString" Value="dd-MM-yy hh:mm tt" />
+        <Setter Property="AutoCloseCalendar" Value="True" />
+        <Setter Property="AllowTextInput" Value="True" />
+        <Setter Property="ShowButtonSpinner" Value="False" />
+        <Setter Property="TimePickerVisibility" Value="Hidden" />
+    </Style>
+
+    <Style x:Key="StdDateTimePickerStyle03" TargetType="xctk:DateTimePicker" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" >
+        <Setter Property="Format" Value="Custom" />
+        <Setter Property="FormatString" Value="dd-MMM-yyyy hh:mm tt" />
+        <Setter Property="AutoCloseCalendar" Value="True" />
+        <Setter Property="AllowTextInput" Value="True" />
+        <Setter Property="ShowButtonSpinner" Value="False" />
+        <Setter Property="TimePickerVisibility" Value="Hidden" />
+    </Style>
+
+    <Style x:Key="StdTimePickerStyle01" TargetType="xctk:TimePicker" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" >
+        <Setter Property="FormatString" Value="hh:mm tt" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="ShowButtonSpinner" Value="True" />
+        <Setter Property="AllowTextInput" Value="True" />
+    </Style>
+
+    <Style x:Key="StdTabItemStyle01" TargetType="TabItem" xmlns:MS_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <MS_Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"  SnapsToDevicePixels="true">
+                            <ContentPresenter ContentSource="Header" HorizontalAlignment="Center"  VerticalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            <!--<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" 
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
+                        </MS_Themes:ButtonChrome>
+                        <Path Grid.ZIndex="-1" Stroke="Green" StrokeThickness="6" Stretch="Fill" Fill="Green" StrokeEndLineCap="Square"
+                                  StrokeStartLineCap="Square" Data="M0,0 L1,0 L1,1 A1,1 180 0 0 0,1 L0,0">
+                            <Path.Effect>
+                                <DropShadowEffect ShadowDepth="5" Direction="270" Color="Black" Opacity="0.5" BlurRadius="4"/>
+                            </Path.Effect>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFFFFCA3" Offset="0.533"/>
+                                        <GradientStop Color="#FFE3E781" Offset="0.719"/>
+                                        <GradientStop Color="#FFE7D181" Offset="0.198"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="Blue"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#F3F3F3" Offset="0"/>
+        <GradientStop Color="#EBEBEB" Offset="0.5"/>
+        <GradientStop Color="#DDDDDD" Offset="0.5"/>
+        <GradientStop Color="#CDCDCD" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItemHotBackground" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#EAF6FD" Offset="0.15"/>
+        <GradientStop Color="#D9F0FC" Offset=".5"/>
+        <GradientStop Color="#BEE6FD" Offset=".5"/>
+        <GradientStop Color="#A7D9F5" Offset="1"/>
+    </LinearGradientBrush>
+
+    <Style x:Key="StdTabItemStyle02" TargetType="{x:Type TabItem}" >
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="#8C8E94" />
+        <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}" >
+                    <Grid SnapsToDevicePixels="True" >                       
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Height="20"
+                                Padding="{TemplateBinding Padding}" CornerRadius="2,10,0,0" Cursor="Hand" >
+                            <ContentPresenter ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
+                                              x:Name="Content" VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
+                                              RecognizesAccessKey="True" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers >
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemHotBackground}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True" >
+                            <Setter Property="Panel.ZIndex" Value="1" />
+                            <Setter Property="Background" TargetName="Bd" Value="#E8EAED" />
+                            <Setter Property="Foreground" Value="Blue" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="#3C7FB1" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Top" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Margin" Value="-2,-2,-2,-1"/>
+                            <Setter Property="Margin" TargetName="Content" Value="0,0,0,1" />
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false" >
+                            <Setter Property="Background" TargetName="Bd" Value="#F4F4F4" />
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="#FFC9C7BA" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:AutoCompleteTextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:AutoCompleteTextBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#EndRegion All Entry Screen Window Styles -->
+    
+    <!--#Region TreeView Line Style -->
+    <i:TreeViewLineConverter x:Key="LineConverter"/>
+    <!-- Toggle Button -->
+    <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Width="15" Height="13" SnapsToDevicePixels="True">
+                        <Rectangle Width="9" Height="9" Stroke="#919191" SnapsToDevicePixels="true">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,2" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0"/>
+                                    <GradientStop Color="Silver" Offset="0.5"/>
+                                    <GradientStop Color="LightGray" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle x:Name="ExpandPath" Width="1" Height="5" Stroke="Black" SnapsToDevicePixels="true"/>
+                        <Rectangle Width="5" Height="1" Stroke="Black" SnapsToDevicePixels="true"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility"  TargetName="ExpandPath" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- TreeViewItem -->
+    <!--<Style x:Key="{x:Type TreeViewItem}" TargetType="{x:Type TreeViewItem}">-->
+    <Style x:Key="TreeViewItem01" TargetType="{x:Type TreeViewItem}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="1,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="19" Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Connecting Lines -->
+                        <Rectangle x:Name="HorLn" Margin="9,1,0,0" Height="1" Stroke="#DCDCDC" SnapsToDevicePixels="True"/>
+                        <Rectangle x:Name="VerLn" Width="1" Stroke="#DCDCDC" Margin="0,0,1,0" Grid.RowSpan="2" SnapsToDevicePixels="true" Fill="White"/>
+                        <ToggleButton Margin="-1,0,0,0" x:Name="Expander" Style="{StaticResource ExpandCollapseToggleStyle}" IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
+                        <Border Name="Bd" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" MinWidth="20"/>
+                        </Border>
+                        <!--Mehedi 2015 07 12-->
+
+                        <ItemsPresenter x:Name="ItemsHost"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2">
+                            <ItemsPresenter.LayoutTransform>
+                                <ScaleTransform ScaleY="1" />
+                            </ItemsPresenter.LayoutTransform>
+                        </ItemsPresenter>
+                        <!--End 2015 07 12-->
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--Mehedi 2015 07 12-->
+                        <Trigger Property="IsExpanded" Value="false">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                     To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                     To="1" />
+                                        <DoubleAnimation Duration="0:0:0.5"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsExpanded" Value="true">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.4"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                     To="1" />
+                                        <DoubleAnimation Duration="0:0:0.5"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.3"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                     To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5"
+                                                     Storyboard.TargetName="ItemsHost"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <!--End 2015 12 07-->
+                        
+                        <!-- This trigger changes the connecting lines if the item is the last in the list -->
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource LineConverter}}" Value="true">
+                            <Setter TargetName="VerLn" Property="Height" Value="9"/>
+                            <Setter TargetName="VerLn" Property="VerticalAlignment" Value="Top"/>
+                        </DataTrigger>
+                        <Trigger Property="IsExpanded" Value="false">
+                            <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="Expander" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HasHeader" Value="false"/>
+                                <Condition Property="Width" Value="Auto"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Header" Property="MinWidth" Value="75"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HasHeader" Value="false"/>
+                                <Condition Property="Height" Value="Auto"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Header" Property="MinHeight" Value="19"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="IsSelectionActive" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Bd" Property="Background" Value="Green"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#EndRegion TreeView Line Style -->
+    
+    <!-- Region  ToolTip Style -->
+    <Style TargetType="{x:Type ToolTip}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Window.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard Duration="00:00:6" Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation From="0" To="1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+
+                    <Grid Margin="4,3,0,0" >
+                        <Border Background="White" BorderBrush="Blue"  Opacity="0.9" BorderThickness="1" CornerRadius="5">
+                            <StackPanel >                               
+                                <StackPanel >
+                                    <Image VerticalAlignment="Top" HorizontalAlignment="Left"  Width="200" Height="20" Source="../Images/CentERPoint3.png" Name="image1" Margin="5,0,0,0" />
+                                </StackPanel>
+                                <StackPanel >
+                                    <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap" Padding="5,2,5,2" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- EndRegion ToolTip Style -->
+    
+    <!-- Region - Main Window Left Grid Sliding-->
+    <Style x:Key="GridLeftSlideLeft" TargetType="Grid">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Green"/>
+            </Trigger>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-220,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.8"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-220,0,0,0" DecelerationRatio=".9" Duration="0:0:0.5"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- EndRegion - Main Window Left Grid Sliding-->
+</ResourceDictionary>

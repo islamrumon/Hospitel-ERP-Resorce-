@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="ASITHmsWpf.Manpower.frmEntryAttn1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Tag="Attendance &amp; Leave Management" Style="{StaticResource IOUserControl}" Initialized="UserControl_Initialized"  Loaded="UserControl_Loaded">
+    <!--<UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard Duration="00:00:10" Storyboard.TargetProperty="Opacity">
+                    <DoubleAnimation From="0" To="1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>-->
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <Label x:Name="lblTitle1" Content="ATTENDANCE &amp; LEAVE MANAGEMENT" Width="500" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="400,0,0,0" />
+            </StackPanel>
+            <StackPanel Margin="0,-25,0,0">
+                <TabControl x:Name="tabPanel1" MinHeight="560" SelectedIndex="0" TabStripPlacement="Top" SelectionChanged="tabPanel1_SelectionChanged" >
+                    <TabItem x:Name="tbiMachineAttn1" Width="125" Style="{StaticResource StdTabItemStyle01}" Tag="MACHINE BASED ATTENDANCE" >
+                        <TabItem.Header>
+                            <StackPanel >
+                                <TextBlock Text="Machine Attendence" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel x:Name="stpkTab0" >
+                            <!--<ats:frmEntryAttn102 x:Name="MACHINE_ATTN" />-->
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="tbiMachineAttn1a" Width="5" IsEnabled="False"/>
+                    <TabItem x:Name="tbiManualAttn1" Width="125" Style="{StaticResource StdTabItemStyle01}"  Tag="MANUAL APPROVALS" >
+                        <TabItem.Header>
+                            <StackPanel >
+                                <TextBlock Text="Manual Approvals" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel x:Name="stpkTab1" >
+                            <!--<ats:frmEntryAttn103 x:Name="MANUAL_APRV" />-->                            
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

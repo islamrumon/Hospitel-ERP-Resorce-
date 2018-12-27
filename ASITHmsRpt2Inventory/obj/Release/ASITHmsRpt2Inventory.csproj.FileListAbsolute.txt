@@ -1,0 +1,9 @@
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\bin\Release\ASITHmsRpt2Inventory.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\bin\Release\ASITHmsRpt2Inventory.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\bin\Release\ASITHmsEntity.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\bin\Release\ASITHmsEntity.pdb
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\obj\Release\ASITHmsRpt2Inventory.csprojResolveAssemblyReference.cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\obj\Release\RdlCompile.cache
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\obj\Release\RdlCompile.compiled
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\obj\Release\ASITHmsRpt2Inventory.dll
+C:\Hafiz\PROJECTS_VS2013\ERP_HEALTH\ASIT_Hospital\ASITHmsRpt2Inventory\obj\Release\ASITHmsRpt2Inventory.pdb

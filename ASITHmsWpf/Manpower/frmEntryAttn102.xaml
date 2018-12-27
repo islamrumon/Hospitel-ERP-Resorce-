@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="ASITHmsWpf.Manpower.frmEntryAttn102"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"
+             mc:Ignorable="d"  Tag="Staff Machine Based Attendance Information - Entry/Edit Screen" Style="{StaticResource IOUserControl}" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded" >
+    <Grid>
+        <StackPanel Margin="0,5,0,0" >
+            <StackPanel  Orientation="Horizontal" >
+                <StackPanel x:Name="stkpMain" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Location :" Width="80"  HorizontalContentAlignment="Right" FontWeight="Bold" />
+                        <ComboBox x:Name="cmbSectCodAll" Width="300" IsReadOnly="True" SelectedIndex="0" SelectionChanged="cmbSectCodAll_SelectionChanged" />
+                        <Label Content="Month :" Width="60" HorizontalContentAlignment="Right" FontWeight="Bold" />
+                        <ComboBox x:Name="cmbInfoMonth" Width="180" FontWeight="Bold" SelectionChanged="cmbInfoMonth_SelectionChanged" />
+                        <Label Content="Date :" HorizontalContentAlignment="Right" FontStyle="Normal" Target="{Binding ElementName=xctk_EventDateAll}" Width="60" FontWeight="Bold" />
+                        <xctk:DateTimePicker x:Name="xctk_InfoDate"  Style="{StaticResource StdDateTimePickerStyle01}" Width="130" FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel x:Name="stkpEmpSearch" Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Employee :" Width="80" HorizontalContentAlignment="Right" FontWeight="Bold" />
+                        <UC:AutoCompleteTextBox x:Name="AtxtEmpAll" SearchType="C" Width="540" ToolTip="Right Click or Double Click to view existing staff list" MouseDoubleClick="AtxtEmpAll_MouseDoubleClick">
+                            <UC:AutoCompleteTextBox.ContextMenu>
+                                <ContextMenu x:Name="conMenuHCMAtnAll" Height="400" Width="400" />
+                            </UC:AutoCompleteTextBox.ContextMenu>
+                        </UC:AutoCompleteTextBox>
+                        <CheckBox x:Name="chkMacAttnDate" Content="Consider Whole Month" VerticalAlignment="Center" Margin="30,0,0,0" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="25,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnShowInfo" Content="Show" Width="75" FontSize="14" Height="24" FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Click="btnShowInfo_Click"  Margin="0,0,0,0" />
+                        <Button x:Name="btnPrintAttSchdlDay" Content="Print" Width="75" HorizontalAlignment="Right" FontSize="14" Height="24" Style="{StaticResource StdBtnStyle01}" Click="btnPrintAttSchdlDay_Click" Margin="10,0,0,0"  />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button x:Name="btnUpdateMacData" Content="Update Machine Data" Style="{StaticResource StdBtnStyle01}" FontSize="14" Height="24" Width="160" Click="btnUpdateMacData_Click" />
+                    </StackPanel>
+                
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="stkpMacAtt" Margin="10,10,0,0">
+                <DataGrid x:Name="dgActTrmAttn" AutoGenerateColumns="False" MaxHeight="480"  HorizontalAlignment="Left" IsReadOnly="True" RowHeaderWidth="5" FontSize="12"  AlternationCount="2" AlternatingRowBackground="#FFEDFFEE" >
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#FFE2D2CE" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Height" Value="25" />
+                        </Style>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background"  Value="Bisque" />
+                                    <Setter Property="Foreground"  Value="Black" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="Height" Value="30" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="90" Header="Date" Binding="{Binding Path=attndate, StringFormat=\{0: dd-MMM-yyyy ddd\}}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="150" Header="Department" Binding="{Binding Path=sectname}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="50" Header="Emp ID" Binding="{Binding Path=staffid}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="250" Header="Name of Employee and Designation" Binding="{Binding Path=hcnamdsg}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="70" Header="S.InTime" Binding="{Binding Path=InTime1}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="70" Header="S.Brk.Start" Binding="{Binding Path=OutTime1}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="70" Header="S.Brk.End" Binding="{Binding Path=InTime2}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="70" Header="S.OutTime" Binding="{Binding Path=OutTime2}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="80" Header="Sch. Note" Binding="{Binding Path=Rmrks}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                        <DataGridTextColumn Width="260" Header="Machine Punch Details" Binding="{Binding Path=atndtl}" FontSize="10" FocusManager.IsFocusScope="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False" CanUserResize="False" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

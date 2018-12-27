@@ -1,0 +1,529 @@
+﻿<UserControl x:Class="ASITHmsWpf.Commercial.SuperShop.frmEntryShopPOS101"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="1190" Tag="SUPER SHOP SALES ENTRY" Style="{StaticResource IOUserControl}" FontSize="12" Initialized="UserControl_Initialized" 
+             Loaded="UserControl_Loaded"  Unloaded="UserControl_Unloaded">
+    <Grid>
+        <Grid Name="GridDataEntry">
+            <StackPanel >
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock x:Name="txtblEditMode" Visibility="Visible" Text="[ Invoice In Edit Mode ]" TextAlignment="Center" Foreground="Yellow" FontWeight="Bold" Background="Red" Width="200" Margin="0,0,0,0" />
+                    <CheckBox x:Name="chkSectBlocked" Focusable="False" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" Click="chkSectBlocked_Click" />
+                    <Label Content="Store : " Focusable="False" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="40" Padding="0,2,2,2" />
+                    <ComboBox x:Name="cmbSectCod" Width="200" Height="22" Focusable="False" FontWeight="Bold" SelectedIndex="0" Background="LightGoldenrodYellow" BorderThickness="0" 
+                                      BorderBrush="Transparent" Padding="0" Margin="2,0,0,0" IsEnabled="False" />
+                    <StackPanel x:Name="stkpDraftOption" Orientation="Horizontal" Background="Azure"  Width="245">
+                        <CheckBox x:Name="chkAllowDraft" Content="Allow Draft" IsEnabled="False" VerticalAlignment="Center" />
+                        <!--IsEnabled="False" when finalized-->
+                        <CheckBox x:Name="chkShowDraft" Content="Hold Invoices" Margin="50,0,0,0" VerticalAlignment="Center" Focusable="False"
+                                          Click="chkShowDraft_Click" IsEnabled="{Binding ElementName=chkAllowDraft, Path=IsChecked}" />
+                    </StackPanel>              
+                    <CheckBox x:Name="chkDateBlocked" Focusable="False" HorizontalContentAlignment="Right" VerticalAlignment="Center" Click="chkDateBlocked_Click" Margin="5,0,0,0" />
+                    <Label Content="_Date : " Focusable="False" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="40" Padding="0,2,2,2" />
+                    <xctk:DateTimePicker x:Name="xctk_dtpSalDat" Style="{StaticResource StdDateTimePickerStyle01}" FontWeight="Bold" Height="22" Width="120" IsEnabled="False" />
+                    <Label Content="Invoice #" Width="60" HorizontalContentAlignment="Right" />
+                    <TextBlock x:Name="txtTransID" Width="145" FontWeight="Bold" Height="22" Background="LightGoldenrodYellow" />
+
+                    <Button x:Name="btnNewShow" Style="{StaticResource StdBtnStyle01}" Width="75" Content="_VOID" Tag="OkNew" FontWeight="Bold" Margin="20,0,0,0" Click="btnNewShow_Click" />
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal">
+                    <StackPanel  Width="900" Height="550">
+                        <StackPanel x:Name="stkpDataEntry" Width="900" Height="550" Visibility="Visible">
+                            <StackPanel>
+                                <StackPanel >
+                                    <StackPanel  Orientation="Horizontal">
+                                        <Label Content="Product ID/_Bar Code" Width="200" Padding="0,0,0,0" FontWeight="Bold" Foreground="Blue"  VerticalAlignment="Center" 
+                                       Target="{Binding ElementName=txtItemCode}" />
+                                        <TextBlock x:Name="txtbCustName" Width="420" Margin="280,0,0,0" />
+                                    </StackPanel>
+                                    <StackPanel  Orientation="Horizontal" Height="24">
+                                        <StackPanel Orientation="Horizontal">
+                                            <xctk:WatermarkTextBox x:Name="txtItemCode0" Width="0" Watermark="Enter Item Code" />
+                                            <xctk:WatermarkTextBox x:Name="txtItemCode" Width="200" Watermark="Enter Item Code" KeyDown="txtItemCode_KeyDown" MouseDoubleClick="txtItemCode_MouseDoubleClick" />
+                                            <Button x:Name="btnAddItem" Content="_Add" Width="30" Click="btnAddItem_Click" Height="24" VerticalAlignment="Top"  />
+                                        </StackPanel>
+                                        <StackPanel x:Name="stkpNav1" Orientation="Horizontal" HorizontalAlignment="Left" Height="20" Width="165" Visibility="Visible" Margin="0,0,0,0" Background="#FFEEEDE4">
+                                            <Button x:Name="btnTop" Content="|&lt;" ToolTip="First record" Width="25" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Focusable="False" Click="btnNav_Click" />
+                                            <Button x:Name="btnPrev" Content="&lt;" ToolTip="Previous record" Width="25" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="5,0,0,0" Focusable="False" Click="btnNav_Click" />
+                                            <Button x:Name="btnNext" Content="&gt;"  ToolTip="Next record" Width="25" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="5,0,0,0" Focusable="False" Click="btnNav_Click" />
+                                            <Button x:Name="btnBottom" Content="&gt;|" ToolTip="Last record" Width="25" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="5,0,0,0" Focusable="False" Click="btnNav_Click" />
+                                            <Button x:Name="btnDelete" Content="[ x ]" ToolTip="Delete record" Width="25" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="20,0,0,0" Focusable="False" Click="btnNav_Click" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="C_ustomer ID : " Width="85" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" Target="{Binding ElementName=txtCustID}" />
+                                            <xctk:WatermarkTextBox x:Name="txtCustID" Width="120" Watermark="Enter Customer Code"  VerticalAlignment="Center" />
+                                            <TextBlock Text="Points : " Width="40" TextAlignment="Right"  VerticalAlignment="Center" Margin="5,0,0,0" />
+                                            <TextBlock x:Name="txtCustPoint" Text="0" Width="55" TextAlignment="Right" Margin="5,0,0,0" Padding="2,3,5,2" Background="White" />
+                                            <TextBlock Text="Awards (Tk.) : " Width="80" TextAlignment="Right"  VerticalAlignment="Center" Margin="5,0,0,0" />
+                                            <TextBlock x:Name="txtCustAward" Text="0.00" Width="100" TextAlignment="Right" Margin="5,0,0,0" Padding="2,3,5,2" Background="White"  />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel>
+                                    <DataGrid x:Name="dgvSalesMemo" CanUserResizeRows="False" CanUserResizeColumns="False" IsReadOnly="False" BorderThickness="0" Margin="0,0,0,0" 
+                                          FontSize="11" Background="Transparent" VerticalAlignment="Top" Height="330" Width="900" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                          AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                          SelectionUnit="FullRow" SelectionMode="Single" >
+                                        <DataGrid.Resources>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="Background" Value="#FFF1F0E6" />
+                                                <Setter Property="BorderBrush" Value="Wheat" />
+                                                <Setter Property="BorderThickness" Value="1" />
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="FontSize" Value="13" />
+                                                <Setter Property="Height" Value="25" />
+                                            </Style>
+                                            <Style TargetType="{x:Type DataGridCell}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background"  Value="Bisque" />
+                                                        <Setter Property="Foreground"  Value="Black" />
+                                                        <Setter Property="FontSize" Value="12" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                            <Style TargetType="{x:Type DataGridRow}">
+                                                <Setter Property="Height" Value="26" />
+                                            </Style>
+                                        </DataGrid.Resources>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Width="30" Header="Sl#" >
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding trsl}" Tag="{Binding rsircode}" Width="25" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="90" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Product ID" Width="80" TextAlignment="Right" />
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding rsircode}" Tag="{Binding rsircode}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="330" >
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock HorizontalAlignment="Center" Text="Product Description" Focusable="False" Width="150" Padding="10,0,0,0" />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding Path=trdesc}" ToolTip="{Binding trdesc}" Tag="{Binding rsircode}" Margin="5,0,0,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="40" >
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock Text="Unit" Width="30" TextAlignment="Right"  />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding trunit}" ToolTip="{Binding trunit}" Margin="5,0,0,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="65" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Stock Qty"  />
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding invqty2, StringFormat=\{0: #\,##0;-#\,##0; \}}" Width="80" Padding="0,0,7,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="65" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <StackPanel Background="#FFDBFBF8" Height="22" Width="65">
+                                                        <TextBlock Text="Sales Qty" />
+                                                    </StackPanel>
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <StackPanel Background="#FFDBFBF8">
+                                                            <xctk:DoubleUpDown x:Name="dgvUdQtyChange" Maximum="99999.99" Minimum="0.00" Increment="1" ShowButtonSpinner="False" FormatString="###0.00"  
+                                                         VerticalAlignment="Center" TextAlignment="Right" AutoMoveFocus="True" BorderThickness="0"  Width="50" AutoSelectBehavior="OnFocus" 
+                                                         Padding="0,0,5,0" IsReadOnly="{Binding readmode}" Background="Transparent" LostFocus="dgvUdQtyChange_LostFocus"
+                                                                        IsEnabled="{Binding ElementName=btnUpdateTrans,Path=IsEnabled}"   
+                                			             Value="{Binding invqty, Mode=TwoWay, StringFormat=\{0: #\,##0\}, UpdateSourceTrigger=PropertyChanged}" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="90"  >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Rate" Width="80" TextAlignment="Right" Padding="0,0,10,0" />
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock TextAlignment="Right" VerticalAlignment="Top" FontSize="12" Focusable="False" Text="{Binding invrate, StringFormat={}{0: #,##0.00}}" 
+                                                               FontWeight="Bold" Padding="2,0,5,0" Width="75" ToolTip="{Binding invrmrk}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Amount" Width="90" TextAlignment="Right" Padding="0,0,10,0" />
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock TextAlignment="Right" VerticalAlignment="Top" FontSize="12" Focusable="False" Text="{Binding invamt, StringFormat={}{0: #,##0.00}}" FontWeight="Bold" Padding="2,0,5,0" Width="90" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="65" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="VAT" Width="60" TextAlignment="Right"  Padding="0,0,5,0" />
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock TextAlignment="Right" VerticalAlignment="Top" FontSize="12" Focusable="False" Text="{Binding invvatamt, StringFormat={}{0: #,##0.00}}" FontWeight="Bold" Padding="2,0,5,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                                <StackPanel x:Name="stkpFreeItems">
+                                    <Label Content="FREE ITEMS WITH MEMO" />
+                                    <DataGrid x:Name="dgvFreeMemoItem" CanUserResizeRows="False" CanUserResizeColumns="False" IsReadOnly="False" BorderThickness="0" Margin="0,0,0,0" FontSize="11" Background="Transparent"
+                        		VerticalAlignment="Top" Height="150" Width="900" ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" 
+                        		CanUserAddRows="False" CanUserDeleteRows="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionUnit="FullRow" 
+                        		SelectionMode="Single"  >
+                                        <DataGrid.Resources>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="Background" Value="#FFF1F0E6" />
+                                                <Setter Property="BorderBrush" Value="Wheat" />
+                                                <Setter Property="BorderThickness" Value="1" />
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="FontSize" Value="13" />
+                                                <Setter Property="Height" Value="25" />
+                                            </Style>
+                                            <Style TargetType="{x:Type DataGridCell}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background"  Value="Bisque" />
+                                                        <Setter Property="Foreground"  Value="Black" />
+                                                        <Setter Property="FontSize" Value="12" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                            <Style TargetType="{x:Type DataGridRow}">
+                                                <Setter Property="Height" Value="26" />
+                                            </Style>
+                                        </DataGrid.Resources>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Width="30" Header="Sl#" >
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding slnum}" ToolTip="{Binding isircode}" Width="25" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="90" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Product ID" Width="80" TextAlignment="Right" />
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <xctk:DateTimePicker Style="{StaticResource StdDateTimePickerStyle03}" Value="{Binding Path=ordertime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                     Background="Transparent" IsReadOnly="{Binding Path = readmode}" BorderThickness="0" ShowDropDownButton="False" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="330" >
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock HorizontalAlignment="Center" Text="Product Description" Focusable="False" Width="150" Padding="10,0,0,0" />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding gsirdesc}" ToolTip="{Binding gsirdesc}" Margin="5,0,0,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="40" >
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock Text="Unit" Width="30" TextAlignment="Right"  />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding gsirdesc}" ToolTip="{Binding gsirdesc}" Margin="5,0,0,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="70" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Stock Qty"  />
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding salam, StringFormat=\{0: #\,##0;-#\,##0; \}}" Width="80" Padding="0,0,7,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="110" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Free Qty (Auto)"/>
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <xctk:DoubleUpDown Maximum="99999" Minimum="0" Increment="1" ShowButtonSpinner="False" FormatString="###0"  VerticalAlignment="Center" TextAlignment="Right" AutoMoveFocus="True"             BorderThickness="0"  Width="50" AutoSelectBehavior="OnFocus" Padding="0,0,5,0"  IsReadOnly="{Binding readmode}" Background="Transparent"
+                                					Value="{Binding itemqty, Mode=TwoWay, StringFormat=\{0: #\,##0\}, UpdateSourceTrigger=PropertyChanged}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="120" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Free Qty (Manual)"/>
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <xctk:DoubleUpDown Maximum="99999" Minimum="0" Increment="1" ShowButtonSpinner="False" FormatString="###0"  VerticalAlignment="Center" TextAlignment="Right" AutoMoveFocus="True"             BorderThickness="0"  Width="50" AutoSelectBehavior="OnFocus" Padding="0,0,5,0"  IsReadOnly="{Binding readmode}" Background="Transparent"
+                                					Value="{Binding itemqty, Mode=TwoWay, StringFormat=\{0: #\,##0\}, UpdateSourceTrigger=PropertyChanged}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel x:Name="stkpPrevTrans" Width="900" Height="550" Visibility="Collapsed" >
+                            <StackPanel Background="DarkSalmon">
+                                <Label Content="LIST OF SALES INVOICEES" FontSize="14" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Width="240">
+                                    <StackPanel Margin="0,25,0,0">
+                                        <StackPanel x:Name="stkpFilter1" Width="230" HorizontalAlignment="Left">
+                                            <StackPanel Background="Aquamarine" Height="140">
+                                                <Label Content="SEARCH OPTIONS" Background="Maroon" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Center" />
+                                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                                                    <Label Content="Dated From : " Width="90" HorizontalContentAlignment="Right" VerticalAlignment="Center"  />
+                                                    <xctk:DateTimePicker x:Name="xctk_dtpSrchDat1" Style="{StaticResource StdDateTimePickerStyle01}" Width="120" FontSize="14"  />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                                                    <Label Content="To : " Width="90" Margin="0,0,0,0"  HorizontalContentAlignment="Right"  VerticalAlignment="Center" />
+                                                    <xctk:DateTimePicker x:Name="xctk_dtpSrchDat2" Style="{StaticResource StdDateTimePickerStyle01}" Width="120" FontSize="14"  />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                    <Label Content="Invoice No. : " Width="90" VerticalAlignment="Center" HorizontalContentAlignment="Right"  />
+                                                    <xctk:WatermarkTextBox x:Name="txtSrchInvNo" Width="120" Watermark="Invoice No" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="22"
+                                                    AutoMoveFocus="True" AutoSelectBehavior="OnFocus" MaxLength="15" VerticalAlignment="Center"  />
+                                                </StackPanel>
+                                           </StackPanel>
+                                            <StackPanel Background="DarkCyan" Width="230" Height="170" HorizontalAlignment="Left">
+                                                <Button x:Name="btnFilter1" Content="RE-BUILD LIST"  Style="{StaticResource StdBtnStyle01}" FontWeight="Bold"
+                                                    Width="120" Click="btnFilter1_Click" Margin="70,15,0,0" />
+
+                                                <Button x:Name="btnPrint1" Content="VIEW INVOICE"  Style="{StaticResource StdBtnStyle01}" FontWeight="Bold"
+                                                    Width="120" Click="btnPrint1_Click" Margin="70,15,0,0" />
+                                                <Button x:Name="btnDelete1" Content="DELETE INVOICE"  Style="{StaticResource StdBtnStyle01}" FontWeight="Bold" 
+                                                    Width="120" Click="btnDelete1_Click" Margin="70,15,0,0" />
+                                                <Button x:Name="btnEdit1" Content="EDIT INVOICE"  Style="{StaticResource StdBtnStyle01}" FontWeight="Bold" 
+                                                    Width="120" Click="btnEdit1_Click" Margin="70,15,0,0" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Width="350">
+                                    <Label Content="Transaction List :" HorizontalAlignment="Left" Width="100" FontWeight="Bold" />
+                                    <DataGrid x:Name="dgvPrevTransList" CanUserResizeRows="False" Background="Transparent"  BorderThickness="0" VerticalAlignment="Top" 
+                                          Height="500" Width="350" AutoGenerateColumns="False" HorizontalAlignment="Left" 
+                                  CanUserAddRows="False" CanUserDeleteRows="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionUnit="FullRow" MouseDoubleClick="dgvPrevTransList_MouseDoubleClick"
+                                  AlternationCount="2" AlternatingRowBackground="#FFEDFFEE" >
+                                        <DataGrid.Resources>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="Background" Value="#FFE2D2CE" />
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="Height" Value="25" />
+                                            </Style>
+                                            <Style TargetType="DataGridCell">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background"  Value="Bisque" />
+                                                        <Setter Property="Foreground"  Value="Black" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                            <Style TargetType="{x:Type DataGridRow}">
+                                                <Setter Property="Height" Value="25" />
+                                            </Style>
+                                        </DataGrid.Resources>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Width="30" >
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock TextAlignment="Center" Text="Sl#" FontWeight="Bold"  Focusable="False" FontSize="12" />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock TextAlignment="Right" VerticalAlignment="Top" Text="{Binding slnum, StringFormat={}{0: #,##0) }}" FontSize="12" Padding="0,0,2,0" Tag="{Binding invno}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="80">
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock VerticalAlignment="Top" Text="Inv. Date" FontWeight="Bold"  Focusable="False" Width="60" FontSize="12" Margin="10,0,0,0" />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Path=invdat1}"  TextAlignment="Center" Margin="0,2,0,0" Tag="{Binding invno}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn  Width="110" >
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock TextAlignment="Center" Text="Inv. No." FontWeight="Bold" Focusable="False" FontSize="12" />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock TextAlignment="Center" VerticalAlignment="Top" Text="{Binding invno1}" ToolTip="{Binding preparetrm}" FontSize="12"  />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" >
+                                                <DataGridTemplateColumn.HeaderTemplate>
+                                                    <ItemContainerTemplate>
+                                                        <TextBlock TextAlignment="Center" VerticalAlignment="Top" Text="Bill Amount" FontWeight="Bold" FontSize="12" />
+                                                    </ItemContainerTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock TextAlignment="Right" VerticalAlignment="Top" FontSize="12" 
+                                                                   Text="{Binding billam, StringFormat={}{0: #,##0.00;(#,##0.00); }}" FontWeight="Bold" Padding="2,0,5,0" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Width="300" Height="550"  >
+                     
+                        <Border BorderBrush="Yellow" BorderThickness="2" Background="AliceBlue" Margin="0,100,0,0" >
+                            <StackPanel Background="#FF2C382A">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Button x:Name="btnTotal" Content="_TOTAL (TK.) : " HorizontalContentAlignment="Right" Width="130" Height="24" FontWeight="Bold" Focusable="False"
+                                        Background="Transparent" Foreground="White" BorderThickness="0" BorderBrush="Transparent" Click="btnTotal_Click"  />
+                                    <Label x:Name="lblGrandTotal" Content="00,000.00" HorizontalContentAlignment="Right" Width="100" Background="Transparent" Foreground="White" FontWeight="Bold" Height="24" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label Content="VAT (TK.) : " HorizontalContentAlignment="Right" Background="Transparent" Foreground="White" Width="130" FontWeight="Bold" Height="24" Padding="0,2,0,0" />
+                                    <Label x:Name="lblVATTotal" Content="00,000.00" HorizontalContentAlignment="Right" Width="100" Background="Transparent" Foreground="White" FontWeight="Bold" Height="24" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label Content="ROUND-UP (TK.) : " HorizontalContentAlignment="Right" Width="130" FontWeight="Bold" Background="Transparent" Foreground="White" 
+                                           Height="24" Padding="0,2,0,0" />
+                                    <Label x:Name="lblRoundUpAmt" Content="00,000.00" HorizontalContentAlignment="Right" Width="100" Background="Transparent" Foreground="White" FontWeight="Bold" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label Content="NET BILL (TK.) : " HorizontalContentAlignment="Right" Width="130" FontWeight="Bold" Background="Transparent" Foreground="White" 
+                                           Height="24" Padding="0,2,0,0" />
+                                    <Label x:Name="lblTotalBill" Content="00,000.00" HorizontalContentAlignment="Right" Width="100" Background="Transparent" Foreground="White" FontWeight="Bold" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="PAYMENT TYPE : " Width="130" TextAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"  Padding="0,2,0,0"/>
+                            <ComboBox x:Name="cmbPayType" Width="160" FontSize="12" SelectedIndex="0" FontWeight="Bold" VerticalAlignment="Center" Height="24" >
+                                <ComboBoxItem Content="By Cash" Tag="CASH" />
+                                <ComboBoxItem Content="By Card" Tag="CARD" />
+                                <ComboBoxItem Content="Credit Sale" Tag="CREDIT" />
+                                <ComboBoxItem Content="Others" Tag="OTHERS" />
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="CARD/REF. NO. : " HorizontalContentAlignment="Right" Width="130" FontWeight="Bold" Height="24" VerticalAlignment="Center" 
+                                   Target="{Binding ElementName=txtMemoNar}" Padding="0,2,5,0" />
+
+                            <xctk:WatermarkTextBox x:Name="txtMemoNar" Width="160" Watermark="Narration" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="22" 
+                                       AutoMoveFocus="True" AutoSelectBehavior="OnFocus" MaxLength="100" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label x:Name="lblPaidAmt" Content="CASH _RECEIVE (TK.) : " Width="130" HorizontalContentAlignment="Right" FontWeight="Bold" VerticalAlignment="Center"  
+                                   Padding="0,2,0,0" Target="{Binding ElementName=txtPaidAmt}" />
+
+                            <xctk:WatermarkTextBox x:Name="txtPaidAmt" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Foreground="Blue" 
+                                    HorizontalContentAlignment="Right" Width="100" FontWeight="Bold" AutoSelectBehavior="OnFocus" Background="White"
+                                    Style="{StaticResource wtxtBx}" Watermark="Amount" LostFocus="txtPaidAmt_LostFocus" Padding="2,2,5,0" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="CHANGE CASH :" Width="130" HorizontalContentAlignment="Right" FontWeight="Bold" Height="24" VerticalAlignment="Center" />
+                            <Label x:Name="lblChangeCash" Content="00,000.00" HorizontalContentAlignment="Right" Width="100" FontWeight="Bold"  />
+                        </StackPanel>
+
+                        <StackPanel x:Name="stkpFinalUpdate" Orientation="Horizontal" Margin="0,10,0,0" >
+                            <Button x:Name="btnPrintTrans" Style="{StaticResource StdBtnStyle01}" FontWeight="Bold" Width="100" Content="_PRINT" Click="btnPrintTrans_Click" Margin="5,0,0,0" />
+                            <Button x:Name="btnUpdateTrans" Style="{StaticResource StdBtnStyle01}" FontWeight="Bold" Width="100" Content="_SAVE" Tag = "Update" 
+                                    Click="btnUpdateTrans_Click" Margin="50,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <CheckBox x:Name="chkPrintDirect" Content="Direct" Width="100" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0" IsChecked="False" />
+                            <CheckBox x:Name="chkConfrmSave" Content="Confirm" Width="100" Focusable="False" FontSize="14" VerticalAlignment="Center" Margin="50,0,0,0" IsChecked="True" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Button x:Name="btnPrevTrans" Style="{StaticResource StdBtnStyle01}" FontWeight="Bold" Width="100" Content="INVOICE LIST" Click="btnPrevTrans_Click"  Margin="5,0,0,0" />
+                            <Button x:Name="btnHoldInv" Style="{StaticResource StdBtnStyle01}" FontWeight="Bold" Width="100" Content="HOLD INVOICE"  Margin="50,0,0,0" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="gridCalc1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="150,290,0,0" Width="325" Height="45" Visibility="Collapsed" >
+            <StackPanel Background="Aquamarine">
+                <TextBlock Text="Instant Calculator" FontWeight="Bold" Height="20" />
+                <StackPanel Orientation="Horizontal">
+                    <xctk:WatermarkTextBox x:Name="txtExprToCalc" Width="240" HorizontalAlignment="Left" />
+                    <Button x:Name="btnCalculate" Content="Calculate" Width="80" Margin="5,0,0,0" Click="btnCalculate_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridItemList" Margin="30,120,0,0" Height="300" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AliceBlue">
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Label Content="_Find :" Target="{Binding ElementName=txtItemName}" Width="40" HorizontalContentAlignment="Right" />
+                    <xctk:WatermarkTextBox x:Name="txtItemName" Width="430" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" 
+                                          TextChanged="txtItemName_TextChanged" KeyDown="txtItemName_KeyDown"  Background="LightGoldenrodYellow" />
+                    <Button x:Name="btnCloseGridItemList" Content="X" Width="20" Click="btnCloseGridItemList_Click" Focusable="False" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Content="_List :" Target="{Binding ElementName=lstItem}" Width="40" HorizontalContentAlignment="Right" />
+                    <ListBox x:Name="lstItem" Height="280" Width="450" Background="Transparent" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto" FontSize="12" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="lstItem_MouseDoubleClick" KeyUp="lstItem_KeyUp" >
+                        <ListBoxItem Content="Referrer Name - 001" Tag="001" />
+                        <ListBoxItem Content="Referrer Name - 002" Tag="002" />
+                        <ListBoxItem Content="Referrer Name - 003" Tag="003" />
+                        <ListBoxItem Content="Referrer Name - 004" Tag="004" />
+                        <ListBoxItem Content="Referrer Name - 005" Tag="005" />
+                    </ListBox>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

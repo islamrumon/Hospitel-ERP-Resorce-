@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="ASITHmsWpf.General.mnuMainDashboard1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:ASITHmsWpf.Marketing"
+             mc:Ignorable="d" d:DesignHeight="640" d:DesignWidth="1200" FontSize="14" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded" >
+    <Grid>
+        <StackPanel Background="Transparent">
+            <StackPanel Orientation="Horizontal" Height="630"  >
+                <StackPanel>
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="..\Images\bgOffWhite.png" Stretch="Fill" Opacity="0.7" />
+                    </StackPanel.Background>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="22" Background="Azure" Opacity="0.4" >
+                        <Button x:Name="btnTvExpand" Content="+" Width="25" Focusable="False" Margin="0,2,0,2" FontWeight="Bold" 
+                               FontSize="14" Background="Transparent" BorderThickness="0" Click="btnTvManage_Click" ToolTip="Expand all menu items"  />
+                        <Button x:Name="btnTvCollapsed" Content="-" Width="25" Focusable="False"  Margin="3,2,0,2" FontWeight="Bold" 
+                               FontSize="14" Background="Transparent" BorderThickness="0" Click="btnTvManage_Click" ToolTip="Collapse all menu items" />
+                        <xctk:WatermarkTextBox Width="170" Background="Transparent" Margin="3,2,0,2" TabIndex="100" Watermark="Type to find menu item"
+                                       FontWeight="Normal" FontSize="11" Padding="0" />
+                        <Button x:Name="btnTvFind" Width="20" Focusable="False" Background="Transparent" Click="btnTvManage_Click" ToolTip="Find menu item" Margin="3,2,0,2" BorderThickness="0" >
+                            <Button.Content>
+                                <Image Source="..\Images\LookupGlass.png" Stretch="Fill" />
+                            </Button.Content>
+                            <!--<Button.Background>
+                                <ImageBrush ImageSource="..\Images\LookupGlass.png" Stretch="Fill" />
+                            </Button.Background>-->
+                        </Button>
+                    </StackPanel>
+                    <TreeView x:Name="tvMenu1" Width="250" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                          Height="580" Background="Transparent" TabIndex="1" BorderThickness="0"  >
+
+                        <TreeViewItem Header="aaaa" >
+                            <TreeViewItem Header="a-xxxx" />
+                            <TreeViewItem Header="a-yyyy" />
+                            <TreeViewItem Header="a-zzzz" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="bbbb">
+                            <TreeViewItem Header="b-xxxx" />
+                            <TreeViewItem Header="b-yyyy" />
+                            <TreeViewItem Header="b-zzzz" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="cccc">
+                            <TreeViewItem Header="c-xxxx" />
+                            <TreeViewItem Header="c-yyyy" />
+                            <TreeViewItem Header="c-zzzz" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="dddd">
+                            <TreeViewItem Header="d-xxxx" />
+                            <TreeViewItem Header="d-yyyy" />
+                            <TreeViewItem Header="d-zzzz" />
+                        </TreeViewItem>
+                    </TreeView>
+                </StackPanel>
+                <StackPanel Height="630" Width="950" VerticalAlignment="Top">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="..\Images\dashbordpic_h.jpg" Stretch="UniformToFill" />
+                        <!--<ImageBrush ImageSource="..\Images\ParkImage1.jpg" Stretch="Fill" />-->
+                        <!--<ImageBrush ImageSource="..\Images\SplashScreen1g.jpg" Stretch="UniformToFill" Opacity="0.2" />-->
+                        <!--<ImageBrush ImageSource="..\Images\dashbordpic_g.jpg" Stretch="UniformToFill" />-->
+                        <!--<ImageBrush ImageSource="..\Images\SplashScreen1a.jpg" Stretch="UniformToFill" Opacity="0.1" />-->
+                        <!--<ImageBrush ImageSource="..\Images\SplashScreen1t.jpg" Stretch="UniformToFill" Opacity="0.1" />-->
+                        <!--<ImageBrush ImageSource="..\Images\SplashScreen1r.jpg" Stretch="UniformToFill" Opacity="0.1" />-->
+                        <!--<ImageBrush ImageSource="..\Images\FoodShop5.jpg" Stretch="UniformToFill" Opacity="1.0" />-->
+                        <!--<ImageBrush ImageSource="..\Images\SplashScreen1f.png" Stretch="UniformToFill" Opacity="0.1" />-->
+                        <!--<ImageBrush ImageSource="..\Images\ParkImage1.jpg" Stretch="UniformToFill" />-->
+                    </StackPanel.Background>
+                    <StackPanel x:Name="xctkGrapg" Visibility="Visible">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="22" Width="950" Background="Azure" Opacity="0.5">
+                            <TextBlock Text="Information Summary Dashboard (Upcoming Templates)" TextAlignment="Right" VerticalAlignment="Center" Padding="0,0,80,0" Width="680"/>
+                            <CheckBox x:Name="chkDashboardItems" IsChecked="False" VerticalContentAlignment="Center" Content="Show Dashboard Template Items" Width="270" Click="chkDashboardItems_Click" />
+                        </StackPanel>
+                        <ScrollViewer x:Name="scrlvGrapg"  Visibility="Collapsed"  VerticalScrollBarVisibility="Auto" Height="630" Width="950" Margin="0,5,0,0">
+                            <WrapPanel  >
+                                <!--<local:frmPieSeries HorizontalAlignment="Stretch"/>-->
+                                <local:frmDashboardG1 HorizontalAlignment="Stretch" Margin="0,0,0,0" Tag="G1" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG2 HorizontalAlignment="Stretch" Margin="10,0,10,0" Tag="G2" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG3 HorizontalAlignment="Stretch" Margin="0,0,0,0" Tag="G3" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG4 HorizontalAlignment="Stretch" Margin="0,10,0,0" Tag="G4" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG5 HorizontalAlignment="Stretch" Margin="10,10,10,0" Tag="G5" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG6 HorizontalAlignment="Stretch" Margin="0,10,0,0" Tag="G6" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+
+                                <local:frmDashboardG1 HorizontalAlignment="Stretch" Margin="0,10,0,0" Tag="G7" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG2 HorizontalAlignment="Stretch" Margin="10,10,10,0" Tag="G8" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG3 HorizontalAlignment="Stretch" Margin="0,10,0,0" Tag="G9" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG4 HorizontalAlignment="Stretch" Margin="0,10,0,0" Tag="G10" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG5 HorizontalAlignment="Stretch" Margin="10,10,10,0" Tag="G11" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                                <local:frmDashboardG6 HorizontalAlignment="Stretch" Margin="0,10,0,0" Tag="G12" MouseDoubleClick="frmDashboardG1_MouseDoubleClick"/>
+                            </WrapPanel>
+                        </ScrollViewer>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

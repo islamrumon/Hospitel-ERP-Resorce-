@@ -1,0 +1,934 @@
+﻿<UserControl x:Class="ASITHmsWpf.Commercial.Hospital.frmEntryFrontDesk101"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" mc:Ignorable="d" 
+             d:DesignHeight="580" d:DesignWidth="1190" Tag="Patient Registration, Billing &amp; Report Delivery" Style="{StaticResource IOUserControl}"
+             Initialized="UserControl_Initialized" Loaded="UserControl_Loaded"  Unloaded="UserControl_Unloaded" >
+    <Grid>
+        <Grid Name="GridDataEntry">
+            <StackPanel>
+                <!--<StackPanel.RenderTransform >
+                    <RotateTransform x:Name="noFreeze4a" />
+                </StackPanel.RenderTransform>
+                <StackPanel.RenderTransformOrigin>
+                    <Point X="0.5" Y="0.5" />
+                </StackPanel.RenderTransformOrigin>-->
+                <StackPanel.Triggers>
+                    <EventTrigger RoutedEvent="Window.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <!--<DoubleAnimation Storyboard.TargetProperty="(StackPanel.Height)"  From="0" To="650" Duration="0:0:1" />-->
+                                <!--<DoubleAnimation Storyboard.TargetProperty="(StackPanel.Width)"  From="0" To="1200" Duration="0:0:1"/>-->
+                                <!--<DoubleAnimation Storyboard.TargetProperty="(StackPanel.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:1" />-->
+                                <DoubleAnimation From="0" To="1" Duration="00:00:2" Storyboard.TargetProperty="Opacity" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </StackPanel.Triggers>
+                <StackPanel Orientation="Horizontal" Margin="5,5,0,0" Height="120" >
+                    <StackPanel x:Name="stkpTitleEntry" Width="1000">
+                        <StackPanel x:Name="stkpTitle1" Orientation="Horizontal" Height="26">
+                            <TextBlock Text="Invoice No :" Width="80" TextAlignment="Right" Padding="0,2,4,0" />
+                            <TextBlock x:Name="txtTransID" Width="115" Background="LightGoldenrodYellow" FontSize="16" FontWeight="Bold" Foreground="Blue" />
+                            <CheckBox x:Name="chkDateBlocked" Focusable="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Bold" Width="15" Height="20" Margin="5,0,0,0" />
+                            <Label Content="Date :" Width="50" HorizontalAlignment="Left" HorizontalContentAlignment="Right" FontWeight="Bold" Height="22" Padding="0,2,4,0" />
+                            <xctk:DateTimePicker x:Name="xctk_dtpInvDat" Style="{StaticResource StdDateTimePickerStyle03}" HorizontalAlignment="Left" FontWeight="Bold" Height="24" Width="175"         
+                                   Visibility="Visible" IsEnabled="{Binding ElementName=chkDateBlocked, Path=IsChecked}" ShowDropDownButton="{Binding ElementName=chkDateBlocked, Path=IsChecked}" 
+                                   LostFocus="xctk_dtpInvDat_LostFocus" />
+                            <StackPanel x:Name="stkpBranch" Orientation="Horizontal">
+                                <CheckBox x:Name="chkBranchName" Content="Branc_h :" VerticalContentAlignment="Center" Width="75" Foreground="#FF0720B9" Focusable="False" Margin="5,0,0,0" />
+                                <ComboBox x:Name="cmbBranch" Width="185" Height="24" SelectedIndex="0" Background="LightGoldenrodYellow" BorderThickness="0" 
+                                    BorderBrush="Transparent" IsEnabled="{Binding ElementName=chkBranchName, Path=IsChecked}" SelectionChanged="cmbBranch_SelectionChanged" >
+                                    <ComboBoxItem Content="Branch-001" Tag="1101" Uid="HO" />
+                                    <ComboBoxItem Content="Branch-002" Tag="1102" Uid="FO" />
+                                    <ComboBoxItem Content="Branch-003" Tag="1103" Uid="MO" />
+                                </ComboBox>
+                            </StackPanel>
+                            <ComboBox x:Name="cmbInvMode" Width="20" SelectedIndex="0" FontWeight="Bold" Background="Transparent" SelectionChanged="cmbInvMode_SelectionChanged" Margin="5,0,0,0" />
+                            <Label x:Name="lblInvMode" Content="Unknown Invoice" Tag="UNKNOWN_INVOICE" Width="132" Padding="0,2,2,0" FontWeight="Bold"  HorizontalContentAlignment="Right" MouseDoubleClick="lblInvMode_MouseDoubleClick" />
+                            <StackPanel x:Name="stkpEditPrevInv" Orientation="Horizontal" IsEnabled="False" >
+                                <TextBlock x:Name="txtPrevBrn" Text="{Binding ElementName=cmbBranch, Path=SelectedItem.Uid}" Tag="{Binding ElementName=cmbBranch, Path=SelectedItem.Tag}" Width="30" Padding="0,2,0,0" TextAlignment="Right" />
+                                <TextBlock Text="-" Width="8" Padding="0,2,0,0"  />
+                                <ComboBox x:Name="cmbPrevYearMon" Width="52" SelectedIndex="0" BorderThickness="0" HorizontalContentAlignment="Right" Padding="0,2,0,0" BorderBrush="Transparent" >
+                                    <ComboBoxItem Content="1712" Tag="201712" Width="50" HorizontalContentAlignment="Left" />
+                                    <ComboBoxItem Content="1711" Tag="201711" Width="50" HorizontalContentAlignment="Left" />
+                                    <ComboBoxItem Content="1710" Tag="201710" Width="50" HorizontalContentAlignment="Left" />
+                                </ComboBox>
+                                <xctk:WatermarkTextBox x:Name="txtPrevTransID" Width="45" Watermark="Existing Transaction ID" Style="{StaticResource wtxtBx}" Padding="2,3,0,0"  HorizontalContentAlignment="Left"
+                                       AutoMoveFocus="True" AutoSelectBehavior="OnFocus" MaxLength="5" PreviewTextInput="NumberOnlyValidationTextBox" LostFocus="txtPrevTransID_LostFocus" Background="White" />
+                            </StackPanel>
+                        </StackPanel>
+                        <Separator Foreground="Blue" Width="1000" Height="2" />
+                        <StackPanel x:Name="stkpTitle2" VerticalAlignment="Top">
+                            <StackPanel Orientation="Horizontal" Height="25" GotFocus="StackPanel_GotFocus" >
+                                <Label x:Name="lblPatientName" Content="Pati_ent Name :" Width="100" Padding="0,3,4,0" Target="{Binding ElementName=txtPatientName}"  HorizontalContentAlignment="Right" />
+                                <xctk:WatermarkTextBox x:Name="txtPatientName" Width="602" Watermark="Name of patient" Style="{StaticResource wtxtBx}" Padding="5,3,0,0" FontWeight="Bold" MaxLength="100"
+                                    AutoMoveFocus="True" AutoSelectBehavior="OnFocus" CharacterCasing="Upper" LostFocus="txtPatientName_LostFocus" />
+                                <Label Content="Contact P_hone :" Target="{Binding ElementName=txtContactNo}"  Width="113" HorizontalContentAlignment="Right" Padding="5,2,4,0"   />
+                                <xctk:WatermarkTextBox x:Name="txtContactNo" Width="180" Watermark="Contact phone" Style="{StaticResource wtxtBx}" Padding="5,0,0,0"  
+                                       PreviewTextInput="NumberValidationTextBox" AutoMoveFocus="True" AutoSelectBehavior="OnFocus"  MaxLength="20"  Background="White" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" Height="25" GotFocus="StackPanel_GotFocus" >
+                                <Label Content="Patient Age :" Width="100" HorizontalContentAlignment="Right" Padding="0,3,4,0" />
+                                <StackPanel Orientation="Horizontal" Background="White" Width="193" GotFocus="StackPanel_GotFocus" >
+                                    <xctk:IntegerUpDown x:Name="iudAgeY" Maximum="120" Minimum="0" Value="0" Width="30" TextAlignment="Center" FormatString="00" Margin="2,0,0,0"
+                                                        Background="Transparent" BorderThickness="0" ShowButtonSpinner="False"  />
+                                    <Label Content="Year(s)" VerticalAlignment="Center" Width="30" Padding="0,0,0,0" FontSize="10" />
+                                    <xctk:IntegerUpDown x:Name="iudAgeM" Maximum="11" Minimum="0" Value="0" Width="30" TextAlignment="Center" FormatString="00"  Background="Transparent" BorderThickness="0" ShowButtonSpinner="False" />
+                                    <Label Content="Month(s)" VerticalAlignment="Center" Width="40" Padding="0,0,0,0" FontSize="10" />
+                                    <xctk:IntegerUpDown x:Name="iudAgeD" Maximum="29" Minimum="0" Value="0" Width="30"  TextAlignment="Center" FormatString="00"  Background="Transparent" BorderThickness="0" ShowButtonSpinner="False" />
+                                    <Label Content="Day(s)" VerticalAlignment="Center" Width="30" Padding="0,0,0,0" FontSize="10" />
+                                </StackPanel>
+                                <Label Content="_Gender :" Target="{Binding ElementName=cmbPatientGender}" Width="60" HorizontalContentAlignment="Right" Padding="5,3,4,0" />
+                                <ComboBox x:Name="cmbPatientGender" Width="75" SelectedIndex="1" Background="LightGoldenrodYellow" BorderThickness="0" BorderBrush="Transparent">
+                                    <ComboBoxItem Content="Male" Tag="Male" />
+                                    <ComboBoxItem Content="Female" Tag="Female" />
+                                    <ComboBoxItem Content="Other" Tag="Other" />
+                                </ComboBox>
+                                <CheckBox x:Name="chkMemberID" Content="Mem_ber ID :" VerticalAlignment="Center" Width="100" IsChecked="False" Focusable="False" Margin="3,0,0,0"
+                                          HorizontalContentAlignment="Left"  />
+                                <xctk:WatermarkTextBox x:Name="txtMemberID" Width="170" Watermark="Membership no" Style="{StaticResource wtxtBx}" Padding="5,0,0,0"  
+                                       AutoMoveFocus="True" AutoSelectBehavior="OnFocus" IsEnabled="{Binding ElementName=chkMemberID, Path=IsChecked}" MaxLength="12"  Background="White" />
+
+                                <CheckBox x:Name="chkDeliveryTime" Content="_Delivery Time : "  Width="112" IsChecked="False" VerticalContentAlignment="Center" Focusable="False" 
+                                          HorizontalContentAlignment="Right" Padding="0,0,0,0"  Margin="2,0,0,0"  />
+                                <xctk:DateTimePicker x:Name="xcdtDeliveryDT" Width="180" Style="{StaticResource StdDateTimePickerStyle03}" FontWeight="Bold"
+                                                     TimePickerVisibility="Hidden" AutoCloseCalendar="True"  Background="White" 
+                                                     IsEnabled="{Binding ElementName=chkDeliveryTime, Path=IsChecked}" ShowDropDownButton="{Binding ElementName=chkDeliveryTime, Path=IsChecked}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" Height="25" >
+                                <CheckBox x:Name="chkRefBy" Content="Reg." Width="45" IsChecked="True" Focusable="False" Click="chkRefBy_Click" Padding="2,0,0,0" />
+                                <Label x:Name="lblRefByName" Content="_Ref. By :" Width="55" Target="{Binding ElementName=txtRefByName}" HorizontalContentAlignment="Right" Padding="0,0,4,0" />
+                                <TextBlock x:Name="txtRefByID" Width="110" Visibility="Collapsed" />
+                                <xctk:WatermarkTextBox x:Name="txtRefByName" Width="600" Watermark="Referal Name (Doctor/Company/Person/Self etc.)"  TextChanged="txtRefByName_TextChanged"
+                                Style="{StaticResource wtxtBx}"  AutoMoveFocus="True" AutoSelectBehavior="OnFocus" KeyDown="txtRefByName_KeyDown" Visibility="Visible"
+                                CharacterCasing="Upper" GotFocus="txtRefByName_GotFocus"  Background="White" />
+                                <xctk:WatermarkTextBox x:Name="txtRefRemarks" Width="600" Watermark="Referal Name (Unregistered Ref.)"  Style="{StaticResource wtxtBx}"  AutoMoveFocus="True" 
+                                          AutoSelectBehavior="OnFocus" CharacterCasing="Upper" Background="White" KeyDown="txtRefRemarks_KeyDown" Visibility="Collapsed" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel x:Name="stkpPrint" Orientation="Horizontal" Margin="800,-28,0,0" Height="25" >
+                            <CheckBox x:Name="chkPrintDirect" Content="Direct print" Focusable="False" Width="100" Margin="0,0,0,0" VerticalContentAlignment="Center" />
+                            <Button x:Name="btnPrintTrans" Style="{StaticResource StdBtnStyle01}" Width="75" Margin="10,0,0,0" Content="_Print"  Click="btnPrintTrans_Click" />
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                        <StackPanel x:Name="stkpPhoto" Height="115" Width="100" VerticalAlignment="Top" Margin="0,0,0,0" >
+                            <Image x:Name="imgEmptyPhoto" Source="/ASITHmsWpf;component/Images/NoUser.jpg" Visibility="Hidden" Height="0" Width="0" />
+                            <Button x:Name="btnPatPhoto" BorderThickness="0" MouseDoubleClick="btnPatPhoto_MouseDoubleClick" Focusable="False" >
+                                <Image x:Name="imgPatPhoto" Stretch="Fill" Height="115" Width="100" Tag="000000">
+                                    <Image.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem x:Name="imgMnuAddPhoto" Header="Add/Change Photo" Click="imgMnuAddPhoto_Click" />
+                                            <Separator />
+                                            <MenuItem x:Name="imgMnuRemovePhoto" Header="Remove Photo" Click="imgMnuRemovePhoto_Click" />
+                                        </ContextMenu>
+                                    </Image.ContextMenu>
+                                </Image>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Margin="5,0,0,0" >
+                            <Button x:Name="btnNewShow" HorizontalAlignment="Left" Style="{StaticResource StdBtnStyle01}" Width="75" FontWeight="Bold" Content="_Ok" Tag="Ok" Click="btnNewShow_Click" />
+                            <Button x:Name="btnFindPatient" Width="75" Content="_Find More" BorderThickness="0" Background="Transparent" Foreground="Blue"  Margin="0,10,0,0" Click="btnFindPatient_Click" Focusable="False" />
+                            <Button x:Name="btnTransList" Background="Transparent" Foreground="Blue" BorderThickness="0" Width="75" Margin="0,5,0,0" Content="Trans. List" Click="btnTransList_Click" Focusable="False" />
+                            <Button x:Name="btnUpdateTrans" Style="{StaticResource StdBtnStyle01}" Width="75" Margin="0,10,0,0" Content="_Save" Tag = "Save" Click="btnUpdateTrans_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="stkpEntry"  Margin="5,2,0,0" Visibility="Visible">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(StackPanel.Height)" From="0" To="450" Duration="0:0:1" />
+                                                <!--<DoubleAnimation Storyboard.TargetProperty="(StackPanel.Width)" From="1200" To="0" Duration="0:0:0.5" AutoReverse="True" />-->
+                                                <DoubleAnimation From="0" To="1" Duration="00:00:1" Storyboard.TargetProperty="Opacity" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <StackPanel HorizontalAlignment="Left">
+                        <DataGrid x:Name="dgvMemo" CanUserResizeRows="False" CanUserResizeColumns="False" IsReadOnly="False" BorderThickness="0" Margin="0,0,0,0" FontSize="11" Background="Transparent"
+                        		VerticalAlignment="Top" Height="285" Width="1180" ScrollViewer.VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" GotFocus="dgvMemo_GotFocus"
+                        		CanUserAddRows="False" CanUserDeleteRows="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionUnit="FullRow" 
+                        		SelectionMode="Single"  >
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="#FFE2D2CE" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="Height" Value="25" />
+                                </Style>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background"  Value="Bisque" />
+                                            <Setter Property="Foreground"  Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Setter Property="Height" Value="26" />
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="30" Header="Sl#" >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding slnum}" ToolTip="{Binding isircode}" Width="25" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="120" >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Order Date &amp; Time" Width="120" Margin="15,0,0,0"/>
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:DateTimePicker Style="{StaticResource StdDateTimePickerStyle03}" Value="{Binding Path=ordertime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                     Background="Transparent" IsReadOnly="{Binding Path = readmode}" BorderThickness="0" ShowDropDownButton="False" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="180" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock HorizontalAlignment="Center" Text="Group Descriptions" Focusable="False" Width="150" Padding="10,0,0,0" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding gsirdesc}" ToolTip="{Binding gsirdesc}" Margin="5,0,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="300"  >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock HorizontalAlignment="Center" Text="Descriptions" Focusable="False" Width="80" Padding="10,0,0,0" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding sirdesc}" ToolTip="{Binding sirdesc}" Margin="5,0,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="30" >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Qty" Width="30" Margin="10,0,0,0"/>
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:DoubleUpDown x:Name="dgDudQty" Maximum="99999" Minimum="0" Increment="1" ShowButtonSpinner="False" FormatString="###0"  
+                                                 VerticalAlignment="Center" TextAlignment="Right" AutoMoveFocus="True" BorderThickness="0"  Width="30" AutoSelectBehavior="OnFocus" 
+                                                 Padding="0,0,5,0"  IsReadOnly="{Binding readmode}" Background="Transparent" LostFocus="dgDudQty_LostFocus"
+                                                 Value="{Binding itemqty, Mode=TwoWay, StringFormat=\{0: #\,##0\}, UpdateSourceTrigger=PropertyChanged}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="70"  >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Rate" Width="70" TextAlignment="Right" Padding="0,0,10,0" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding salrate, StringFormat=\{0: #\,##0;-#\,##0; \}}" Width="70" Padding="0,0,5,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="70" >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Amount" Width="65" TextAlignment="Right" Padding="0,0,10,0" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding salam, StringFormat=\{0: #\,##0;-#\,##0; \}}" Width="70" Padding="0,0,5,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="65" >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Discount" Width="60" TextAlignment="Right"  Padding="0,0,5,0" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox  x:Name="dgtxtDiscount" VerticalAlignment="Center" TextAlignment="Right" AutoMoveFocus="True" 
+                                                    PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="65" LostFocus="dgtxtDiscount_LostFocus"
+                                					AutoSelectBehavior="OnFocus" Style="{StaticResource wtxtBx}" Watermark="Discount"  Background="Transparent" 
+                                					Text="{Binding idisam, Mode=TwoWay, StringFormat=\{0: #\,##0;-#\,##0; \}, UpdateSourceTrigger=PropertyChanged}" 
+                                					ToolTip="{Binding idisper}" Padding="0,0,5,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="40"  >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock HorizontalAlignment="Center" Text="B.Dis %"  Padding="2,0,0,0" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <xctk:WatermarkTextBox  x:Name="dgtxtRefsComp" VerticalAlignment="Center" TextAlignment="Right" AutoMoveFocus="True" 
+                                                    PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="25" LostFocus="dgtxtRefsComp_LostFocus"
+                                					AutoSelectBehavior="OnFocus" Style="{StaticResource wtxtBx}" Watermark="Discount"  Background="Transparent" IsReadOnly="{Binding readmode}" 
+                                					Text="{Binding refscomp, Mode=TwoWay, StringFormat=\{0: #\,##0;-#\,##0; \}, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,2,0" />
+                                                <TextBlock Text="{Binding refpermark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="15" VerticalAlignment="Center" 
+                                                           TextAlignment="Left" Padding="0,0,3,0" ToolTip="{Binding Path=refscomp}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="70" >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text=" Net Amount" TextAlignment="Right" Width="70" Padding="0,0,5,0" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="{Binding inetam, StringFormat=\{0: #\,##0\}}" Width="70" Padding="0,0,8,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="120" >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Remarks" Width="80" TextAlignment="Right" Padding="0,0,5,0" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox VerticalAlignment="Center" TextAlignment="Left" AutoMoveFocus="True" BorderThickness="0" MaxLength="50"
+                                					AutoSelectBehavior="OnFocus" Style="{StaticResource wtxtBx}" Watermark="Remarks" Background="Transparent" 
+                                					Text="{Binding itemrmrk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="0,0,5,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="70"  Visibility="Visible" >
+                                    <DataGridTemplateColumn.Header>
+                                        <CheckBox x:Name="chkDghDelivered" Content="Delivered" Width="70" Click="chkDghDelivered_Click" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox Content="Delivered" IsChecked="{Binding Path=delivered, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="120"  Visibility="Collapsed" >
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Text="Delivery Time" Width="120" Margin="15,0,0,0"/>
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:DateTimePicker Style="{StaticResource StdDateTimePickerStyle03}" Value="{Binding Path=delivtime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                   Background="Transparent" IsEnabled="{Binding Path = delivered}" IsReadOnly="{Binding Path = readmode}" BorderThickness="0" ShowDropDownButton="False" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel x:Name="stkpNav1" Orientation="Horizontal" HorizontalAlignment="Left" Height="20" Width="190" Visibility="Visible" Margin="415,-545,0,0" Background="#FFEEEDE4">
+                            <Button x:Name="btnTop" Content="|&lt;" ToolTip="First record" Width="30" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Focusable="False" Click="btnNav_Click" />
+                            <Button x:Name="btnPrev" Content="&lt;" ToolTip="Previous record" Width="30" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="5,0,0,0" Focusable="False" Click="btnNav_Click" />
+                            <Button x:Name="btnNext" Content="&gt;"  ToolTip="Next record" Width="30" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="5,0,0,0" Focusable="False" Click="btnNav_Click" />
+                            <Button x:Name="btnBottom" Content="&gt;|" ToolTip="Last record" Width="30" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="5,0,0,0" Focusable="False" Click="btnNav_Click" />
+                            <Button x:Name="btnDelete" Content="[ x ]" ToolTip="Delete record" Width="30" FontWeight="Bold" Background="Transparent" BorderThickness="0" Padding="0,0,0,0" Margin="20,0,0,0" Focusable="False" Click="btnNav_Click" Height="20" VerticalAlignment="Top" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Background="#FFB2F0D6" Width="1180" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                            <StackPanel x:Name="stkpItemAdd" Orientation="Horizontal" >
+                                <Label Content="_Item : " HorizontalContentAlignment="Right" Target="{Binding ElementName=txtItemName}" Height="24" Width="40" Padding="0" />
+                                <xctk:WatermarkTextBox x:Name="txtItemName0" Width="0"  AutoMoveFocus="True" AutoSelectBehavior="OnFocus" MaxLength="1" IsReadOnly="True" Focusable="False" />
+                                <xctk:WatermarkTextBox x:Name="txtItemName" Width="355" Watermark="Name of Item" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" MaxLength="150"
+                                                   TextChanged="txtItemName_TextChanged" KeyDown="txtItemName_KeyDown"  Background="White" GotFocus="txtItemName_GotFocus" />
+                                <Button x:Name="btnAddItem" Content="Add" Width="45" Background="Transparent" BorderThickness="0" Focusable="False" Click="btnAddItem_Click" Visibility="Visible" />
+                                <StackPanel x:Name="stkpAddEditItem" Orientation="Horizontal" Margin="15,0,0,0">
+                                    <Button x:Name="btnAddEditItem" Content="Item Code Book" Width="100" Height="24" Background="Transparent" BorderThickness="0" 
+                                            Focusable="False" Click="btnAddEditItem_Click" FontSize="12" Foreground="Maroon"  />
+                                    <Button x:Name="btnSetItemRate" Content="Rate Info" Width="60" Height="24" Background="Transparent" BorderThickness="0" 
+                                            Focusable="False" Click="btnSetItemRate_Click" FontSize="12" Foreground="Maroon" Margin="15,0,0,0" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btnTotal"  Content="_Total :" HorizontalContentAlignment="Right" Width="45" Height="24" FontSize="12" FontWeight="Bold" Focusable="False"
+                                        Foreground="Blue" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Click="btnTotal_Click" Margin="45,0,0,0" />
+                                <Label x:Name="lblGrandTotal" Content="0,00,000" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold" Foreground="Blue" Height="24" Padding="0,2,0,0" />
+                                <Label x:Name="lblDiscTotal" Content="00,000" HorizontalContentAlignment="Right" Width="65" FontWeight="Bold" Foreground="Blue" Height="24" Padding="0,2,0,0" />
+                                <Label x:Name="lblDiscPerTotal" Content="00.0%" HorizontalContentAlignment="Right" Width="45"  Foreground="Blue" Height="24" Padding="0,2,0,0" />
+                                <Label x:Name="lblNetTotal" Content="0,00,000" HorizontalContentAlignment="Right" Width="65" FontWeight="Bold" Foreground="Blue" Height="24" Padding="0,2,0,0" />
+                                <Label Content="Total Bill :" HorizontalContentAlignment="Right" Width="80" FontWeight="Bold"  Foreground="Blue" Margin="0,0,0,0" />
+                                <Label x:Name="lblTotalBill" Content="{Binding ElementName=lblNetTotal, Path=Content}" HorizontalContentAlignment="Right" Width="90" FontWeight="Bold"  Foreground="Blue"  />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel x:Name="stkpFooter1" GotFocus="StackPanel_GotFocus" Margin="0,5,0,0" >
+                            <StackPanel Orientation="Horizontal" >
+                                <CheckBox x:Name="chkDiscount" Content="Disco_unt"  Width="80" Focusable="False" Margin="10,0,0,0" VerticalAlignment="Center" Click="chkDiscount_Click" />
+                                <xctk:WatermarkTextBox x:Name="txtDiscTotal" Width="60" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="24" IsEnabled="False"
+                                        PreviewTextInput="NumberValidationTextBox" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" LostFocus="txtDiscTotal_LostFocus" 
+                                        HorizontalContentAlignment="Right"  MouseDoubleClick="txtDiscTotal_MouseDoubleClick" />
+                                <xctk:DoubleUpDown x:Name="iudDisPer" Maximum="100" Minimum="0" Value="0" Width="40" Height="24" Focusable="True" Increment="1" 
+                                                   ShowButtonSpinner="False" FormatString="00" IsEnabled="False"  Background="White" Margin="5,0,0,0" Spinned="iudDisPer_Spinned" MouseDoubleClick="iudDisPer_MouseDoubleClick" />
+                                <Label Content="%" Width="25" HorizontalContentAlignment="Left"   />
+                                <ComboBox x:Name="cmbDisType" Width="120" Focusable="False" Height="24" FontSize="12" SelectedIndex="1" Tag="1REFD" SelectionChanged="cmbDisType_SelectionChanged" />
+                                <Button x:Name="btnSetDispPer" Content="Set All" Width="50" Height="24" BorderThickness="0" Background="Transparent" IsEnabled="False" Click="btnSetDispPer_Click" Margin="10,0,0,0" />
+                                <StackPanel x:Name="stkpCCCharge" Orientation="Horizontal">
+                                    <Label Content="CC Charge : " HorizontalContentAlignment="Right" Width="80" Padding="0,2,0,0" Height="24" Margin="10,0,0,0" />
+                                    <xctk:WatermarkTextBox x:Name="txtCCCharge" Width="60" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="24" 
+                                        PreviewTextInput="NumberValidationTextBox" AutoMoveFocus="True" AutoSelectBehavior="OnFocus"  />
+                                    <Label Content="CC Paid : " HorizontalContentAlignment="Right" Width="60" Padding="0,3,0,2" Height="24" Margin="10,0,0,0" />
+                                    <xctk:WatermarkTextBox x:Name="txtCCPaid" Width="60" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="24" 
+                                        PreviewTextInput="NumberValidationTextBox" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox x:Name="chkStaffRef" Content="Official Ref. :"  Width="100" Focusable="False" Margin="10,0,0,0" VerticalAlignment="Center" Click="chkStaffRef_Click" />
+                                    <UC:AutoComplete x:Name="autoStaffRefSearch" Width="570" SelectedValuePath="sircode" DisplayMemberPath="sirdesc1"  
+                                          PatternChanged="autoStaffRefSearch_PatternChanged"  FontSize="12"  Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <StackPanel>
+                                        <Label Content="Remar_ks :" Width="80" Target="{Binding ElementName=txtRemarks}" HorizontalContentAlignment="Right" VerticalContentAlignment="Top" Margin="30,0,0,0" Padding="0,0,3,0" />
+                                        <TextBlock Text="(if any)" Width="80" TextAlignment="Center" Margin="30,0,0,0" />
+                                    </StackPanel>
+                                    <xctk:WatermarkTextBox x:Name="txtRemarks" HorizontalAlignment="Left" Width="570" MaxLength="150" TextWrapping="Wrap" AcceptsReturn="False" Height="60" Margin="0,0,0,0" Background="White" />
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </StackPanel>
+                        <StackPanel x:Name="stkpFooter2" Margin="0,0,0,0">
+                            <StackPanel Margin="10,0,0,0" GotFocus="StackPanel_GotFocus" >
+                                <StackPanel Margin="0,3,0,0">
+                                    <DataGrid x:Name="dgvColInfo" HorizontalAlignment="Left" CanUserResizeRows="False" IsReadOnly="False" BorderThickness="0" Width="490"  Background="Transparent"
+                                          RowHeaderWidth="0" FontSize="12" VerticalAlignment="Top" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                          AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"  LostFocus="dgvColInfo_LostFocus"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectionUnit="FullRow" >
+                                        <DataGrid.Resources>
+                                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                                <Setter Property="Background" Value="#FFE2D2CE" />
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="Height" Value="25" />
+                                            </Style>
+                                            <Style TargetType="DataGridCell">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background"  Value="Bisque" />
+                                                        <Setter Property="Foreground"  Value="Black" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                            <Style TargetType="{x:Type DataGridRow}">
+                                                <Setter Property="Height" Value="25" />
+                                            </Style>
+                                        </DataGrid.Resources>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Width="130"  >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Pay. Date &amp; Time" Width="120" Margin="5,0,0,0"/>
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <xctk:DateTimePicker Style="{StaticResource StdDateTimePickerStyle03}" Value="{Binding Path=bilcoldat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                                         IsReadOnly="{Binding Path = comcod}" BorderThickness="0" ShowDropDownButton="False" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="80" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Paid By" Width="80" Margin="5,0,0,0"/>
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock x:Name="txtbdgPaidBy" VerticalAlignment="Center" TextAlignment="Left" Text="{Binding Path=paidby, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" >
+                                                            <TextBlock.ContextMenu>
+                                                                <ContextMenu>
+                                                                    <MenuItem Header="CASH" Tag="{Binding Path=slnum}" Click="txtbdgPaidBy_Click" />
+                                                                    <MenuItem Header="VISA CARD" Tag="{Binding Path=slnum}" Click="txtbdgPaidBy_Click" />
+                                                                    <MenuItem Header="MASTER CARD" Tag="{Binding Path=slnum}" Click="txtbdgPaidBy_Click" />
+                                                                    <MenuItem Header="ADJUSTMENT" Tag="{Binding Path=slnum}" Click="txtbdgPaidBy_Click" />
+                                                                </ContextMenu>
+                                                            </TextBlock.ContextMenu>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="180" >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Payment Description" Width="150" Margin="10,0,0,0"/>
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <xctk:WatermarkTextBox TextAlignment="Left" VerticalContentAlignment="Center" AutoMoveFocus="True" BorderThickness="0" Width="180" IsReadOnly="{Binding Path = comcod}" 
+                                                        AutoSelectBehavior="OnFocus" Padding="0,0,0,0" Style="{StaticResource wtxtBx}" Watermark="Payment Description" Height="25"
+                                                                           Text="{Binding Path = bcnote, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="75"  >
+                                                <DataGridTemplateColumn.Header>
+                                                    <TextBlock Text="Paid Amount" Width="75"/>
+                                                </DataGridTemplateColumn.Header>
+                                                <DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <xctk:WatermarkTextBox HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Style="{StaticResource wtxtBx}" IsReadOnly="{Binding Path=comcod}" Width="75" 
+                                                            BorderThickness="0" AutoSelectBehavior="OnFocus" Padding="0,0,5,0" PreviewTextInput="NumberValidationTextBox"  Height="25"
+                                                            Text="{Binding Path = bilcolam, StringFormat={}{0: #,##0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal"  VerticalAlignment="Top" Background="#FFB2F0D6">
+                                        <Label Content="Due Amount :" HorizontalContentAlignment="Right" Width="100" FontWeight="Bold" Foreground="Red"   Margin="0,0,0,0" />
+                                        <Label x:Name="lblNetBalance" Content="0,00,000" HorizontalContentAlignment="Left" Width="100" FontWeight="Bold" Foreground="Red" />
+
+                                        <!--<Label Content="Paid Amount :" HorizontalContentAlignment="Right" Width="120" FontWeight="Bold"  Foreground="Blue" />-->
+                                        <Button x:Name="btnPaidAmt"  Content="Total Paid : " HorizontalContentAlignment="Right" Width="110" Height="24" FontWeight="Bold" Focusable="False"
+                                        Foreground="Blue" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Click="btnPaidAmt_Click"  Margin="65,0,0,0" />
+                                        <Label x:Name="lblTotalPaid" Content="0,00,000" HorizontalContentAlignment="Right" Width="90" FontWeight="Bold"  Foreground="Blue" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="stkpTransList" VerticalAlignment="Top" Background="Azure" Margin="0,5,0,0" Visibility="Collapsed">
+                    <StackPanel x:Name="stkpFilter1" >
+                        <StackPanel Orientation="Horizontal" Height="24">
+                            <TextBlock Text="Filter : " TextAlignment="Right" VerticalAlignment="Center" Width="50" Margin="5,0,0,0" FontWeight="Bold" Visibility="Visible" />
+                            <TextBlock Text="Name : " Width="50" VerticalAlignment="Center" TextAlignment="Right"  />
+                            <xctk:WatermarkTextBox x:Name="txtSrchPatName" Width="270" Watermark="Invoice No" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="22"
+                                       AutoMoveFocus="True" CharacterCasing="Upper" AutoSelectBehavior="OnFocus" MaxLength="15" VerticalAlignment="Center" />
+                            <TextBlock Text="Phone # : " Width="70" VerticalAlignment="Center" TextAlignment="Right"  />
+                            <xctk:WatermarkTextBox x:Name="txtSrchPhoneNo" Width="90" Watermark="Phone No" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="22"
+                                       AutoMoveFocus="True" AutoSelectBehavior="OnFocus" MaxLength="15" VerticalAlignment="Center" PreviewTextInput="NumberValidationTextBox" />
+                            <TextBlock Text="Invoice # : " Width="70" VerticalAlignment="Center" TextAlignment="Right"  />
+                            <xctk:WatermarkTextBox x:Name="txtSrchInvNo" Width="100" Watermark="Invoice No" Style="{StaticResource wtxtBx}" Padding="5,0,0,0" Height="22"
+                                       AutoMoveFocus="True" AutoSelectBehavior="OnFocus" MaxLength="15" VerticalAlignment="Center" CharacterCasing="Upper" Margin="4,0,0,0" />
+                            <TextBlock Text="Dated From : " Width="80" Margin="5,0,0,0" VerticalAlignment="Center"  TextAlignment="Right" />
+                            <xctk:DateTimePicker x:Name="xctk_dtpSrchDat1" Style="{StaticResource StdDateTimePickerStyle01}" Height="22" Width="100" />
+                            <TextBlock Text="To" Width="20" Margin="5,0,0,0"  VerticalAlignment="Center" />
+                            <xctk:DateTimePicker x:Name="xctk_dtpSrchDat2" Style="{StaticResource StdDateTimePickerStyle01}" Height="22" Width="100" />
+                            <CheckBox x:Name="chkFilterUser" Content="All Users" Width="75" VerticalAlignment="Center" IsChecked="True" Focusable="False" Margin="5,2,0,0" />
+                            <Button x:Name="btnFilter1" Content="Re-build" Width="75" Height="22" Click="btnFilter1_Click"  Margin="7,1,0,0" VerticalAlignment="Top" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="24" Margin="0,3,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Test Item : " Width="105" VerticalAlignment="Center" TextAlignment="Right"  />
+                                <UC:AutoComplete x:Name="autoTestItemSearch" Width="430" SelectedValuePath="sircode" DisplayMemberPath="sirdesc1" PatternChanged="autoTestItemSearch_PatternChanged" FontSize="12"
+                                             Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24"  />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Ref. By # : " Width="70" VerticalAlignment="Center" TextAlignment="Right"  />
+                                <UC:AutoComplete x:Name="autoRefBySearch" Width="574" SelectedValuePath="refbyid" DisplayMemberPath="rfFullName" PatternChanged="autoRefBySearch_PatternChanged" FontSize="12"
+                                         Style="{ StaticResource AutoCompleteComboBoxWithoutButton }" Delay="500" Height="24" Margin="2,0,0,0" ToolTip="{Binding ElementName=autoRefBySearch, Path=Text}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,0" >
+                        <Label x:Name="lblPrevTransListTitle" Content="Transactions List :" HorizontalAlignment="Left" Width="130" Target="{Binding ElementName=lstPrevTransList}" 
+                               Margin="5,0,0,0" FontWeight="Bold" />
+                        <Button x:Name="btnDelete1" Content="Cancel" Width="65" Height="22" Click="btnDelete1_Click" Margin="10,0,0,0" />
+                        <Button x:Name="btnPrint1" Content="Pre_view" Width="65" Height="22" Click="btnPrint1_Click" Margin="15,0,0,0" />
+                        <ComboBox x:Name="cmbPrnMemoType2" Width="80" BorderThickness="0" FontSize="12" SelectedIndex="0" VerticalAlignment="Center" Height="24" Margin="5,0,0,0"  >
+                            <ComboBoxItem Content="Invoice" ToolTip="Invoice with balance" Tag="INVOICE" />
+                            <ComboBoxItem Content="Trans. List" ToolTip="Transaction List" Tag="TRNSLIST" />
+                        </ComboBox>
+                        <Button x:Name="btnEdit1" Content="Full-Edit Invoice" ToolTip="Full-Edit Invoice" Tag="4" Uid="FULL_EDIT_INVOICE" Width="120" Height="22" Click="btnEdit1_Click" 
+                                  Margin="232,0,0,0" Background="White" FontWeight="Bold" Foreground="Red" />
+                        <Button x:Name="btnEdit2" Content="Part-Edit Invoice" ToolTip="Part-Edit Invoice" Tag="3" Uid="PART_EDIT_INVOICE" Width="120" Height="22" Click="btnEdit1_Click" 
+                                Margin="15,0,0,0" Background="White" FontWeight="Bold" Foreground="Blue" />
+                        <Button x:Name="btnEdit3" Content="Due-Collection" ToolTip="Due-Coll. Invoice" Tag="2" Uid="DUE_COLL_INVOICE" Width="120" Height="22" Click="btnEdit1_Click" 
+                                Margin="15,0,0,0" Background="White" FontWeight="Bold" Foreground="Green" />
+                        <Button x:Name="btnEdit4" Content="Report Delivery" ToolTip="Report Delivery" Tag="1" Uid="REPORT_DELIVERY_INVOICE" Width="120" Height="22" Click="btnEdit1_Click" 
+                                Margin="15,0,0,0" Background="White" FontWeight="Bold" Foreground="Maroon" />
+                    </StackPanel>
+                    <StackPanel x:Name="stkpGridTransList" >
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(StackPanel.Height)" From="0" To="375" Duration="0:0:1" />
+                                                    <!--<DoubleAnimation Storyboard.TargetProperty="(StackPanel.Width)" From="1200" To="0" Duration="0:0:0.5" AutoReverse="True" />-->
+                                                    <DoubleAnimation From="0" To="1" Duration="00:00:2" Storyboard.TargetProperty="Opacity" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <DataGrid x:Name="dgvTransList" CanUserResizeRows="False" Background="Transparent" BorderThickness="0" FontSize="11" Margin="5,3,5,0" SelectionMode="Single"
+                                  VerticalAlignment="Top" Height="325" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                  SelectionUnit="FullRow" MouseDoubleClick="dgvTransList_MouseDoubleClick" AlternationCount="2" AlternatingRowBackground="#FFEDFFEE" 
+                                  PreviewKeyDown="dgvTransList_PreviewKeyDown" KeyUp="dgvTransList_KeyUp" >
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="#FFE2D2CE" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="Height" Value="25" />
+                                    <Setter Property="FontSize" Value="12" />
+                                </Style>
+                                <Style TargetType="DataGridCell">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background"  Value="Bisque" />
+                                            <Setter Property="Foreground"  Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Setter Property="Height" Value="30" />
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="40" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Center" Text="Sl#" Width="40" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding slnum, StringFormat={}{0: ###0) }}" Padding="0,0,2,0" Tag="{Binding ptinvnum}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="120">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Center" Text="Invoice Date"  Width="80" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=ptinvdat, StringFormat={}{0: dd-MMM-yyyy hh:mm tt}}"  Width="120" TextAlignment="Center" VerticalAlignment="Center" 
+                                                       Tag="{Binding delivartime}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="80" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Center" Text="Invoice No." Width="80" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Center" VerticalAlignment="Center" Text="{Binding ptinvnum2}" ToolTip="{Binding brnnam}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="230" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Left" Text="Name of Patient" Width="170" Margin="10,0,0,0" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Left" VerticalAlignment="Center" Text="{Binding ptname}" ToolTip="{Binding rfFullName}" Margin="5,0,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="90" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Center" Text="Tel/Cell No" Width="80" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ptphone}" VerticalAlignment="Center" ToolTip="{Binding ptgender}" Width="90"  Margin="5,0,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="70" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Right" Text="Total Amt" Width="70" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding titmam, StringFormat={}{0: #,##0;(#,##0); }}" Padding="2,0,5,0" Width="70" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="70" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Right" Text="Discount" Width="70" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding tidisam, StringFormat={}{0: #,##0;(#,##0); }}" Padding="2,0,5,0" Width="70" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="70" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Right" Text="Bill Amt" Width="70" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding tinetam, StringFormat={}{0: #,##0;(#,##0); }}" FontWeight="Bold" Padding="2,0,5,0" Width="70" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="70" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Right" Text="Paid Amt" Width="70" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding tbilcolam, StringFormat={}{0: #,##0;(#,##0); }}" FontWeight="Bold" Padding="2,0,5,0" Width="70" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="70" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Right" Text="Due Amt" Width="70" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding tdueam, StringFormat={}{0: #,##0;(#,##0); }}" FontWeight="Bold" Padding="2,0,5,0" Width="70" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="50" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Right" Text="CC Amt" Width="50" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding cccharge, StringFormat={}{0: #,##0;(#,##0); }}" Padding="2,0,5,0" Width="50" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="50" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Right" Text="CC Paid" Width="50" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Text="{Binding ccpaidam, StringFormat={}{0: #,##0;(#,##0); }}" Padding="2,0,5,0" Width="50" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="150" >
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <ItemContainerTemplate>
+                                            <TextBlock TextAlignment="Center" Text="Remarks " Width="100" />
+                                        </ItemContainerTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding ptinvnote}" Width="150"  ToolTip="{Binding ptinvnote}" Margin="5,0,0,0" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Name="GridFindPatient" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.4" Color="LightGray"/>
+            </Grid.Background>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Height="400" BorderBrush="Black" BorderThickness="1" Background="White" Padding="1" >
+                <StackPanel>
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4F2E1" Offset="0.491"/>
+                            <GradientStop Color="#FF69B28B" Offset="0.957"/>
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="This option is under construction" FontSize="16" Foreground="Red" />
+                    <!--<TextBox HorizontalAlignment="Left" Text="10"  TextWrapping="Wrap" Margin="0,3" Width="100" Name="countText" />-->
+                    <Button x:Name="btnCloseFindPatient" HorizontalAlignment="Left" Width="75" Content="Bac_k to Entry" IsCancel="True" Click="btnCloseFindPatient_Click" />
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="GridRefrrerList" Margin="35,122,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="670" Visibility="Visible" >
+            <StackPanel Orientation="Horizontal" Height="290" VerticalAlignment="Top" Background="LightCyan" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition  Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" >
+                        <StackPanel x:Name="stkpRefByList0" Width="70">
+                            <Label Content="Ref. _List :" Target="{Binding ElementName=lstReferrer}" Width="70" HorizontalContentAlignment="Right" />
+                            <Button x:Name="btnRefreshRef" Width="60" Content="Refresh" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" Margin="0,10,0,0"
+                                HorizontalAlignment="Right" Focusable="False" Click="btnRefreshRef_Click" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Button x:Name="btnAddRefBy" Width="60" Content="Add/Edit" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" 
+                            HorizontalAlignment="Right" Focusable="False" Margin="0,5,0,0" Click="btnAddRefBy_Click" />
+                            <Button x:Name="btnCloseRefBy" Width="40" Content="Close" BorderThickness="0" BorderBrush="Transparent" Background="Transparent" 
+                            HorizontalAlignment="Right" Focusable="False" Margin="0,10,0,0" Click="btnCloseRefBy_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel x:Name="stkpRefByList"  Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" >
+                        <ListBox x:Name="lstReferrer" Height="290" Width="600" Background="Transparent" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="lstReferrer_MouseDoubleClick" KeyUp="lstReferrer_KeyUp" >
+                            <ListBoxItem Content="Referrer Name - 001" Tag="001" />
+                            <ListBoxItem Content="Referrer Name - 002" Tag="002" />
+                            <ListBoxItem Content="Referrer Name - 003" Tag="003" />
+                            <ListBoxItem Content="Referrer Name - 004" Tag="004" />
+                            <ListBoxItem Content="Referrer Name - 005" Tag="005" />
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel x:Name="stkpRefByEntry" Grid.Column="1" Visibility="Visible" Height="290" Width="600" VerticalAlignment="Top" Background="Transparent">
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="Refd. By ID :" Width="100" HorizontalContentAlignment="Right" />
+                            <Label x:Name="lblRefByID1" Width="70" Background="White" FontSize="12" BorderThickness="1" BorderBrush="#FFABADB3"  Height="24" Padding="5,2,0,2" />
+                            <Label Content="Ref.Type :" Width="70" HorizontalContentAlignment="Right" />
+                            <ComboBox x:Name="cmbRefByType" Width="120" BorderThickness="0" Background="Transparent" SelectedIndex="0" Height="22">
+                                <ComboBoxItem Content="GENERAL" Tag="GENERAL" />
+                                <ComboBoxItem Content="CORPORATE" Tag="CORPORATE" />
+                                <ComboBoxItem Content="SPECIAL" Tag="SPECIAL" />
+                                <ComboBoxItem Content="INHOUSE" Tag="INHOUSE" />
+                                <ComboBoxItem Content="OTHERS" Tag="OTHERS" />
+                            </ComboBox>
+                            <Label Content="Phone :"  Width="60" HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+                            <xctk:WatermarkTextBox x:Name="txtRefByPhone1" Width="180" Watermark="Contact phone number" 
+                                        Style="{StaticResource wtxtBx}" Height="24" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="Name :"  Width="100" HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+                            <Label x:Name="lblRefByNameTitle1" Content="DR." Width="110" HorizontalContentAlignment="Right" Background="White" FontSize="11" BorderThickness="1" BorderBrush="#FFABADB3"  
+                                   Height="24" Visibility="Visible" Padding="0,2,2,0" MouseDoubleClick="lblRefByNameTitle1_MouseDoubleClick" />
+                            <ComboBox x:Name="cmbRefByTitle" Width="20" BorderThickness="0" Height="24" Background="Transparent" SelectedIndex="0"  SelectionChanged="cmbRefByTitle_SelectionChanged" />
+                            <xctk:WatermarkTextBox x:Name="txtRefByName1" Width="370" Watermark="Referal Name (Doctor/Company/Person/Self etc.)" 
+                                        Style="{StaticResource wtxtBx}" Height="24" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" CharacterCasing="Upper"  />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Title/Degree :"  Width="100" HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+                            <xctk:WatermarkTextBox x:Name="txtRefByQCTitle1" Width="500" Watermark="Degrees of the doctor / Other title information" 
+                                        Style="{StaticResource wtxtBx}" Height="24" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Address-1 :"  Width="100" HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+                            <xctk:WatermarkTextBox x:Name="txtRefByAddress1" Width="500" Watermark="Address of the referral" AcceptsReturn="True" TextWrapping="Wrap" FontSize="12"
+                                        Style="{StaticResource wtxtBx}" Height="50" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                            <Label Content="Address-2 :"  Width="100" HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+                            <xctk:WatermarkTextBox x:Name="txtRefByAddress2" Width="500" Watermark="Address of the referral" AcceptsReturn="True"  TextWrapping="Wrap" FontSize="12"
+                                        Style="{StaticResource wtxtBx}" Height="50" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="E-Mail :"  Width="100" HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+                            <xctk:WatermarkTextBox x:Name="txtRefByEMail1" Width="500" Watermark="Contact email address" 
+                                        Style="{StaticResource wtxtBx}" Height="24" AutoMoveFocus="True" AutoSelectBehavior="OnFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Mkt. Staff Ref. :"  Width="100" HorizontalAlignment="Left" HorizontalContentAlignment="Right" />
+                            <UC:AutoComplete x:Name="autoMktStaffRefSearch" Width="500" SelectedValuePath="sircode" DisplayMemberPath="sirdesc1"  
+                                          PatternChanged="autoMktStaffRefSearch_PatternChanged"  FontSize="12"  Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" Height="24" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btnUpdateRefBy1"  Width="150" Content="Update Ref. Record" Height="24" Margin="100,5,0,0" Visibility="Visible" 
+                                        Background="Azure" BorderThickness="0" BorderBrush="Transparent" Click="btnUpdateRefBy1_Click" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                                <TextBlock x:Name="txtRefActive" Text="A" Width="20" Margin="100,5,0,0" />
+                                <TextBlock x:Name="txtRefMark" Text="" Width="20" Margin="20,5,0,0" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridTestItem" Margin="5,435,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="395" Visibility="Collapsed" >
+            <StackPanel Orientation="Horizontal" Background="#FFE5FBED" >
+                <StackPanel>
+                    <Label Content="_List :" Target="{Binding ElementName=lstServiceItem}" Width="40" HorizontalContentAlignment="Right" />
+                    <TextBlock Text="Search From" Width="40" FontSize="12" TextWrapping="Wrap" />
+                    <TextBlock Text="Start" Width="40" TextAlignment="Center" />
+                    <RadioButton x:Name="rbtnItemSearchStartpos" IsChecked="True" Width="15" Focusable="False"  />
+                    <TextBlock Text="Any" Width="40" TextAlignment="Center" />
+                    <RadioButton x:Name="rbtnItemSearchAnywhere" IsChecked="False" Width="15"  Focusable="False" />
+                </StackPanel>
+                <StackPanel>
+                    <ListBox x:Name="lstServiceItem" Height="140" Width="355" Background="Transparent" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto" FontSize="12"
+                             ScrollViewer.HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="lstServiceItem_MouseDoubleClick" KeyUp="lstServiceItem_KeyUp" >
+                        <ListBoxItem Content="Item Name - 001" Tag="001" />
+                        <ListBoxItem Content="Item Name - 002" Tag="002" />
+                        <ListBoxItem Content="Item Name - 003" Tag="003" />
+                        <ListBoxItem Content="Item Name - 004" Tag="004" />
+                        <ListBoxItem Content="Item Name - 005" Tag="005" />
+                        <ListBoxItem Content="Item Name - 006" Tag="006" />
+                        <ListBoxItem Content="Item Name - 007" Tag="007" />
+                        <ListBoxItem Content="Item Name - 008" Tag="008" />
+                        <ListBoxItem Content="Item Name - 009" Tag="009" />
+                        <ListBoxItem Content="Item Name - 010" Tag="010" />
+                        <ListBoxItem Content="Item Name - 011" Tag="011" />
+                        <ListBoxItem Content="Item Name - 012" Tag="012" />
+                    </ListBox>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridPatientPhoto" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.4" Color="LightGray"/>
+            </Grid.Background>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Height="400" BorderBrush="Black" BorderThickness="1" Background="White" Padding="1" >
+                <StackPanel>
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4F2E1" Offset="0.491"/>
+                            <GradientStop Color="#FF69B28B" Offset="0.957"/>
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,10,0">
+                        <WindowsFormsHost HorizontalAlignment="Left" x:Name="windowsFormsHost1" VerticalAlignment="Top" Height="300" Width="328" Visibility="Visible"  />
+                        <StackPanel VerticalAlignment="Center" Width="100" Margin="10,10,10,0">
+                            <Button x:Name="btnTakePatPhoto" Content="Capture" Click="btnTakePatPhoto_Click" />
+                            <Button x:Name="btnUploadPatPhoto" Content="Upload" Click="btnUploadPatPhoto_Click"  Margin="0,10,0,10" />
+                            <Button x:Name="btnClosePatPhoto" Content="Bac_k to Entry" IsCancel="True" Click="btnClosePatPhoto_Click" />
+                            <CheckBox x:Name="chkAutoClose" Content="Auto Back" FontSize="11" IsChecked="True" Margin="0,10,0,10" />
+                            <Button x:Name="btnSavePatPhoto" Content="Save to Disk" Click="btnSavePatPhoto_Click"  Margin="0,10,0,10" />
+                        </StackPanel>
+                        <Image x:Name="imgPatPhotoCapture" Height="300" Width="328" Stretch="Fill"/>
+                    </StackPanel>
+                    <!--<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Number Of Items" />-->
+                    <!--<TextBox HorizontalAlignment="Left" Text="10"  TextWrapping="Wrap" Margin="0,3" Width="100" />-->
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

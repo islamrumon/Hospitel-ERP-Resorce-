@@ -1,0 +1,304 @@
+﻿<UserControl x:Class="ASITHmsWpf.Manpower.frmEntryAttn101"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"
+             mc:Ignorable="d" Tag="Staff Attendance Schedule Information - Entry/Edit Screen" Style="{StaticResource IOUserControl}" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded" >
+    <Grid>
+        <Grid x:Name="GridShceduleEntry" >
+            <StackPanel Margin="0,5,0,0" >
+                <StackPanel  Orientation="Horizontal" >
+                    <StackPanel x:Name="stkpMain" Orientation="Vertical">
+                        <StackPanel x:Name="stkpEmpSearch" Orientation="Horizontal" Margin="0,0,0,0">
+                            <Label Content="Employee :" Width="80" HorizontalContentAlignment="Right" FontWeight="Bold" />
+                            <UC:AutoCompleteTextBox x:Name="AtxtEmpAll" SearchType="C" Width="650" ToolTip="Right Click or Double Click to view existing staff list" MouseDoubleClick="AtxtEmpAll_MouseDoubleClick">
+                                <UC:AutoCompleteTextBox.ContextMenu>
+                                    <ContextMenu x:Name="conMenuHCMAtnAll" Height="400" Width="500" />
+                                </UC:AutoCompleteTextBox.ContextMenu>
+                            </UC:AutoCompleteTextBox>
+                            <Button x:Name="btnRemoveInfo" Content="Remove" Width="65" Height="24" FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Click="btnRemoveInfo_Click" Margin="8,0,0,0" />
+                            <Label Content="Month :" Width="60" HorizontalContentAlignment="Right" FontWeight="Bold" />
+                            <ComboBox x:Name="cmbInfoMonth" Width="150" FontWeight="Bold" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                        <Button x:Name="btnShowInfo" Content="Show" Width="75" FontSize="14" Height="24" FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Click="btnShowInfo_Click" />
+                        <Button x:Name="btnUpdateInfo" Content="Update" Width="75" FontSize="14" Height="24" FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Click="btnUpdateInfo_Click"  Margin="11,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+                <Separator Height="2" />
+                <StackPanel Margin="5,0,5,0" x:Name="stkpAttShdl" HorizontalAlignment="Left">
+                    <StackPanel  Orientation="Horizontal">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Background="Beige"  Width="1180" Margin="0,0,0,5">
+                                <StackPanel>
+                                    <!--<Label Content="Day Off :" HorizontalAlignment="Left" Width="50" Padding="0" />-->
+                                    <CheckBox x:Name="chkSchDayOff" Content="Day Off :" Width="100" IsChecked="True" />
+                                    <ComboBox x:Name="cmbSchDayOff" SelectedIndex="6" Width="100"  FontSize="14" IsEnabled="{Binding ElementName=chkSchDayOff, Path=IsChecked}">
+                                        <ComboBoxItem Content="Saturday" Tag="1" />
+                                        <ComboBoxItem Content="Sunday" Tag="2" />
+                                        <ComboBoxItem Content="Monday" Tag="3" />
+                                        <ComboBoxItem Content="Tuesday" Tag="4" />
+                                        <ComboBoxItem Content="Wednesday" Tag="5" />
+                                        <ComboBoxItem Content="Thursday" Tag="6" />
+                                        <ComboBoxItem Content="Friday" Tag="7" />
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel Width="990" Background="AliceBlue" Margin="10,0,0, 0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                        <CheckBox x:Name="chkDay01" Content="01 Mo" Width="60" />
+                                        <CheckBox x:Name="chkDay02" Content="02 Tu" Width="60" />
+                                        <CheckBox x:Name="chkDay03" Content="03 We" Width="60" />
+                                        <CheckBox x:Name="chkDay04" Content="04 Th" Width="60" />
+                                        <CheckBox x:Name="chkDay05" Content="05 Fr" Width="60" />
+                                        <CheckBox x:Name="chkDay06" Content="06 Sa" Width="60" />
+                                        <CheckBox x:Name="chkDay07" Content="07 su" Width="60" />
+                                        <CheckBox x:Name="chkDay08" Content="08 Mo" Width="60" />
+                                        <CheckBox x:Name="chkDay09" Content="09 Tu" Width="60" />
+                                        <CheckBox x:Name="chkDay10" Content="10 We" Width="60" />
+                                        <CheckBox x:Name="chkDay11" Content="11 Th" Width="60" />
+                                        <CheckBox x:Name="chkDay12" Content="12 Fr" Width="60" />
+                                        <CheckBox x:Name="chkDay13" Content="13 Sa" Width="60" />
+                                        <CheckBox x:Name="chkDay14" Content="14 su" Width="60" />
+                                        <CheckBox x:Name="chkDay15" Content="15 Mo" Width="60" />
+                                        <Button x:Name="btnResetChecks" Content="Clear Checks" Click="btnResetChecks_Click" Width="80" Margin="8,0,0,0" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                                        <CheckBox x:Name="chkDay16" Content="16 Tu" Width="60" />
+                                        <CheckBox x:Name="chkDay17" Content="17 We" Width="60" />
+                                        <CheckBox x:Name="chkDay18" Content="18 Th" Width="60" />
+                                        <CheckBox x:Name="chkDay19" Content="19 Fr" Width="60" />
+                                        <CheckBox x:Name="chkDay20" Content="20 Sa" Width="60" />
+                                        <CheckBox x:Name="chkDay21" Content="21 su" Width="60" />
+                                        <CheckBox x:Name="chkDay22" Content="22 Mo" Width="60" />
+                                        <CheckBox x:Name="chkDay23" Content="23 Tu" Width="60" />
+                                        <CheckBox x:Name="chkDay24" Content="24 We" Width="60" />
+                                        <CheckBox x:Name="chkDay25" Content="25 Th" Width="60" />
+                                        <CheckBox x:Name="chkDay26" Content="26 Fr" Width="60" />
+                                        <CheckBox x:Name="chkDay27" Content="27 Sa" Width="60" />
+                                        <CheckBox x:Name="chkDay28" Content="28 Su" Width="60" />
+                                        <CheckBox x:Name="chkDay29" Content="29 Mo" Width="60" />
+                                        <CheckBox x:Name="chkDay30" Content="30 Tu" Width="60" />
+                                        <CheckBox x:Name="chkDay31" Content="31 We" Width="60" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Margin="3,0,0,0">
+                                    <Button x:Name="btnPrintAttSchdl" Style="{StaticResource StdBtnStyle01}" Width="75"  HorizontalAlignment="Left" FontSize="14" Content="Print"  Click="btnPrintAttSchdl_Click" ></Button>
+                                    <CheckBox x:Name="chkPrintActAttnWithSch" Content="With Attn." VerticalAlignment="Center" Margin="0,2,0,0" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Background="AntiqueWhite" Width="1181" HorizontalAlignment="Left" >
+                                <!--<Separator Width="300" Visibility="Hidden"></Separator>-->
+                                <Label Content="Options :" HorizontalContentAlignment="Right" Width="60" />
+                                <ComboBox x:Name="cmbAssignOption" SelectedIndex="0" Width="200" Height="26" FontSize="14" >
+                                    <ComboBoxItem Content="Default Schedule Setup" Tag="ASGENERAL" />
+                                    <ComboBoxItem Content="Marked dates as assigned" Tag="ASMARKED" />
+                                    <ComboBoxItem Content="Date range as assigned" Tag="ASRANGE" />
+                                    <ComboBoxItem Content="Like first week" Tag="FIRSTWEEK" />
+                                    <ComboBoxItem Content="Like last month (first week)" Tag="LASTMONTHFW" />
+                                    <ComboBoxItem Content="Like last month (last week)" Tag="LASTMONTHLW" />
+                                    <ComboBoxItem Content="All Like first week" Tag="FIRSTWEEK" />
+                                    <ComboBoxItem Content="Each Saturday" Tag="SATURDAY" />
+                                    <ComboBoxItem Content="Each Sunday" Tag="SUNDAY" />
+                                    <ComboBoxItem Content="Each Monday" Tag="MONDAY" />
+                                    <ComboBoxItem Content="Each Tuesday" Tag="TUESDAY" />
+                                    <ComboBoxItem Content="Each Wednesday" Tag="WEDNESDAY" />
+                                    <ComboBoxItem Content="Each Thursday" Tag="THURSDAY" />
+                                    <ComboBoxItem Content="Each Friday" Tag="FRIDAY" />
+                                </ComboBox>
+                                <xctk:TimePicker x:Name="dtpAttnSchIn1s" Style="{StaticResource StdTimePickerStyle01}" TimeInterval="00:30"  Height="20" Width="90" BorderThickness="0" Value="08:00 AM" Margin="60,0,0,0" />
+                                <xctk:TimePicker x:Name="dtpAttnSchOut1s" Style="{StaticResource StdTimePickerStyle01}" TimeInterval="00:30" Height="20" Width="90" BorderThickness="0" Value="12:00 PM" Margin="60,0,0,0" />
+                                <xctk:TimePicker x:Name="dtpAttnSchIn2s" Style="{StaticResource StdTimePickerStyle01}" TimeInterval="00:30" Height="20" Width="90" BorderThickness="0" Value="05:00 PM" Margin="60,0,0,0" />
+                                <xctk:TimePicker x:Name="dtpAttnSchOut2s" Style="{StaticResource StdTimePickerStyle01}" TimeInterval="00:30" Height="20" Width="90" BorderThickness="0" Value="11:00 PM" Margin="60,0,0,0" />
+                                <!--<Separator Width="20" Visibility="Hidden"></Separator>-->
+                                <Label Content="From Day :" HorizontalContentAlignment="Right" Width="70" Margin="10,0,0,0" ></Label>
+                                <xctk:IntegerUpDown x:Name="iudSchDayFrom" Minimum="1" Maximum="31" Value="1" Width="45" />
+                                <Label Content="To Day :" HorizontalContentAlignment="Right" Width="63"></Label>
+                                <xctk:IntegerUpDown x:Name="iudSchDayTo" Minimum="1" Maximum="31" Value="31" Width="50" />
+                                <Button x:Name="btnSetAttnDayOffSch" Style="{StaticResource StdBtnStyle01}" Width="75"  FontSize="14" Height="24" Content="Assign" Click="btnSetAttnDayOffSch_Click" Margin="5,0,0,0" />
+                            </StackPanel>
+                            <StackPanel>
+                                <DataGrid x:Name="dgAttnSch" AutoGenerateColumns="False" MaxHeight="450"  HorizontalAlignment="Left" IsReadOnly="True" RowHeaderWidth="5"  AlternationCount="2" AlternatingRowBackground="#FFEDFFEE" >
+                                    <DataGrid.Resources>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="Background" Value="#FFE2D2CE" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="Height" Value="25" />
+                                        </Style>
+                                        <Style TargetType="DataGridCell">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background"  Value="Bisque" />
+                                                    <Setter Property="Foreground"  Value="Black" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                        <Style TargetType="{x:Type DataGridRow}">
+                                            <Setter Property="Height" Value="35" />
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Header="Date" Width="120" IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Label x:Name="lbldgAttnSchDate" Padding="0,0,0,0" VerticalContentAlignment="Center" MouseDoubleClick="lbldgAttnSchDate_MouseDoubleClick" 
+                                                           Uid="{Binding attndate, StringFormat=\{0: dd-MMM-yyyy ddd\}}" ToolTip="{Binding approvals}" >
+                                                        <TextBlock Text="{Binding attndate, StringFormat=\{0: dd-MMM-yyyy ddd\}}" Focusable="False" VerticalAlignment="Center" />
+                                                    </Label>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Status" Width="180" >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox x:Name="cmbdgAttnSch" Height="28" Width="180" Text = "{Binding attnstat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                      Background="Transparent" IsReadOnly="True" DropDownClosed="cmbdgAttnSch_DropDownClosed" >
+                                                        <ComboBoxItem Content="Present" Tag="SIHA00501001" />
+                                                        <ComboBoxItem Content="Absent (Day Off)" Tag="SIHA00502002" />
+                                                        <ComboBoxItem Content="Absent (On Leave)" Tag="SIHA00502003" />
+                                                        <ComboBoxItem Content="Present (Over-Time)" Tag="SIHA00501006" />
+                                                        <ComboBoxItem Content="Present (Outdoor Duty)" Tag="SIHA00501007" />
+                                                        <ComboBoxItem Content="Present (Half-Over-Time)" Tag="SIHA00501005" />
+                                                        <ComboBoxItem Content="Present (Half-Leave)" Tag="SIHA00501008" />
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="135" Header="Office Start-Time" >
+                                            <!--InTime-1-->
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <xctk:DateTimePicker x:Name="dtpdgAttnSchIn1" Style="{StaticResource StdDateTimePickerStyle02}" Height="20" Width="130" BorderThickness="0" 
+                                                   Background="Transparent" Visibility="{Binding visibletime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TimePickerVisibility="Visible" 
+                                                   Value="{Binding intime1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="135" Header="First Out-Time" >
+                                            <!--OutTime-1-->
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <xctk:DateTimePicker x:Name="dtpdgAttnSchOut1" Style="{StaticResource StdDateTimePickerStyle02}" Height="20" Width="130" BorderThickness="0"  
+                                                    Background="Transparent"  Visibility="{Binding visibletime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TimePickerVisibility="Visible" 
+                                                    Value="{Binding outtime1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="135" Header="Second In-Time" >
+                                            <!--InTime-2-->
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <xctk:DateTimePicker x:Name="dtpdgAttnSchIn2" Style="{StaticResource StdDateTimePickerStyle02}" Height="20" Width="130" BorderThickness="0" 
+                                                     Background="Transparent"  Visibility="{Binding visibletime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TimePickerVisibility="Visible"
+                                                     Value="{Binding intime2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="135" Header="Office End-Time" >
+                                            <!--OutTime-2-->
+                                            <DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <xctk:DateTimePicker x:Name="dtpdgAttnSchOut2" Style="{StaticResource StdDateTimePickerStyle02}" Height="20" Width="130" BorderThickness="0" 
+                                                    Background="Transparent"  Visibility="{Binding visibletime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TimePickerVisibility="Visible"
+                                                    Value="{Binding outtime2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Remarks" Width="220">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <xctk:WatermarkTextBox Width="200" BorderThickness="0" Text= "{Binding attnrmrk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Work Hour" Width="100">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Width="100" Text = "{Binding attnhour, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Center"
+                                                       Visibility="{Binding visibletime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridApprovalEntry" Visibility="Collapsed" Margin="0,-10,0,10">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.4" Color="LightGray"/>
+            </Grid.Background>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="850" Height="250" BorderBrush="Black" BorderThickness="1" Background="White" Padding="1" >
+                <StackPanel>
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4F2E1" Offset="0.605"/>
+                            <GradientStop Color="#FF74D4A1" Offset="0.985"/>
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+                    <StackPanel Orientation="Horizontal" Background="Azure" >
+                        <Label Content="Execution Date : " FontWeight="Bold" />
+                        <Label x:Name="lblApprovalDate" Content="20-Sep-2017 Wed"  FontWeight="Bold" />
+                        <Button x:Name="btnCloseApprovalEntry" HorizontalAlignment="Left" Width="120" FontWeight="Bold" Content="Bac_k to Sch Entry" IsCancel="True" Click="btnCloseApprovalEntry_Click" Margin="500,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,0">
+                        <StackPanel Orientation="Horizontal" Background="Gainsboro" >
+                            <TextBlock TextAlignment="Center" Text="Schedule" Width="272" FontWeight="Bold" />
+                            <TextBlock TextAlignment="Left" Text="Approval Options" Width="270" FontWeight="Bold" />
+                            <TextBlock TextAlignment="Left" Text="Approval Source &amp; Date" Width="150" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Margin="0,10,0,0" >
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock TextAlignment="Right" Text="Office Start-Time : " Width="120" />
+                                <TextBlock x:Name="txtbtime1" TextAlignment="Left" Text="20-Sep-2017 07:00 AM" Width="130" FontWeight="Bold" />
+                                <RadioButton x:Name="rbtnNot1" Content="Nothing" Width="70" Margin="20,0,0,0" IsChecked="True" Tag="N" />
+                                <RadioButton x:Name="rbtnErr1" Content="Error Response"  Width="100" Margin="10,0,0,0" Tag="E" />
+                                <RadioButton x:Name="rbtnAio1" Content="Late In" Width="70" Margin="10,0,0,0"  Tag="L" />
+                                <TextBox x:Name="txtApr1" Width="130" MaxLength="40" Margin="10,0,0,0"/>
+                                <xctk:DateTimePicker x:Name="dtpApr1" Style="{StaticResource StdDateTimePickerStyle01}" Height="20" Width="100" Margin="10,0,0,0" />
+                                <Button x:Name="btnUpdateApp1" Content="Update" Width="50" Margin="10,0,0,0" Click="btnUpdateApp_Click" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
+                                <TextBlock TextAlignment="Right" Text="First Out-Time : " Width="120" />
+                                <TextBlock x:Name="txtbtime2" TextAlignment="Left" Text="20-Sep-2017 11:00 AM" Width="130" FontWeight="Bold" />
+                                <RadioButton x:Name="rbtnNot2" Content="Nothing" Width="70" Margin="20,0,0,0" IsChecked="True" Tag="N" />
+                                <RadioButton x:Name="rbtnErr2" Content="Error Response"  Width="100" Margin="10,0,0,0"  Tag="E"/>
+                                <RadioButton x:Name="rbtnAio2" Content="Early Out" Width="70" Margin="10,0,0,0" Tag="O" />
+                                <TextBox x:Name="txtApr2" Width="130" MaxLength="40" Margin="10,0,0,0"/>
+                                <xctk:DateTimePicker x:Name="dtpApr2" Style="{StaticResource StdDateTimePickerStyle01}" Height="20" Width="100" Margin="10,0,0,0" />
+                                <Button x:Name="btnUpdateApp2" Content="Update" Width="50" Margin="10,0,0,0" Click="btnUpdateApp_Click" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
+                                <TextBlock TextAlignment="Right" Text="Second In-Time : " Width="120" />
+                                <TextBlock x:Name="txtbtime3" TextAlignment="Left" Text="20-Sep-2017 05:00 PM" Width="130" FontWeight="Bold" />
+                                <RadioButton  x:Name="rbtnNot3" Content="Nothing" Width="70" Margin="20,0,0,0"  IsChecked="True" Tag="N" />
+                                <RadioButton x:Name="rbtnErr3" Content="Error Response" Width="100" Margin="10,0,0,0" Tag="E" />
+                                <RadioButton x:Name="rbtnAio3" Content="Late In" Width="70" Margin="10,0,0,0" Tag="L" />
+                                <TextBox x:Name="txtApr3" Width="130" MaxLength="40" Margin="10,0,0,0"/>
+                                <xctk:DateTimePicker x:Name="dtpApr3" Style="{StaticResource StdDateTimePickerStyle01}" Height="20" Width="100" Margin="10,0,0,0" />
+                                <Button x:Name="btnUpdateApp3" Content="Update" Width="50" Margin="10,0,0,0" Click="btnUpdateApp_Click" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
+                                <TextBlock TextAlignment="Right" Text="Office End-Time : " Width="120" />
+                                <TextBlock x:Name="txtbtime4" TextAlignment="Left" Text="20-Sep-2017 11:00 PM" Width="130" FontWeight="Bold" />
+                                <RadioButton x:Name="rbtnNot4" Content="Nothing" Width="70" Margin="20,0,0,0" IsChecked="True" Tag="N" />
+                                <RadioButton x:Name="rbtnErr4" Content="Error Response"  Width="100" Margin="10,0,0,0" Tag="E" />
+                                <RadioButton x:Name="rbtnAio4" Content="Early Out" Width="70" Margin="10,0,0,0" Tag="O" />
+                                <TextBox x:Name="txtApr4" Width="130" MaxLength="40" Margin="10,0,0,0"/>
+                                <xctk:DateTimePicker x:Name="dtpApr4" Style="{StaticResource StdDateTimePickerStyle01}" Height="20" Width="100"  Margin="10,0,0,0" />
+                                <Button x:Name="btnUpdateApp4" Content="Update" Width="50" Margin="10,0,0,0" Click="btnUpdateApp_Click" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,576 @@
+﻿<Window x:Class="ASITHmsWpf.CommWin01"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ASITHmsWpf"  
+        xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=Accordion" x:Name="MainWindow1"
+        Title="CentERPoint Healthcare Management System" 
+        Height="800" Width="1200" Background="#FFE9F5E9"  WindowState="Maximized" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" Unloaded="MainWindow1_Unloaded" WindowStyle="SingleBorderWindow" Closing="MainWindow1_Closing" StateChanged="MainWindow1_StateChanged"  >
+    <Window.Resources>
+        <RoutedUICommand x:Key="acrMainCommand1" Text="Text" />
+        <RoutedUICommand x:Key="acrMainCommand2" Text="Text" />
+        <RoutedUICommand x:Key="acrMainCommand3" Text="Text" />
+        <local:TabControlViewModel x:Key="tabVM" />
+        <!--<BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />-->
+        <Style TargetType="Grid" x:Key="gr1">
+            <Setter Property="Height" Value="170"></Setter>
+            <Setter Property="Width" Value="170"></Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="#FF17C0D2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="0,20,30,10"></Setter>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}" x:Key="stk1">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FEC2E61E" Offset="0.77"/>
+                        <GradientStop Color="#FED5ED65" Offset="0.494"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}" x:Key="stk01">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="170"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background" Value="LightBlue"/>
+        </Style>
+        <Style x:Key="lbl1" TargetType="{x:Type Label}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="148"/>
+            <Setter Property="Padding" Value="2"/>
+        </Style>
+        <Style x:Key="lbl2" TargetType="{x:Type Label}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource acrMainCommand1}" Executed="MainGridActivation" />
+        <CommandBinding Command="{StaticResource acrMainCommand2}" Executed="SliderZoom" />
+        <CommandBinding Command="{StaticResource acrMainCommand3}" Executed="ShowContextMenue" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="F1" Command="{StaticResource acrMainCommand1}" CommandParameter="1" />
+        <KeyBinding Key="F2" Command="{StaticResource acrMainCommand1}" CommandParameter="2" />
+        <KeyBinding Key="F3" Command="{StaticResource acrMainCommand1}" CommandParameter="3" />
+        <KeyBinding Key="F4" Command="{StaticResource acrMainCommand1}" CommandParameter="4" />
+        <KeyBinding Key="F5" Command="{StaticResource acrMainCommand1}" CommandParameter="5" />
+        <KeyBinding Key="F6" Command="{StaticResource acrMainCommand1}" CommandParameter="6" />
+        <KeyBinding Key="F7" Command="{StaticResource acrMainCommand1}" CommandParameter="7" />
+        <KeyBinding Key="F8" Command="{StaticResource acrMainCommand1}" CommandParameter="8" />
+        <KeyBinding Key="F9" Command="{StaticResource acrMainCommand1}" CommandParameter="9" />
+        <KeyBinding Key="F10" Command="{StaticResource acrMainCommand1}" CommandParameter="10" />
+        <KeyBinding Key="Left" Modifiers="Shift+Control" Command="{StaticResource acrMainCommand2}" CommandParameter="ZoomIn" />
+        <KeyBinding Key="Right" Modifiers="Shift+Control" Command="{StaticResource acrMainCommand2}" CommandParameter="ZoomOut" />
+        <KeyBinding Key="Space" Modifiers="Alt" Command="{StaticResource acrMainCommand3}" CommandParameter="NONE" />
+    </Window.InputBindings>
+    <Grid>
+        <Grid x:Name="HMGrid1" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Height="50">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="#FFABF59F" Offset="1"/>
+                    <GradientStop Color="#FF32B20B" Offset="0.5"/>
+                    <GradientStop Color="#FF26A000" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Image x:Name="imgClIcon" HorizontalAlignment="Left" Width="75" Height="50"  Source="Images/ASITLogo3.png" Stretch="Fill" Margin="0,0,0,0"/>
+            <Image x:Name="imgClTitle" Margin="120,0,0,0"  HorizontalAlignment="Left" Height="50" Source="Images/ASITTitle2.png" Stretch="Fill" Width="507"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,30" HorizontalAlignment="Right">
+                <Button x:Name="btnMinimize"  Style="{StaticResource StdBtnStyle01}" Content="_Minimize" Width="66" Click="btnMinimize_Click" Focusable="False" ToolTip="Minimize Application (Alt+M)" FontSize="14" Visibility="Hidden" Padding="0" Height="20" Margin="0,-1,0,0" />
+                <Button x:Name="BtnAppClode"  Style="{StaticResource StdBtnStyle01}" Content="Exit" Width="60" Click="BtnAppClode_Click" FontFamily="Bookman Old Style" ToolTip="Exit From Application (Alt+F4)" FontSize="14" Focusable="False" Padding="0" Height="20" Margin="0,-1,10,0" FontWeight="Bold"  />
+            </StackPanel>
+            <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="35" Width="169" Source="Images/CentERPoint3.png" Stretch="Fill"/>
+            <StackPanel Height="50" HorizontalAlignment="Right"  Width="430" Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Margin="0,0,0,0"  Width="180" >
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblSignInNamTitle" Foreground="#FF000CFF" FontFamily="Verdana" FontSize="12" Width="65" Height="18" HorizontalContentAlignment="Right" Content="Sign In:" Padding="0,1,2,0" />
+                        <Label x:Name="lblSignInNam" Foreground="#FF000CFF" FontFamily="Verdana" FontSize="12" Width="115" Height="18" HorizontalContentAlignment="Left" Content="HAFIZ" Padding="0,1,2,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,-2,0,0" >
+                        <Label x:Name="lblSessionIDTitle" Foreground="#FF000CFF" FontFamily="Verdana" FontSize="12" Width="65" Height="18" HorizontalContentAlignment="Right" Content="Session:" Padding="0,1,2,0" />
+                        <Label x:Name="lblSessionId" Foreground="#FF000CFF" FontFamily="Verdana" FontSize="12" Width="115" Height="18" HorizontalContentAlignment="Left" Content="526586" Padding="0,1,2,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,-2,0,0" >
+                        <Label x:Name="lblTeminalIDTitle" Foreground="#FF000CFF" FontFamily="Verdana" FontSize="12" Width="65" Height="18" HorizontalContentAlignment="Right" Content="Terminal:" Padding="0,1,2,0" />
+                        <Label x:Name="lblTeminalId" Foreground="#FF000CFF" FontFamily="Verdana" FontSize="12" Width="115" Height="18" HorizontalContentAlignment="Left" Content="UNKNOWN" Padding="0,1,2,0" />
+                    </StackPanel>
+                </StackPanel>
+                <Image x:Name="imgSignInUser" Height="50" Margin="5,0,0,0"  Source="images/NoUser.jpg" Stretch="Fill" Width="45"/>
+            </StackPanel>
+        </Grid>
+        <Label x:Name="lblWait1" Content="Please Wait........." Visibility="Hidden"  FontSize="24" Width="272" Height="50" VerticalAlignment="Center" 
+               HorizontalAlignment="Center" TextOptions.TextHintingMode="Animated" TextOptions.TextFormattingMode="Display" 
+               FontWeight="ExtraBold" Foreground="#FFF20A0A" Margin="488,301,440,357" />
+        <Grid x:Name="UcGrid1" HorizontalAlignment="Center" Visibility="Hidden" VerticalAlignment="Top" Width="1200" Height="650" RenderTransformOrigin="0,0" Margin="0,55,0,0">
+            
+            <Border BorderThickness="0" CornerRadius="8" >
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5"  Color="Black" Opacity=".8" BlurRadius="20" RenderingBias="Quality"/>
+                </Border.Effect>
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,1">
+                        <GradientStop Color="#FFECFBFB" Offset="0.0" />
+                        <GradientStop Color="#FFCED9E4" Offset="0.5" />
+                        <GradientStop Color="#FF5F6E6E" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF7F7F7" Offset="0.0" />
+                        <GradientStop Color="#FFCED9E4" Offset="0.5" />
+                        <GradientStop Color="#FF22F5F5" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Label x:Name="lblTitle1" Content="Title of the screen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1200" Height="25" HorizontalContentAlignment="Center" 
+                   FontSize="16" Foreground="#FF862222" ForceCursor="True" FontWeight="Bold" FontFamily="Verdana" Margin="0,0,0,0"  Padding="0">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFB7B7B7" Offset="0.46"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.233"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Button x:Name="btnPrint" Content="{DynamicResource btnPrint}" BorderThickness="0" Background="Transparent" Focusable="False"  Visibility="Hidden"
+                    HorizontalAlignment="Right" Margin="0,0,113,0" VerticalAlignment="Top" Width="32"  Height="32" />
+            <Button x:Name="btnClose" Content="_Close" Focusable="False" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="75" Click="btnClose_Click" 
+                    FontSize="14" FontFamily="Verdana" Style="{StaticResource StdBtnStyle01}" Height="24" ToolTip="Click to close the screen (Alt + C)" />
+        </Grid>
+        <Grid x:Name="MMGrid1" Margin="0,50,0,0"  Visibility="Visible" HorizontalAlignment="Stretch" >
+            <Grid.Background>
+                <ImageBrush x:Name="imgBack" ImageSource="/Images/dashbordpic_h.jpg"/>
+            </Grid.Background>
+            <StackPanel x:Name="stk1"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="1000" Margin="0,60,0,0" >
+                <!-- Start the magic -->
+                <StackPanel.RenderTransform>
+                    <TranslateTransform x:Name="SlideIn" Y="750" />
+                </StackPanel.RenderTransform>
+                <StackPanel.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SlideIn" Storyboard.TargetProperty="Y">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:1.25" Value="0" />
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="stk1" Storyboard.TargetProperty="Opacity">
+                                    <SplineDoubleKeyFrame KeyTime="0:0:1.55" Value="1" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </StackPanel.Triggers>
+                <StackPanel>
+
+                    <Image x:Name="imgFrontDesk" Source="/Images/dashbordpic_h.jpg" Visibility="Collapsed" Height="0" Width="0" />
+                    <Image x:Name="imgMedStore" Source="/Images/MedShop1.jpg" Visibility="Collapsed" Height="0" Width="0" />
+                    <Image x:Name="imgFoodShop" Source="/Images/FoodShop5.jpg" Visibility="Collapsed" Height="0" Width="0" />
+                    <Image x:Name="imgDocVisit" Source="/Images/DocVisit1.png" Visibility="Collapsed" Height="0" Width="0" />
+                    <Image x:Name="imgGTradeShop" Source="/Images/BlueBg1.jpg" Visibility="Collapsed" Height="0" Width="0" />
+                    <Image x:Name="imgParkTicket" Source="/Images/ParkImage1.jpg" Visibility="Collapsed" Height="0" Width="0" />
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="70" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="-20,0,0,0">
+                    <StackPanel.Effect>
+                        <DropShadowEffect Opacity="0.595" Color="#FF040404" RenderingBias="Quality"/>
+                    </StackPanel.Effect>
+                    <Image x:Name="imgGoStartUp" Source="/Images/CentERPoint3.png" Height="65"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="970" Margin="-28,0,0,0">
+                    <Label HorizontalContentAlignment="Center"  Content="Main Menu"
+                                       Background="White" Opacity=".5" Foreground="Black" FontWeight="Bold" FontSize="17" />
+                </StackPanel>
+                <WrapPanel x:Name="wrp1" Background="Transparent" Height="400" HorizontalAlignment="Center"  Width="1000">
+                    <WrapPanel.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard Duration="00:00:6" Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation From="0" To="1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </WrapPanel.Triggers>
+                    <WrapPanel.Effect>
+                        <DropShadowEffect Opacity="0.44"/>
+                    </WrapPanel.Effect>
+
+                    <Grid x:Name="Grid01" Tag="01" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="01" Foreground="Blue"  FontWeight="Bold"/>
+                                <Label x:Name="lblTitle01"  Content="Optional 01" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+
+                            <StackPanel Width="170">
+                                <Image Source="/Images/Account11.png" Height="80"/>
+                                <TextBlock Height="40"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="acriFrontDesk1" Style="{StaticResource stk01}">
+                                <Label Style="{StaticResource lbl1}"/>
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                    <Popup IsOpen="{Binding IsMouseOver, ElementName=acriFrontDesk1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriFrontDesk1}"  Placement="Top">
+                        <TextBlock x:Name="txtbl01" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+                    </Popup>
+
+                    <Grid x:Name="Grid02" Tag="02" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="02" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle02" Content="Optional 02" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,5,0,0">
+                                <Image Source="/Images/inventory.png" Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel x:Name="acriLab1" Style="{StaticResource stk01}">
+                                <Label Style="{StaticResource lbl1}"/>
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriLab1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriLab1}"  Placement="Top">
+
+                        <TextBlock x:Name="txtbl02" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+
+                    </Popup>
+
+                    <Grid x:Name="Grid03" Tag="03" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="03" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle03" Content="Optional 03"  Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,6,0,0">
+                                <Image Source="/Images/reportdel.png" Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel x:Name="acriStore1" Style="{StaticResource stk01}" >
+                                <Label Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriStore1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriStore1}"  Placement="Top">
+                        <TextBlock x:Name="txtbl03" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+                    </Popup>
+                    <Grid x:Name="Grid04" Tag="04" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="04" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle04" Content="Optional 04" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+
+
+                            <StackPanel Margin="0,6,0,0">
+                                <Image Source="/Images/report4.png" Height="80" Stretch="Fill" Width="95"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="acriProc1" Style="{StaticResource stk01}" >
+                                <Label  Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                    <Popup IsOpen="{Binding IsMouseOver, ElementName=acriProc1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriProc1}"  Placement="Top">
+                        <TextBlock x:Name="txtbl04" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+                    </Popup>
+
+                    <Grid x:Name="Grid05" Tag="05" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="05" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle05" Content="Optional 05" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,6,0,0">
+                                <Image Source="/Images/FL4.png"  Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel x:Name="acriAcc1" Style="{StaticResource stk01}">
+                                <Label Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriAcc1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriAcc1}"  Placement="Top">
+                        <TextBlock x:Name="txtbl05" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+                    </Popup>
+                    <Grid x:Name="Grid06" Tag="06"  MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="06" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle06" Content="Optional 06" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,5,0,0">
+                                <Image Source="/Images/item.png" Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel x:Name="acriMkt1" Style="{StaticResource stk01}" >
+                                <Label Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriMkt1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriMkt1}"  Placement="Top">
+
+                        <TextBlock x:Name="txtbl06" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+
+                    </Popup>
+                    <Grid x:Name="Grid07"  Tag="07" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="07" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle07" Content="Optional 07"  Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,5,0,0">
+                                <Image Source="/Images/bw.png"  Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel  x:Name="acriHcm1" Style="{StaticResource stk01}" >
+                                <Label Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriHcm1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriHcm1}"  Placement="Top">
+
+                        <TextBlock x:Name="txtbl07" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+
+                    </Popup>
+                    <Grid x:Name="Grid08"  Tag="08" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp" Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="08" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle08" Content="Optional 08" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,5,0,0">
+                                <Image Source="/Images/item3.png"  Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel  x:Name="acriAdmin1" Style="{StaticResource stk01}"  >
+                                <Label Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriAdmin1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriAdmin1}"  Placement="Top">
+
+                        <TextBlock x:Name="txtbl08" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+
+                    </Popup>
+                    <Grid x:Name="Grid09" Tag="09" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp"  Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="09" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle09" Content="Optional 09" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+
+
+                            <StackPanel Margin="0,5,0,0">
+                                <Image Source="/Images/file.png"  Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel x:Name="acriSetup1" Style="{StaticResource stk01}"  >
+                                <Label Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriSetup1, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriSetup1}"  Placement="Top">
+                        <TextBlock x:Name="txtbl09" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+                    </Popup>
+                    <Grid x:Name="Grid10" Tag="10" MouseLeftButtonUp="stkBd1_MouseLeftButtonUp"  Style="{StaticResource gr1}">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation From="0.25" To="1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource stk1}">
+                                <Label Content="10" Foreground="Blue"  FontWeight="Bold"/>
+                                <!--<Image Width="25" HorizontalAlignment="Left" Source="../Images/edit.png"></Image>-->
+                                <Label x:Name="lblTitle10" Content="Optional 10" Style="{StaticResource lbl2}"/>
+                            </StackPanel>
+
+
+                            <StackPanel Margin="0,5,0,0">
+                                <Image Source="/Images/contracts_icon.png"  Height="80"/>
+                                <TextBlock Height="35"/>
+                            </StackPanel>
+                            <StackPanel x:Name="acriSetup2" Style="{StaticResource stk01}"  >
+                                <Label Style="{StaticResource lbl1}" />
+                                <Image Width="21" Source="/Images/Arrows-icon.png" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
+                    <Popup  IsOpen="{Binding IsMouseOver, ElementName=acriSetup2, Mode=OneWay}" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=acriSetup2}"  Placement="Top">
+
+                        <TextBlock x:Name="txtbl10" Text="The seething sea ceaseth and thus the seething sea sufficeth us." Background="Black" Opacity="0.5"  Foreground="White" FontWeight="ExtraLight" Padding="5" Width="170" TextWrapping="Wrap"/>
+
+                    </Popup>
+
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="DevGrid1"  HorizontalAlignment="Stretch" Background="White"  VerticalAlignment="Bottom" Height="20"  RenderTransformOrigin="0,0" >
+            <!--<Grid x:Name="DevGrid1"  HorizontalAlignment="Left" Background="White"  VerticalAlignment="Top" Width="1200" Height="20"  RenderTransformOrigin="0,0" Margin="0, 750, 0, -70">-->
+            <Border Height="1" VerticalAlignment="Top" Background="Green"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnASIT" Content="ASIT" Focusable="False" Style="{StaticResource StdBtnStyle01}" Width="80" Click="btnASIT_Click" />
+                </StackPanel>
+                <StackPanel Margin="30,5,0,0" Orientation="Horizontal">
+                    <TextBlock FontSize="12" Text="©" FontFamily="Arial Unicode MS"/>
+                    <TextBlock FontSize="11" Text=" 2017-2020 Advanced Software &amp; IT Services Ltd. All rights reserved." FontFamily="Arial Unicode MS"/>
+                </StackPanel>
+                <StackPanel x:Name="stkpContact" Orientation="Horizontal" Margin="10,5,0,0">
+                    <StackPanel  Width="50" >
+                        <TextBlock FontSize="11" Foreground="Blue" Text="Contact:" HorizontalAlignment="Right"  FontFamily="Arial Unicode MS" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5,0,0,0" >
+                        <TextBlock HorizontalAlignment="Left" FontSize="11" FontFamily="Arial Unicode MS">
+                            Phone: (+88)-02-9033408, 9116439, 9143472, 9118665, E-Mail:
+                            <Hyperlink Foreground="Blue" Focusable="False" RequestNavigate="Mailto_RequestNavigate" NavigateUri="mailto:info@asit.com.bd">info@asit.com.bd</Hyperlink>
+                            , Web: <Hyperlink Foreground="Blue" Focusable="False" RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.asit.com.bd"><Run Text="www.asit.com.bd"/></Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <DockPanel  HorizontalAlignment="Right" Width="350" >
+                <Slider x:Name="slider1" Width="180"
+                DockPanel.Dock="Left"
+                Maximum="1.5"
+                Minimum="0.5"
+                Margin="0,-5,0,0"
+                TickFrequency="0.2"
+                TickPlacement="TopLeft" Focusable="False"
+                ValueChanged="slider1_ValueChanged"
+                Value="{Binding LayoutTransform.ScaleX, ElementName=UcGrid1, Mode=OneWay}" />
+                <TextBlock DockPanel.Dock="Right" Width="150" FontSize="11"
+                    x:Name="tbArrivalDateTime" 
+                    HorizontalAlignment="Right" Margin="0,2,0,0" 
+                   VerticalAlignment="Top" MouseUp="tbArrivalDateTime_MouseUp"/>
+                <DatePicker x:Name="dtpMW1" DockPanel.Dock="Right" Focusable="False" Visibility="Hidden" Height="30" Width="12"/>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>

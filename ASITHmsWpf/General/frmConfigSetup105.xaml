@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="ASITHmsWpf.General.frmConfigSetup105"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:local="clr-namespace:ASITHmsWpf"   
+             xmlns:localGen="clr-namespace:ASITHmsWpf.General"   
+             mc:Ignorable="d" Tag="DATABASE &amp; LOG RECORDS" Loaded="UserControl_Loaded"  Style="{StaticResource IOUserControl}" >
+    <Grid Background="#FFE4F2E1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="298*"/>
+            <ColumnDefinition Width="234*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="3">
+            <Label Content="Database Management" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal" Height="30" >
+                <Label Content="Procedure Name:" Height="24" Width="100" />
+                <ComboBox x:Name="cmbSPName" Width="300" Height="22" />
+                <Button x:Name="btnShowSP" Height="22" Content="Show SQL Script" Width="140" Click="btnShowSP_Click" ></Button>
+                <Separator Width="20" Visibility="Hidden" />
+                <Button x:Name="btnUpDateSP" Height="22" Content="Execute SQL Script" Width="140" Click="btnUpDateSP_Click" ></Button>
+                <Separator Width="20" Visibility="Hidden" />
+                <TextBox x:Name="txtSPFileName" IsEnabled="False" Height="22" Width="280" Visibility="Hidden"></TextBox>
+                <Button x:Name="btnUploadSP" Height="22" Content="Choose SQL Script File" Width="140" Click="btnUploadSP_Click" Visibility="Hidden" ></Button>
+                <Separator Width="100" Visibility="Hidden"></Separator>
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="txtSqlScript" FontSize="14" AcceptsReturn="True"  Height="370" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

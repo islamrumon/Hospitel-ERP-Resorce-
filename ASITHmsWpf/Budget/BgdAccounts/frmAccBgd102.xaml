@@ -1,0 +1,226 @@
+﻿<UserControl x:Class="ASITHmsWpf.Budget.BgdAccounts.frmAccBgd102"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:UC="clr-namespace:ASITHmsWpf.UserControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             mc:Ignorable="d" 
+             Tag="Approval of Payment Proposal" Style="{StaticResource IOUserControl}" Initialized="UserControl_Initialized" Loaded="UserControl_Loaded" >
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stkpSetup" Orientation="Horizontal">
+                    <Label x:Name="lblBppMonthTitle" Content="_Month : " HorizontalContentAlignment="Right" Width="60" Target="{Binding ElementName=cmbBpppMonth}" />
+                    <ComboBox x:Name="cmbBpppMonth" Width="100"  Height="24" />
+                    <Label x:Name="lblBppBrnTitle" Content="_Branch : " HorizontalContentAlignment="Right" Width="60" Target="{Binding ElementName=cmbBppBrn}" />
+                    <ComboBox x:Name="cmbBppBrn" Width="180"  Height="24" SelectedIndex="0" FontSize="12" />
+                    <Label x:Name="lblPTCashTitle" Content="Fund : " HorizontalContentAlignment="Right" Width="60" Target="{Binding ElementName=cmbPTCash}" />
+                    <ComboBox x:Name="cmbPTCash" Width="250"  Height="24" SelectedIndex="0" FontSize="12"  />
+                    <!--<CheckBox x:Name="chkPTCash" Content="Petty Cash" IsChecked="False" Height="24" VerticalContentAlignment="Center" Margin="10,0,0,0" />-->
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnShowProposal" Content="Ok" Width="75" Height="24" Style="{StaticResource StdBtnStyle01}" Margin="10,0,0,0" Click="btnShowProposal_Click" />
+                    <Button x:Name="btnUpdateProposal" Content="Update" Width="75" Height="24" Style="{StaticResource StdBtnStyle01}" Margin="20,0,0,0" Click="btnUpdateProposal_Click" />
+                    <ComboBox x:Name="cmbRptName" Width="130"  Height="24" FontSize="12" SelectedIndex="0" Margin="10,0,0,0" >
+                        <ComboBoxItem Content="Catagory Summary" Tag="RPTBPPTRANS03" />
+                        <ComboBoxItem Content="Overall Summary" Tag="RPTBPPTRANS04" />
+                    </ComboBox>
+                    <Button x:Name="btnPrintProposal" Content="Print" Width="75" Height="24" Style="{StaticResource StdBtnStyle01}" Margin="5,0,0,0" Click="btnPrintProposal_Click" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="stkpFind" Visibility="Collapsed">
+                <!--<StackPanel Orientation="Horizontal" >
+                    <Label x:Name="lblBppAccHeadTitle1" Content="Account Head : " HorizontalContentAlignment="Right" Width="120" Target="{Binding ElementName=autoAccHeadSearch}" />
+                    <UC:AutoComplete x:Name="autoAccHeadSearch" Width="500" SelectedValuePath="actcode" DisplayMemberPath="acdesc"  Height="24" PatternChanged="autoAccHeadSearch_PatternChanged" 
+                               Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500" MouseDoubleClick="autoAccHeadSearch_MouseDoubleClick" >
+                        <UC:AutoComplete.ContextMenu>
+                            <ContextMenu />
+                        </UC:AutoComplete.ContextMenu>
+                    </UC:AutoComplete>
+                    <Button x:Name="btnFindAccHead" Content="Find" Width="50" Height="24" Margin="5,0,0,0" Click="btnFindAccHead_Click" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label x:Name="lblBppSubHeadTitle1" Content="Sub Head : " HorizontalContentAlignment="Right" Width="120" Target="{Binding ElementName=autoSubHeadSearch}" />
+                    <UC:AutoComplete x:Name="autoSubHeadSearch" Width="500" SelectedValuePath="sircode" DisplayMemberPath="sirdesc" Height="24" PatternChanged="autoSubHeadSearch_PatternChanged"
+                                       Style="{StaticResource AutoCompleteComboBoxWithoutButton}" Delay="500"  >
+                    </UC:AutoComplete>
+                    <Button x:Name="btnFindSubHead" Content="Find" Width="50" Height="24" Margin="5,0,0,0" Click="btnFindSubHead_Click" />
+                </StackPanel>-->
+            </StackPanel>
+            <StackPanel x:Name="stkpProposalDetails" Margin="0,10,0,0">
+                <StackPanel>
+                    <DataGrid x:Name="dgBpp1" CanUserResizeRows="False" Background="Transparent" IsReadOnly="False" BorderThickness="0" Margin="0,0,0,0"  
+                              VerticalAlignment="Top" MaxHeight="320" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              SelectionUnit="Cell" SelectionMode="Single" >
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="40" Header="Sl#"  >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Width="40">
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding slnum, StringFormat={}{0: ##0) }}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="450" Header="Account Head" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <!--<TextBlock x:Name="dgBpp1AccHead" Text="{Binding trndesc}" ToolTip="{Binding trndesc}" FontWeight="{Binding FontWeight1}" Tag="{Binding trncod}" FontSize="12" />-->
+                                        <Label x:Name="lbldgBpp1AccHead" Content="{Binding trndesc}" ToolTip="{Binding trndesc}" FontWeight="{Binding FontWeight1}" Tag="{Binding trncod}" FontSize="12" Height="22" 
+                                            MouseDoubleClick="lbldgBpp1AccHead_MouseDoubleClick" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Width="40" Header="Br." Binding="{Binding Path=brnnam}" />
+                            <DataGridTemplateColumn Width="50" Header="Pr.On"  >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding bppdat1}" Visibility="{Binding apVisible}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="90" Header="Prop.Amount" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Right" Width="90" Padding="0,0,10,0"  FontWeight="{Binding FontWeight1}" Text="{Binding Path = bppam, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="App.Amount"  >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="95" IsReadOnly="{Binding isaprv}"
+                                               AutoSelectBehavior="OnFocus" Padding="0,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Amount" FontWeight="{Binding FontWeight1}" ToolTip="{Binding bapdat1}"
+                                                           Text="{Binding Path = bapam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="40" Header="" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding Path=isaprv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding apVisible}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="80" Header="Diff.Amt" IsReadOnly="False" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Right" Width="80" Padding="0,0,10,0"  Text="{Binding Path=diffam, StringFormat={}{0: #,##0;(#,##0); - }}"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="140" Header="Remarks" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <xctk:WatermarkTextBox TextAlignment="Left" AutoMoveFocus="True" BorderThickness="0" Width="135" Visibility="{Binding apVisible}"
+                                               AutoSelectBehavior="OnFocus" Padding="5,0,0,0" Style="{StaticResource wtxtBx}" Watermark=""  ToolTip="{Binding bpprmrk}"
+                                                               Text="{Binding Path = baprmrk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="50" Header="Ex.Pay" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding epaydat1}" Visibility="{Binding apVisible}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel Margin="0,10,0,0" >
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Payment Status :" FontWeight="Bold" />
+                        <Label x:Name="lblPayStatus1" Content="Payment Status" FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,0">
+                        <DataGrid x:Name="dgPayStatus1" CanUserResizeRows="False" Background="Transparent" IsReadOnly="False" BorderThickness="0" 
+                              VerticalAlignment="Top" MaxHeight="200" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"   SelectionUnit="FullRow"  SelectionMode="Single" >
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="40" Header="Sl#"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Width="40">
+                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"  Text="{Binding slnum, StringFormat={}{0: ##0) }}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="200" Header="Description" >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding trndesc}" ToolTip="{Binding trndesc}" FontWeight="{Binding FontWeight1}" FontSize="12" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="50" Header=" " >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding brnnam}" FontSize="12" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Width="90" Header="Month-01" >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="95" IsReadOnly="True"
+                                               AutoSelectBehavior="OnFocus" Padding="0,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Amount" FontWeight="{Binding FontWeight1}" ToolTip="{Binding bapdat1}"
+                                                           Text="{Binding Path = amt01, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100" Header="Month-02"   >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="95" IsReadOnly="True"
+                                               AutoSelectBehavior="OnFocus" Padding="0,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Amount" FontWeight="{Binding FontWeight1}" ToolTip="{Binding bapdat1}"
+                                                           Text="{Binding Path = amt02, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100" Header="Month-03"   >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="95" IsReadOnly="True"
+                                               AutoSelectBehavior="OnFocus" Padding="0,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Amount" FontWeight="{Binding FontWeight1}" ToolTip="{Binding bapdat1}"
+                                                           Text="{Binding Path = amt03, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100" Header="Month-04"   >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="95" IsReadOnly="True"
+                                               AutoSelectBehavior="OnFocus" Padding="0,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Amount" FontWeight="{Binding FontWeight1}" ToolTip="{Binding bapdat1}"
+                                                           Text="{Binding Path = amt04, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100" Header="Month-05"   >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="95" IsReadOnly="True" 
+                                               AutoSelectBehavior="OnFocus" Padding="0,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Amount" FontWeight="{Binding FontWeight1}" ToolTip="{Binding bapdat1}"
+                                                           Text="{Binding Path = amt05, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100" Header="Month-06"   >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <xctk:WatermarkTextBox TextAlignment="Right" AutoMoveFocus="True" IsReadOnly="True" PreviewTextInput="NumberValidationTextBox" BorderThickness="0" Width="95" 
+                                               AutoSelectBehavior="OnFocus" Padding="0,0,5,0" Style="{StaticResource wtxtBx}" Watermark="Amount" FontWeight="{Binding FontWeight1}" ToolTip="{Binding bapdat1}"
+                                                           Text="{Binding Path = amt06, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0: #,##0;(#,##0); - }}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

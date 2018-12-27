@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5800C170-1BB3-4E3D-9899-486B6917E30B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ASITHmsRpt1GenAcc</RootNamespace>
+    <AssemblyName>ASITHmsRpt1GenAcc</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ASITFunLib">
+      <HintPath>..\..\..\..\..\ASITFunLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.12.0.2.2403\lib\net40\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accounting\AccReportSetup.cs" />
+    <Compile Include="General\GeneralReportSetup.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Accounting\RptAccCashBook1.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\RptAccCashFlow1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccIncomeSt1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccIntComLon1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccIntComLon2.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccLedger2.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccPayCheq1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccMReceipt1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccRecon1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccTransList2.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\RptAccTrialBal1.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\RptAccLedger1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccRecPay1.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\RptAccTransList.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccVou1h.rdlc" />
+    <EmbeddedResource Include="Accounting\RptAccVou1.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\RptBgdProject01.rdlc" />
+    <EmbeddedResource Include="Accounting\RptChqIssuLetter1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptPayProTran1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptPayProTransList1.rdlc" />
+    <EmbeddedResource Include="Accounting\RptPayProTransList2.rdlc" />
+    <EmbeddedResource Include="General\rptAccCodeBook1.rdlc" />
+    <EmbeddedResource Include="General\rptAppUserAuth01.rdlc" />
+    <EmbeddedResource Include="General\rptAppUserList01.rdlc" />
+    <EmbeddedResource Include="General\RptComSections1.rdlc" />
+    <EmbeddedResource Include="General\rptSirCodeBook1.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccCashBanRecon1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccCashBook1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccCashFlow1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccChequeIssueToBank1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccIncomeStatement1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccIntComLoanStat1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccIntComLoanSum1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccLedger1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccRecPay1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccTransectionList.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccTrialBalance1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+AccVoucher1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+MasterBgdRpt1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+PayProTrans1.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+PayProTransectionList.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityAccounting+PayProTransectionList2.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityDatabase+EntityDbo+AcInf.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityGeneral+AcInfCodeBook.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityGeneral+RptSectList.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityGeneral+SirInfCodeBook.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityGeneral+UserInterfaceAuth+AppUserList.datasource" />
+    <None Include="Properties\DataSources\ASITHmsEntity.HmsEntityGeneral+UserInterfaceAuth+uiObjInfo.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASITHmsEntity\ASITHmsEntity.csproj">
+      <Project>{5bc488f6-7dc4-4128-9fe8-bdd27339a851}</Project>
+      <Name>ASITHmsEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

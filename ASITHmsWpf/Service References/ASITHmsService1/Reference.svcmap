@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d7dbee7a-a38b-4f04-a9a5-1b83fe51f2da" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3709/ASITHmsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ASITHmsService5.xsd" MetadataType="Schema" ID="f3655651-0eba-43fc-b88a-d80f716ef66a" SourceId="1" SourceUrl="http://localhost:3709/ASITHmsService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ASITHmsService1.wsdl" MetadataType="Wsdl" ID="9ffeff09-642b-4b28-a0dd-d43a8344e49c" SourceId="1" SourceUrl="http://localhost:3709/ASITHmsService.svc?wsdl" />
+    <MetadataFile FileName="ASITHmsService51.xsd" MetadataType="Schema" ID="3feda69e-57b1-475f-ad1d-2e55894fc99b" SourceId="1" SourceUrl="http://localhost:3709/ASITHmsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ASITHmsService52.xsd" MetadataType="Schema" ID="549abd84-b327-4c83-8f39-d20400e2243d" SourceId="1" SourceUrl="http://localhost:3709/ASITHmsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ASITHmsService53.xsd" MetadataType="Schema" ID="39717619-0f2c-4ced-a007-316d95bb6e20" SourceId="1" SourceUrl="http://localhost:3709/ASITHmsService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ASITHmsService54.xsd" MetadataType="Schema" ID="a7be34df-b874-43d8-97fd-4eac105251ea" SourceId="1" SourceUrl="http://localhost:3709/ASITHmsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ASITHmsService1.disco" MetadataType="Disco" ID="a0ac95f7-0181-491f-81d5-93b248d7af73" SourceId="1" SourceUrl="http://localhost:3709/ASITHmsService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
